@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Zebronics Soundbar | Juke Bar Series</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#E31B23;--red-dark:#B01219;--red-glow:rgba(227,27,35,0.08);
+  --bg:#F4F4F4;--surface:#FFFFFF;--card:#FFFFFF;--card-hover:#FFF8F8;
+  --border:#E2E2E2;--border-active:#E31B23;
+  --text:#1A1A1A;--muted:#666666;--subtle:#AAAAAA;
+  --gold:#D4860A;--green:#16A34A;
+  --font-head:'Barlow Condensed',sans-serif;
+  --font-body:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.5}
+
+/* ── NAV ── */
+nav{background:#FFFFFF;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 2rem;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.logo-zeb{font-family:var(--font-head);font-size:22px;font-weight:800;letter-spacing:1px;color:var(--text)}
+.logo-zeb span{color:var(--red)}
+.nav-tag{background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;padding:3px 10px;border-radius:2px;text-transform:uppercase}
+.nav-links{display:flex;gap:2rem;font-size:13px;color:var(--muted)}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(180deg,#FFFFFF 0%,#FFF5F5 50%,#F4F4F4 100%);padding:5rem 2rem 3rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(227,27,35,0.05) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{display:inline-block;font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:1.2rem;padding:6px 16px;border:1px solid rgba(227,27,35,0.3);border-radius:2px}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:0.95;letter-spacing:-1px;margin-bottom:1.2rem;text-transform:uppercase;color:var(--text)}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero p{font-size:17px;color:var(--muted);max-width:500px;margin:0 auto 2.5rem;line-height:1.7}
+
+/* LIVE EQ BARS */
+.eq-bar-wrap{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:48px;margin-bottom:2rem}
+.eq-bar{width:4px;border-radius:2px 2px 0 0;background:var(--red);animation:eqPulse 1.4s ease-in-out infinite}
+@keyframes eqPulse{0%,100%{transform:scaleY(0.2)}50%{transform:scaleY(1)}}
+
+/* ── LAYOUT ── */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.section{padding:3rem 0}
+.section-title{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:1rem}
+.section-h2{font-family:var(--font-head);font-size:2rem;font-weight:800;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:0.5rem}
+.section-sub{font-size:14px;color:var(--muted);margin-bottom:2rem}
+
+/* ── FILTER TABS ── */
+.filter-bar{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2rem;margin-bottom:2rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+.filter-row{margin-bottom:1.5rem}
+.filter-row:last-child{margin-bottom:0}
+.filter-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:8px}
+.filter-multi-hint{font-size:10px;font-weight:400;letter-spacing:0;color:var(--subtle);text-transform:none}
+.chip-grid{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#F7F7F7;border:1.5px solid var(--border);color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:500;padding:8px 16px;border-radius:4px;cursor:pointer;transition:all .18s;white-space:nowrap}
+.chip:hover{border-color:var(--red);color:var(--text);background:#FFF5F5}
+.chip.active{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
+.chip .chip-sub{display:block;font-size:10px;color:var(--subtle);margin-top:1px;font-weight:400}
+.chip.active .chip-sub{color:rgba(255,255,255,0.8)}
+
+/* BUDGET ROW */
+.budget-row{display:flex;align-items:center;gap:1.5rem}
+.budget-val{font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--red);min-width:110px}
+.budget-slider-wrap{flex:1}
+input[type=range].budget-range{-webkit-appearance:none;width:100%;height:3px;background:var(--border);border-radius:2px;outline:none}
+input[type=range].budget-range::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--red);cursor:pointer;border:3px solid #fff;box-shadow:0 0 0 1px var(--red)}
+.budget-ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--subtle);margin-top:6px}
+.budget-note{font-size:12px;color:var(--muted);min-width:100px;text-align:right}
+
+/* ── PRODUCT GRID ── */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .2s;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+.prod-card:hover{border-color:rgba(227,27,35,0.4);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 4px 16px rgba(227,27,35,0.08)}
+.prod-card.is-match{border-color:var(--red);box-shadow:0 0 0 1.5px var(--red),0 8px 32px rgba(227,27,35,0.12)}
+.match-badge{background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:5px 12px;text-transform:uppercase}
+.prod-img{width:100%;aspect-ratio:4/3;background:#111;object-fit:contain;padding:1rem}
+.prod-img-placeholder{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#1A1A1A,#222);display:flex;align-items:center;justify-content:center}
+.prod-body{padding:1.2rem;flex:1;display:flex;flex-direction:column}
+.prod-top-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+.prod-name{font-family:var(--font-head);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:-0.3px;line-height:1.1}
+.prod-watt-badge{background:rgba(227,27,35,0.1);border:1px solid rgba(227,27,35,0.3);color:var(--red);font-family:var(--font-head);font-size:15px;font-weight:800;padding:4px 10px;border-radius:3px;white-space:nowrap;flex-shrink:0}
+.prod-cert{font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:8px}
+.cert-dolbyatmos{color:var(--gold)}
+.cert-dolbyaudio{color:#4A9EFF}
+.cert-standard{color:var(--muted)}
+.prod-config{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.feat-list{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.feat-chip{background:#F5F5F5;border:1px solid #E8E8E8;color:#555;font-size:10px;padding:3px 8px;border-radius:3px}
+.price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+.price-main{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--text)}
+.price-mrp{font-size:12px;color:var(--subtle);text-decoration:line-through}
+.price-save{background:rgba(22,163,74,0.1);color:var(--green);font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px}
+.buy-row{display:flex;gap:8px;margin-top:auto;padding-top:14px}
+.buy-btn{flex:1;padding:8px 6px;border-radius:4px;font-size:11px;font-weight:700;text-align:center;text-decoration:none;transition:all .18s;cursor:pointer;border:none;font-family:var(--font-body);letter-spacing:0.5px}
+.buy-amazon{background:#FF9900;color:#111}
+.buy-amazon:hover{background:#e68a00}
+.buy-flipkart{background:#2874F0;color:#fff}
+.buy-flipkart:hover{background:#1f5ec4}
+.buy-zeb{background:transparent;color:var(--red);border:1.5px solid var(--red)}
+.buy-zeb:hover{background:var(--red);color:#fff}
+.why-match{background:rgba(227,27,35,0.04);border-left:2px solid var(--red);padding:10px 12px;border-radius:0 4px 4px 0;margin-top:12px;font-size:12px;color:#444;line-height:1.5;display:none}
+.is-match .why-match{display:block}
+.no-results{text-align:center;padding:4rem 2rem;color:var(--muted);font-size:15px}
+
+/* COMPACT BADGE */
+.compact-tag{display:inline-block;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1.5px;padding:2px 8px;border-radius:2px;text-transform:uppercase;margin-bottom:6px}
+
+/* ── SOUND DEMO ── */
+.demo-section{background:#F0F0F0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 0}
+.demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media(max-width:768px){.demo-inner{grid-template-columns:1fr}}
+.demo-controls{}
+.demo-title{font-family:var(--font-head);font-size:1.8rem;font-weight:900;text-transform:uppercase;margin-bottom:0.5rem}
+.demo-sub{font-size:14px;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.component-list{display:flex;flex-direction:column;gap:12px}
+.comp-item{background:#FFFFFF;border:1.5px solid var(--border);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .2s;user-select:none;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.comp-item:hover{border-color:rgba(227,27,35,0.4)}
+.comp-item.on{border-color:var(--red);background:#FFF8F8}
+.comp-item.disabled{opacity:0.35;cursor:default}
+.comp-switch{width:44px;height:24px;background:#D9D9D9;border-radius:12px;position:relative;flex-shrink:0;transition:background .2s}
+.comp-switch::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
+.comp-item.on .comp-switch{background:var(--red)}
+.comp-item.on .comp-switch::after{left:23px}
+.comp-icon{font-size:20px;width:32px;text-align:center}
+.comp-info{}
+.comp-name{font-weight:700;font-size:14px;margin-bottom:2px}
+.comp-desc{font-size:12px;color:var(--muted)}
+.freq-label{font-size:10px;font-weight:700;letter-spacing:1px;margin-left:auto;color:var(--muted)}
+.comp-item.on .freq-label{color:var(--red)}
+
+/* VISUALIZER */
+.demo-visual{}
+.vis-stage{background:#1A1A1A;border:1px solid #2A2A2A;border-radius:12px;overflow:hidden;height:320px;position:relative}
+.vis-canvas{width:100%;height:100%}
+#audioStatus{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:11px;color:#888;background:rgba(0,0,0,0.7);padding:4px 12px;border-radius:20px;white-space:nowrap;letter-spacing:1px}
+.play-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(0,0,0,0.7);cursor:pointer;transition:opacity .3s}
+.play-overlay:hover{background:rgba(0,0,0,0.5)}
+.play-btn{width:72px;height:72px;border-radius:50%;background:var(--red);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.play-btn svg{width:28px;height:28px;fill:#fff;margin-left:4px}
+.play-hint{font-size:13px;color:var(--muted);text-align:center}
+
+/* ── COMPARISON TABLE ── */
+.compare-section{padding:3rem 0}
+.compare-wrap{overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px}
+.compare-table th{background:#F7F7F7;padding:10px 14px;text-align:left;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--border);white-space:nowrap}
+.compare-table td{padding:12px 14px;border-bottom:1px solid #F0F0F0;vertical-align:middle}
+.compare-table tr:hover td{background:#FAFAFA}
+.td-name{font-family:var(--font-head);font-size:15px;font-weight:800;white-space:nowrap;color:var(--text)}
+.td-compact{color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1px;display:block}
+.cert-pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:0.5px}
+.cp-atmos{background:rgba(212,134,10,0.1);color:var(--gold)}
+.cp-audio{background:rgba(29,78,216,0.08);color:#1D4ED8}
+.cp-std{background:#F0F0F0;color:var(--muted)}
+.check{color:var(--green);font-size:16px}
+.cross{color:#CCC;font-size:14px}
+.td-price{font-family:var(--font-head);font-size:17px;font-weight:800;white-space:nowrap;color:var(--text)}
+
+/* ── FOOTER ── */
+footer{background:#FFFFFF;border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--subtle)}
+footer strong{color:var(--muted)}
+
+/* COMPACT BADGE */
+.compact-tag{display:inline-block;background:rgba(212,134,10,0.08);border:1px solid rgba(212,134,10,0.3);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1.5px;padding:2px 8px;border-radius:2px;text-transform:uppercase;margin-bottom:6px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{font-size:2.5rem}
+  .nav-links{display:none}
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .budget-row{flex-direction:column;align-items:flex-start}
+  .compare-table td,.compare-table th{padding:8px 10px}
+}
+@media(max-width:480px){
+  .prod-grid{grid-template-columns:1fr}
+  .buy-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-zeb">ZEBRO<span>NICS</span></div>
+      <div class="nav-tag">Sound Finder</div>
+    </div>
+    <div class="nav-links">
+      <a href="#finder">Find Your Bar</a>
+      <a href="#demo">Sound Demo</a>
+      <a href="#compare">Compare All</a>
+      <a href="https://shop.zebronics.com/collections/soundbars" target="_blank">All Soundbars ↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eq-bar-wrap" id="heroEq"></div>
+  <div class="hero-eyebrow">Juke Bar Series · India</div>
+  <h1>Find The <em>Right</em><br>Sound For<br>Your Home</h1>
+  <p>From ₹6,299 to ₹32,999 — every room size, every use case, every budget. Dolby certified. Indian priced.</p>
+  <a href="#finder" style="display:inline-block;background:var(--red);color:#fff;font-family:var(--font-head);font-size:15px;font-weight:700;padding:14px 32px;border-radius:4px;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:background .2s" onmouseover="this.style.background='#B01219'" onmouseout="this.style.background='var(--red)'">Find My Soundbar</a>
+</section>
+
+<!-- FINDER -->
+<section class="section" id="finder">
+  <div class="container">
+    <div class="section-title">Step-by-step</div>
+    <div class="section-h2">Tell Us About Your Space</div>
+    <div class="section-sub">Select your room, usage, and budget — we'll show you the best matches</div>
+
+    <div class="filter-bar">
+      <!-- Room Size -->
+      <div class="filter-row">
+        <div class="filter-label">Room Size</div>
+        <div class="chip-grid" id="roomChips">
+          <button class="chip" data-room="studio" onclick="selectChip(this,'room')">Studio / Bedroom<span class="chip-sub">~100 sq ft · 1RK</span></button>
+          <button class="chip" data-room="small" onclick="selectChip(this,'room')">Small Living Room<span class="chip-sub">~150 sq ft · 1BHK</span></button>
+          <button class="chip" data-room="medium" onclick="selectChip(this,'room')">Medium Hall<span class="chip-sub">200–250 sq ft · 2BHK</span></button>
+          <button class="chip" data-room="large" onclick="selectChip(this,'room')">Large / Open Hall<span class="chip-sub">300+ sq ft · 3BHK</span></button>
+        </div>
+      </div>
+
+      <!-- Use Case (multi-select) -->
+      <div class="filter-row">
+        <div class="filter-label">Primary Use <span class="filter-multi-hint">· Select all that apply</span></div>
+        <div class="chip-grid" id="useChips">
+          <button class="chip" data-use="movies" onclick="toggleUse(this)">🎬 Movies & OTT<span class="chip-sub">Netflix, Prime, Hotstar</span></button>
+          <button class="chip" data-use="gaming" onclick="toggleUse(this)">🎮 Gaming<span class="chip-sub">PS5, Xbox, PC</span></button>
+          <button class="chip" data-use="sports" onclick="toggleUse(this)">🏏 Sports<span class="chip-sub">Cricket, Football, IPL</span></button>
+          <button class="chip" data-use="everyday" onclick="toggleUse(this)">📺 Everyday TV<span class="chip-sub">News, serials, shows</span></button>
+          <button class="chip" data-use="music" onclick="toggleUse(this)">🎵 Music<span class="chip-sub">Spotify, JioSaavn</span></button>
+        </div>
+      </div>
+
+      <!-- TV Size -->
+      <div class="filter-row">
+        <div class="filter-label">TV Size</div>
+        <div class="chip-grid" id="tvChips">
+          <button class="chip" data-tv="small" onclick="selectChip(this,'tv')">32″ – 43″<span class="chip-sub">Bedroom / compact</span></button>
+          <button class="chip" data-tv="medium" onclick="selectChip(this,'tv')">43″ – 55″<span class="chip-sub">Most common hall TV</span></button>
+          <button class="chip" data-tv="large" onclick="selectChip(this,'tv')">55″ – 65″<span class="chip-sub">Large living room</span></button>
+          <button class="chip" data-tv="xlarge" onclick="selectChip(this,'tv')">65″ and above<span class="chip-sub">Cinema-scale setup</span></button>
+        </div>
+      </div>
+
+      <!-- Budget -->
+      <div class="filter-row">
+        <div class="filter-label">Budget</div>
+        <div class="budget-row">
+          <div class="budget-val" id="budgetDisplay">₹15,000</div>
+          <div class="budget-slider-wrap">
+            <input type="range" class="budget-range" id="budgetSlider" min="5000" max="35000" step="500" value="15000" oninput="onBudget(this.value)">
+            <div class="budget-ticks"><span>₹5K</span><span>₹10K</span><span>₹15K</span><span>₹20K</span><span>₹25K</span><span>₹35K</span></div>
+          </div>
+          <div class="budget-note" id="budgetNote">6 bars in range</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="matchHeading" style="margin-bottom:1rem;font-size:13px;color:var(--muted)">Showing all soundbars — use filters above to refine</div>
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- SOUND DEMO -->
+<section class="demo-section" id="demo">
+  <div class="container">
+    <div class="section-title">Interactive Sound Demo</div>
+    <div class="demo-inner">
+      <div class="demo-controls">
+        <div class="demo-title">Hear The<br>Difference</div>
+        <div class="demo-sub">Toggle the soundbar, subwoofer, and rear satellites to hear how each component shapes your listening experience. Works best with headphones.</div>
+
+        <div class="component-list">
+          <div class="comp-item on" id="comp-bar" onclick="toggleComp('bar')">
+            <div class="comp-switch"></div>
+            <div class="comp-icon">📻</div>
+            <div class="comp-info">
+              <div class="comp-name">Soundbar</div>
+              <div class="comp-desc">Mid & high frequencies · Voices, dialogue, clarity</div>
+            </div>
+            <div class="freq-label">200Hz – 20kHz</div>
+          </div>
+          <div class="comp-item" id="comp-sub" onclick="toggleComp('sub')">
+            <div class="comp-switch"></div>
+            <div class="comp-icon">🔊</div>
+            <div class="comp-info">
+              <div class="comp-name">Subwoofer</div>
+              <div class="comp-desc">Deep bass · Explosions, music kick, rumble</div>
+            </div>
+            <div class="freq-label">40Hz – 200Hz</div>
+          </div>
+          <div class="comp-item" id="comp-sat" onclick="toggleComp('sat')">
+            <div class="comp-switch"></div>
+            <div class="comp-icon">📡</div>
+            <div class="comp-info">
+              <div class="comp-name">Rear Satellites</div>
+              <div class="comp-desc">Surround sound · Spatial width · Behind you</div>
+            </div>
+            <div class="freq-label">Wide Stereo</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;padding:14px;background:var(--card);border-radius:6px;border:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.6">
+          <strong style="color:#fff;display:block;margin-bottom:4px">How to use:</strong>
+          Click the visualizer to start the demo audio, then toggle each component on/off to hear how bass, mid-range, and surround contribute to the full sound.
+        </div>
+      </div>
+
+      <div class="demo-visual">
+        <div class="vis-stage">
+          <canvas class="vis-canvas" id="visCanvas"></canvas>
+          <div id="audioStatus">CLICK TO START DEMO</div>
+          <div class="play-overlay" id="playOverlay" onclick="startAudio()">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="play-hint">Click to start interactive demo<br><span style="font-size:11px;color:var(--subtle)">Uses your browser's audio engine</span></div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:11px;text-align:center">
+          <div style="background:#FFF;border:1px solid var(--border);padding:10px;border-radius:6px">
+            <div style="color:var(--red);font-family:var(--font-head);font-size:18px;font-weight:800" id="stat-bar">ON</div>
+            <div style="color:var(--muted)">Soundbar</div>
+          </div>
+          <div style="background:#FFF;border:1px solid var(--border);padding:10px;border-radius:6px">
+            <div style="color:var(--muted);font-family:var(--font-head);font-size:18px;font-weight:800" id="stat-sub">OFF</div>
+            <div style="color:var(--muted)">Subwoofer</div>
+          </div>
+          <div style="background:#FFF;border:1px solid var(--border);padding:10px;border-radius:6px">
+            <div style="color:var(--muted);font-family:var(--font-head);font-size:18px;font-weight:800" id="stat-sat">OFF</div>
+            <div style="color:var(--muted)">Satellites</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE ALL -->
+<section class="compare-section" id="compare">
+  <div class="container">
+    <div class="section-title">Full Range</div>
+    <div class="section-h2">Compare All Soundbars</div>
+    <div class="section-sub">Every Juke Bar model, side by side — sorted by price</div>
+    <div class="compare-wrap">
+      <table class="compare-table" id="compareTable">
+        <thead>
+          <tr>
+            <th>Model</th><th>Power</th><th>Cert</th><th>Config</th><th>Sub</th><th>Satellites</th><th>Dolby Atmos</th><th>Price</th><th>Buy</th>
+          </tr>
+        </thead>
+        <tbody id="compareBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Zebronics India Pvt. Ltd.</strong> · 13/7 Smith Road, Royapettah, Chennai, Tamil Nadu – 600 002 · All prices subject to change · <a href="https://zebronics.com" style="color:var(--red);text-decoration:none" target="_blank">zebronics.com</a>
+</footer>
+
+<script>
+// ── PRODUCT DATA ──────────────────────────────────────────────
+const PRODUCTS = [
+  {
+    id:'4120', name:'Juke Bar 4120', watt:'200W', price:6299, mrp:16999, save:63,
+    cert:'Standard', config:'2.1', sub:'Wired', satellites:false, atmos:false, compact:false,
+    features:['Dual Drivers 40W×2','13.33cm Sub','BT v5.3','TV ARC','USB'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg?v=1761559055&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+4120',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+4120',
+    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-4120',
+    roomFit:['studio','small'],
+    useScore:{movies:2,gaming:2,sports:2,everyday:4,music:3},
+    why:{movies:'A solid entry into Dolby-era audio. Good for smaller rooms and casual movie nights.',gaming:'Clean audio upgrade for bedroom gaming setups.',sports:'Sharp and clear — handles commentary and crowd noise well in a compact room.',everyday:'Ideal upgrade from TV speakers for daily viewing without spending much.',music:'Wide frequency range for its size. Handles music genres cleanly.'}
+  },
+  {
+    id:'9010C', name:'Juke Bar 9010C', watt:'140W', price:6999, mrp:18999, save:63,
+    cert:'Dolby Audio', config:'2.1', sub:'Wired', satellites:false, atmos:false, compact:true,
+    features:['Dolby Audio','Dual Drivers','13.33cm Sub','BT v5.4','TV ARC','Optical'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar-9010C-pic1.jpg?v=1770372740&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9010c',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9010c',
+    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9010c',
+    roomFit:['studio','small'],
+    useScore:{movies:3,gaming:2,sports:2,everyday:4,music:3},
+    why:{movies:'Dolby Audio delivers clear dialogue and enhanced depth — a genuine upgrade from TV speakers.',gaming:'BT 5.4 low latency plus Dolby Audio. Great for bedroom gaming rigs.',sports:'Crisp voices and solid bass punch — ideal for IPL commentary + crowd roar.',everyday:'Compact 40.6cm bar fits any shelf. Plug-and-play with ARC — easiest upgrade possible.',music:'50Hz–20KHz frequency range with dedicated sub makes music sound full and warm.'}
+  },
+  {
+    id:'9600', name:'Juke Bar 9600', watt:'300W', price:7999, mrp:22999, save:65,
+    cert:'Standard', config:'5.1', sub:'Wired', satellites:true, atmos:false, compact:false,
+    features:['300W Total','5.1 Channel','Rear Satellites','BT v5.1','HDMI ARC'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg?v=1761559055&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9600',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9600',
+    zeb:'https://shop.zebronics.com/collections/soundbars',
+    roomFit:['small','medium'],
+    useScore:{movies:3,gaming:4,sports:4,everyday:3,music:3},
+    why:{movies:'5.1 surround with rear satellites gives a proper home-theatre feel for under ₹8K.',gaming:'Directional audio from rear satellites — hear footsteps and spatial cues in FPS games.',sports:'Rear satellites surround you with crowd noise for a stadium-like experience.',everyday:'Surround sound makes everything feel more immersive — even news channels.',music:'300W 5.1 setup with satellites fills a hall beautifully.'}
+  },
+  {
+    id:'9300C', name:'Juke Bar 9300C', watt:'380W', price:9999, mrp:32999, save:70,
+    cert:'Dolby Audio', config:'5.1', sub:'Wired', satellites:true, atmos:false, compact:true,
+    features:['380W Total','Dolby Audio','Triple Drivers','Dual Rear Satellites','BT v5.4','TV ARC'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar9300C-pic1.jpg?v=1770372615&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9300c',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9300c',
+    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9300c',
+    roomFit:['small','medium'],
+    useScore:{movies:4,gaming:4,sports:5,everyday:4,music:4},
+    why:{movies:'Dolby Audio + real rear satellites = cinema surround at home. Best value under ₹10K.',gaming:'380W surround gives you full positional audio — hear exactly where the action is.',sports:'Rear satellites wrap you in crowd sound. IPL will feel like being at the stadium.',everyday:'The go-to daily driver for a 1–2BHK. 70% off launch pricing makes this unbeatable.',music:'380W with rear satellites fills a 1BHK corner-to-corner.'}
+  },
+  {
+    id:'9451', name:'Juke Bar 9451', watt:'600W', price:13999, mrp:44999, save:69,
+    cert:'Dolby Audio', config:'5.1', sub:'Wired', satellites:true, atmos:false, compact:false,
+    features:['600W Total','Dolby Audio','5.1 Surround','Wired Sub','Rear Satellites','HDMI ARC'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg?v=1761559055&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9451',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9451',
+    zeb:'https://shop.zebronics.com/collections/soundbars',
+    roomFit:['medium','large'],
+    useScore:{movies:4,gaming:4,sports:4,everyday:3,music:4},
+    why:{movies:'600W Dolby Audio with 5.1 surround — action films hit different at this power level.',gaming:'High output for a larger gaming room. Explosions and soundtrack come alive.',sports:'600W in a hall ensures every cheer, kick, and bounce is felt.',everyday:'Powerful but focused — crisp dialogue even at low volumes.',music:'600W fills larger halls with clean, powerful sound.'}
+  },
+  {
+    id:'9580C', name:'Juke Bar 9580C', watt:'320W', price:13999, mrp:37999, save:63,
+    cert:'Dolby Atmos', config:'2.1', sub:'Wireless', satellites:false, atmos:true, compact:true,
+    features:['Dolby Atmos','dts:X','Wireless Sub','Zero Cable Clutter','BT v5.4','HDMI ARC'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar-9580C-pic1.jpg?v=1772286552&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9580c',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9580c',
+    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9580c',
+    roomFit:['small','medium'],
+    useScore:{movies:5,gaming:4,sports:3,everyday:3,music:5},
+    why:{movies:'Dolby Atmos is full cinema-grade — height channels make rain and helicopters feel real.',gaming:'Dolby Atmos + dts:X gives the most immersive gaming audio below ₹20K.',sports:'Atmos processing spatialises crowd sound for a broadcast-quality experience.',everyday:'Wireless sub means no cable across the hall — cleanest possible setup.',music:'Dolby Atmos music on Apple Music / Spotify works perfectly here.'}
+  },
+  {
+    id:'9710C', name:'Juke Bar 9710C', watt:'550W', price:16999, mrp:44999, save:62,
+    cert:'Dolby Atmos', config:'5.1', sub:'Wireless', satellites:true, atmos:true, compact:true,
+    features:['Dolby Atmos','dts:X','Fully Wireless 5.1','550W Total','BT v5.4','40Hz–20kHz'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar9710C-pic1.jpg?v=1772287422&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9710c',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9710c',
+    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9710c',
+    roomFit:['medium','large'],
+    useScore:{movies:5,gaming:5,sports:5,everyday:3,music:5},
+    why:{movies:'The flagship compact. 550W + Dolby Atmos + wireless surround = closest to cinema at home.',gaming:'Fully wireless 5.1 Atmos. No cables. 550W. Ultimate gaming audio setup under ₹20K.',sports:'550W fully wireless surround — you don\'t watch cricket, you\'re at the stadium.',everyday:'Overkill for casual TV — but once you hear wireless Atmos surround, no going back.',music:'Fully wireless Atmos placement freedom. The definitive music setup under ₹20K.'}
+  },
+  {
+    id:'9550', name:'Juke Bar 9550', watt:'625W', price:19999, mrp:59999, save:67,
+    cert:'Dolby Atmos', config:'5.1.2', sub:'Wireless', satellites:true, atmos:true, compact:false,
+    features:['Dolby Atmos','dts:X','625W Total','5.1.2 CH','Up-firing Drivers','Wireless Sub+Sat'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg?v=1761559055&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9550',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9550',
+    zeb:'https://shop.zebronics.com/collections/soundbars',
+    roomFit:['large'],
+    useScore:{movies:5,gaming:5,sports:5,everyday:3,music:5},
+    why:{movies:'5.1.2 configuration with up-firing drivers for true overhead Atmos. Highest fidelity movies experience.',gaming:'Top-tier gaming audio with true height channels and 625W power.',sports:'True 3D sound for sports — feel the stadium atmosphere completely.',everyday:'Significant overkill for daily viewing, but sounds spectacular on everything.',music:'625W 5.1.2 Atmos music is a genuinely audiophile experience.'}
+  },
+  {
+    id:'9920', name:'Juke Bar 9920', watt:'900W', price:32999, mrp:89999, save:63,
+    cert:'Dolby Atmos', config:'7.1.2', sub:'Wireless', satellites:true, atmos:true, compact:false,
+    features:['900W Total','7.1.2 CH','Dolby Atmos','AcoustiMax','Wireless Sub+Sat','BT v5.3'],
+    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar-9920-pic-1.jpg?v=1755687573&width=600',
+    amazon:'https://www.amazon.in/s?k=zebronics+juke+bar+9920',
+    flipkart:'https://www.flipkart.com/search?q=zebronics+juke+bar+9920',
+    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9920',
+    roomFit:['large'],
+    useScore:{movies:5,gaming:5,sports:5,everyday:2,music:5},
+    why:{movies:'The flagship. 900W 7.1.2 with AcoustiMax technology — actual world-class home theatre performance.',gaming:'900W 7.1.2 Atmos surround is the absolute pinnacle of gaming audio in India at this price.',sports:'900W 7.1.2 — you\'ll feel every ball, every tackle, every roar.',everyday:'Serious overkill — but once experienced, impossible to go back.',music:'900W 7.1.2 Dolby Atmos music is on par with dedicated hi-fi setups costing 3× more.'}
+  }
+];
+
+// ── STATE ──────────────────────────────────────────────────────
+let state = { room:null, uses:new Set(), tv:null, budget:15000 };
+
+// ── HERO EQ ────────────────────────────────────────────────────
+const hEq = document.getElementById('heroEq');
+for(let i=0;i<18;i++){
+  const b=document.createElement('div');
+  b.className='eq-bar';
+  const h=6+Math.random()*36;
+  b.style.cssText=`height:${h}px;animation-delay:${(Math.random()*1.4).toFixed(2)}s;animation-duration:${(0.8+Math.random()*0.8).toFixed(2)}s`;
+  hEq.appendChild(b);
+}
+
+// ── CHIPS: single-select (room, tv) ───────────────────────────
+function selectChip(el, type) {
+  el.closest('.chip-grid').querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  if(state[type]===el.dataset[type]){
+    state[type]=null; // deselect on re-click
+  } else {
+    el.classList.add('active');
+    state[type]=el.dataset[type];
+  }
+  renderGrid();
+}
+
+// ── USE CASE: multi-select ─────────────────────────────────────
+function toggleUse(el) {
+  const val=el.dataset.use;
+  if(state.uses.has(val)){
+    state.uses.delete(val);
+    el.classList.remove('active');
+  } else {
+    state.uses.add(val);
+    el.classList.add('active');
+  }
+  renderGrid();
+}
+
+// ── BUDGET ──────────────────────────────────────────────────────
+function onBudget(val){
+  state.budget=parseInt(val);
+  document.getElementById('budgetDisplay').textContent='₹'+state.budget.toLocaleString('en-IN');
+  const n=PRODUCTS.filter(p=>p.price<=state.budget).length;
+  document.getElementById('budgetNote').textContent=n+' bar'+(n!==1?'s':'')+' in range';
+  renderGrid();
+}
+onBudget(15000);
+
+// ── TV SIZE → minimum wattage hint ────────────────────────────
+const TV_MIN_WATT={small:0,medium:200,large:300,xlarge:450};
+
+// ── SCORE ──────────────────────────────────────────────────────
+function scoreProduct(p) {
+  if(p.price>state.budget) return -1;
+  const minW=state.tv?TV_MIN_WATT[state.tv]:0;
+  const wattNum=parseInt(p.watt);
+  if(wattNum<minW) return -1; // filter out underpowered for TV size
+  let s=0;
+  if(state.room && p.roomFit.includes(state.room)) s+=3;
+  if(state.uses.size>0){
+    let useTotal=0;
+    state.uses.forEach(u=>{ useTotal+=(p.useScore[u]||0); });
+    s+=Math.round(useTotal/state.uses.size); // average score across selected uses
+  }
+  // TV size scoring: bigger TV benefits from more power
+  if(state.tv){
+    const tvBonus={small:{4120:2,'9010C':2,'9600':1,'9300C':1},medium:{9300:2,'9451':2,'9580C':1,'9710C':1},large:{'9451':2,'9580C':2,'9710C':2,'9550':1},xlarge:{'9550':2,'9920':3,'9710C':1}};
+    // simpler: give bonus based on watt range vs tv size
+    if(state.tv==='small' && wattNum<=200) s+=2;
+    if(state.tv==='medium' && wattNum>=200 && wattNum<=400) s+=2;
+    if(state.tv==='large' && wattNum>=300 && wattNum<=700) s+=2;
+    if(state.tv==='xlarge' && wattNum>=600) s+=2;
+  }
+  return s;
+}
+
+// ── RENDER GRID ────────────────────────────────────────────────
+function renderGrid(){
+  const grid=document.getElementById('prodGrid');
+  const scored=PRODUCTS.map(p=>({p,s:scoreProduct(p)})).filter(x=>x.s>=0).sort((a,b)=>b.s-a.s||a.p.price-b.p.price);
+  const best=scored.length>0?scored[0]:null;
+  const bestScore=best?best.s:0;
+  const heading=document.getElementById('matchHeading');
+
+  if(scored.length===0){
+    grid.innerHTML='<div class="no-results" style="grid-column:1/-1">No soundbars found for these filters. Try a higher budget or a different TV size.</div>';
+    heading.textContent='No matches found';
+    return;
+  }
+
+  const hasFilter=state.room||state.uses.size>0||state.tv;
+  heading.innerHTML=`Showing <strong style="color:var(--text)">${scored.length}</strong> soundbar${scored.length!==1?'s':''} ${hasFilter?'· <span style="color:var(--red)">Sorted by best match</span>':'· Sorted by price'}`;
+
+  // Pick the primary use for "why" text — highest scoring one
+  const primaryUse = state.uses.size>0
+    ? [...state.uses].sort((a,b)=>(scored[0]?.p.useScore[b]||0)-(scored[0]?.p.useScore[a]||0))[0]
+    : null;
+
+  grid.innerHTML=scored.map(({p,s})=>{
+    const isMatch=hasFilter && s===bestScore && s>0;
+    const certClass=p.atmos?'cert-dolbyatmos':p.cert==='Dolby Audio'?'cert-dolbyaudio':'cert-standard';
+    const why=primaryUse&&p.why[primaryUse]?p.why[primaryUse]:'';
+    return `
+    <div class="prod-card ${isMatch?'is-match':''}">
+      ${isMatch?'<div class="match-badge">★ Best Match For You</div>':''}
+      <img class="prod-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="prod-img-placeholder" style="display:none"><svg width="64" height="40" viewBox="0 0 64 40"><rect x="2" y="10" width="60" height="20" rx="4" fill="none" stroke="#DDD" stroke-width="2"/><circle cx="32" cy="20" r="6" fill="none" stroke="#CCC" stroke-width="1.5"/></svg></div>
+      <div class="prod-body">
+        ${p.compact?'<div class="compact-tag">Compact Series</div>':''}
+        <div class="prod-top-row">
+          <div class="prod-name">${p.name}</div>
+          <div class="prod-watt-badge">${p.watt}</div>
+        </div>
+        <div class="prod-cert ${certClass}">${p.cert}${p.atmos?' + dts:X':''}</div>
+        <div class="prod-config">${p.config} Channel · ${p.sub} Sub${p.satellites?' · '+(p.sub==='Wireless'?'Wireless':'Wired')+' Satellites':''}</div>
+        <div class="feat-list">${p.features.map(f=>`<span class="feat-chip">${f}</span>`).join('')}</div>
+        <div class="price-row">
+          <div class="price-main">₹${p.price.toLocaleString('en-IN')}</div>
+          <div class="price-mrp">₹${p.mrp.toLocaleString('en-IN')}</div>
+          <div class="price-save">Save ${p.save}%</div>
+        </div>
+        <div class="buy-row">
+          <a class="buy-btn buy-amazon" href="${p.amazon}" target="_blank">Amazon</a>
+          <a class="buy-btn buy-flipkart" href="${p.flipkart}" target="_blank">Flipkart</a>
+          <a class="buy-btn buy-zeb" href="${p.zeb}" target="_blank">Zebronics</a>
+        </div>
+        ${why?`<div class="why-match">${why}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+renderGrid();
+
+// ── COMPARE TABLE ──────────────────────────────────────────────
+function renderCompare(){
+  const sorted=[...PRODUCTS].sort((a,b)=>a.price-b.price);
+  document.getElementById('compareBody').innerHTML=sorted.map(p=>{
+    const cp=p.atmos?'cp-atmos':p.cert==='Dolby Audio'?'cp-audio':'cp-std';
+    return `<tr>
+      <td class="td-name">${p.name}${p.compact?'<span class="td-compact">Compact</span>':''}</td>
+      <td style="font-weight:700;color:var(--red)">${p.watt}</td>
+      <td><span class="cert-pill ${cp}">${p.cert}${p.atmos?'+Atmos':''}</span></td>
+      <td>${p.config}</td>
+      <td>${p.sub}</td>
+      <td>${p.satellites?'<span class="check">✓</span>':'<span class="cross">—</span>'}</td>
+      <td>${p.atmos?'<span class="check">✓</span>':'<span class="cross">—</span>'}</td>
+      <td class="td-price">₹${p.price.toLocaleString('en-IN')}</td>
+      <td style="white-space:nowrap">
+        <a href="${p.amazon}" target="_blank" style="display:inline-block;background:#FF9900;color:#111;font-size:10px;font-weight:700;padding:4px 8px;border-radius:3px;text-decoration:none;margin-right:4px">AMZ</a>
+        <a href="${p.flipkart}" target="_blank" style="display:inline-block;background:#2874F0;color:#fff;font-size:10px;font-weight:700;padding:4px 8px;border-radius:3px;text-decoration:none;margin-right:4px">FK</a>
+        <a href="${p.zeb}" target="_blank" style="display:inline-block;background:transparent;color:var(--red);border:1px solid var(--red);font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;text-decoration:none">ZEB</a>
+      </td>
+    </tr>`;
+  }).join('');
+}
+renderCompare();
+
+// ── AUDIO ENGINE ───────────────────────────────────────────────
+let audioCtx=null, gainBar=null, gainSub=null, gainSat=null;
+let barOsc=null, subOsc=null, satOsc=null;
+let animId=null;
+let audioStarted=false;
+let compState={bar:true,sub:false,sat:false};
+
+function startAudio(){
+  if(audioStarted) return;
+  audioStarted=true;
+  document.getElementById('playOverlay').style.display='none';
+
+  audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  const master=audioCtx.createGain();
+  master.gain.value=0.4;
+  master.connect(audioCtx.destination);
+
+  // ── SOUNDBAR: melody using 3 oscillators + chorus
+  gainBar=audioCtx.createGain();
+  gainBar.gain.value=1;
+  gainBar.connect(master);
+  const barFilter=audioCtx.createBiquadFilter();
+  barFilter.type='bandpass';barFilter.frequency.value=1200;barFilter.Q.value=0.5;
+  barFilter.connect(gainBar);
+
+  // Create a simple music-like pattern with multiple oscillators
+  const notes=[261.63,329.63,392.00,523.25,659.25,783.99]; // C4 E4 G4 C5 E5 G5
+  notes.forEach((freq,i)=>{
+    const o=audioCtx.createOscillator();
+    const og=audioCtx.createGain();
+    og.gain.value=0.04;
+    o.type=i%2===0?'sine':'triangle';
+    o.frequency.value=freq;
+    const lfo=audioCtx.createOscillator();
+    const lfog=audioCtx.createGain();
+    lfo.frequency.value=0.3+i*0.15;
+    lfog.gain.value=0.015*freq;
+    lfo.connect(lfog);lfog.connect(o.frequency);lfo.start();
+    o.connect(og);og.connect(barFilter);
+    o.start();
+  });
+  // Add noise for air/presence
+  const bufLen=audioCtx.sampleRate*2;
+  const buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+  const data=buf.getChannelData(0);
+  for(let i=0;i<bufLen;i++) data[i]=(Math.random()*2-1)*0.15;
+  const noise=audioCtx.createBufferSource();
+  noise.buffer=buf;noise.loop=true;
+  const noiseFilter=audioCtx.createBiquadFilter();
+  noiseFilter.type='highpass';noiseFilter.frequency.value=2000;
+  noise.connect(noiseFilter);noiseFilter.connect(gainBar);
+  noise.start();
+
+  // ── SUBWOOFER: bass + kick pattern
+  gainSub=audioCtx.createGain();
+  gainSub.gain.value=0;
+  gainSub.connect(master);
+  const subFilter=audioCtx.createBiquadFilter();
+  subFilter.type='lowpass';subFilter.frequency.value=200;
+  subFilter.connect(gainSub);
+
+  function triggerKick(t){
+    const kick=audioCtx.createOscillator();
+    const kg=audioCtx.createGain();
+    kick.frequency.setValueAtTime(150,t);
+    kick.frequency.exponentialRampToValueAtTime(40,t+0.08);
+    kg.gain.setValueAtTime(1.2,t);
+    kg.gain.exponentialRampToValueAtTime(0.001,t+0.25);
+    kick.connect(kg);kg.connect(subFilter);
+    kick.start(t);kick.stop(t+0.3);
+  }
+  // Kick pattern: 4/4 with offbeat
+  function scheduleKicks(){
+    const now=audioCtx.currentTime;
+    const bpm=88,beat=60/bpm;
+    for(let b=0;b<16;b++){
+      if(b%4===0||b%4===2) triggerKick(now+b*beat*0.5);
+    }
+    setTimeout(scheduleKicks,8*(60/bpm)*1000*0.5-100);
+  }
+  scheduleKicks();
+
+  // Sustained bass note
+  const bass=audioCtx.createOscillator();
+  const bassg=audioCtx.createGain();
+  bassg.gain.value=0.3;
+  bass.type='sine';bass.frequency.value=55;
+  const bassLfo=audioCtx.createOscillator();
+  const bassLfog=audioCtx.createGain();
+  bassLfo.frequency.value=0.25;bassLfog.gain.value=8;
+  bassLfo.connect(bassLfog);bassLfog.connect(bass.frequency);
+  bassLfo.start();bass.connect(bassg);bassg.connect(subFilter);bass.start();
+
+  // ── SATELLITES: delayed + panned melody
+  gainSat=audioCtx.createGain();
+  gainSat.gain.value=0;
+  gainSat.connect(master);
+
+  const delay1=audioCtx.createDelay(0.5);
+  delay1.delayTime.value=0.18;
+  const delay2=audioCtx.createDelay(0.5);
+  delay2.delayTime.value=0.32;
+  const pan1=audioCtx.createStereoPanner?audioCtx.createStereoPanner():null;
+  const pan2=audioCtx.createStereoPanner?audioCtx.createStereoPanner():null;
+  if(pan1)pan1.pan.value=-0.9;
+  if(pan2)pan2.pan.value=0.9;
+  const df=audioCtx.createBiquadFilter();
+  df.type='bandpass';df.frequency.value=3000;df.Q.value=0.8;
+
+  const satNotes=[523.25,659.25,783.99,1046.50];
+  satNotes.forEach((freq,i)=>{
+    const o=audioCtx.createOscillator();
+    const og=audioCtx.createGain();
+    og.gain.value=0.025;
+    o.type='sine';o.frequency.value=freq;
+    const lo=audioCtx.createOscillator();const log2=audioCtx.createGain();
+    lo.frequency.value=0.2+i*0.1;log2.gain.value=0.01*freq;
+    lo.connect(log2);log2.connect(o.frequency);lo.start();
+    o.connect(og);og.connect(df);
+    o.start();
+  });
+  df.connect(delay1);df.connect(delay2);
+  if(pan1){delay1.connect(pan1);pan1.connect(gainSat);}else{delay1.connect(gainSat);}
+  if(pan2){delay2.connect(pan2);pan2.connect(gainSat);}else{delay2.connect(gainSat);}
+
+  // set initial gains
+  updateGains();
+  document.getElementById('audioStatus').textContent='PLAYING · Toggle components above';
+  startVis();
+}
+
+function updateGains(){
+  if(!audioCtx) return;
+  const now=audioCtx.currentTime;
+  if(gainBar) gainBar.gain.linearRampToValueAtTime(compState.bar?1:0.001,now+0.1);
+  if(gainSub) gainSub.gain.linearRampToValueAtTime(compState.sub?1:0.001,now+0.1);
+  if(gainSat) gainSat.gain.linearRampToValueAtTime(compState.sat?1:0.001,now+0.1);
+}
+
+function toggleComp(id){
+  const el=document.getElementById('comp-'+id);
+  compState[id]=!compState[id];
+  el.classList.toggle('on',compState[id]);
+  document.getElementById('stat-'+id).textContent=compState[id]?'ON':'OFF';
+  document.getElementById('stat-'+id).style.color=compState[id]?'var(--red)':'var(--muted)';
+  updateGains();
+}
+
+// ── VISUALIZER ─────────────────────────────────────────────────
+function startVis(){
+  const canvas=document.getElementById('visCanvas');
+  const ctx=canvas.getContext('2d');
+  let analyserBar,analyserSub,analyserSat;
+
+  function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+
+  const t=Date.now();
+  function draw(){
+    animId=requestAnimationFrame(draw);
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#080808';ctx.fillRect(0,0,W,H);
+
+    const now=(Date.now()-t)/1000;
+
+    // Draw room silhouette
+    ctx.strokeStyle='rgba(42,42,42,0.8)';ctx.lineWidth=1;
+    ctx.strokeRect(16,16,W-32,H-32);
+
+    // TV
+    ctx.fillStyle='#1A1A1A';ctx.fillRect(W/2-70,22,140,10);
+    ctx.fillStyle='#E31B23';ctx.fillRect(W/2-70,22,140,3);
+
+    // Sofa
+    ctx.fillStyle='#151515';ctx.fillRect(W/2-80,H-56,160,32);
+    ctx.fillStyle='#1A1A1A';ctx.fillRect(W/2-92,H-62,16,38);
+    ctx.fillStyle='#1A1A1A';ctx.fillRect(W/2+76,H-62,16,38);
+    ctx.fillStyle='rgba(255,255,255,0.03)';
+    ctx.font='10px Barlow,sans-serif';ctx.fillStyle='#333';ctx.textAlign='center';
+    ctx.fillText('YOU',W/2,H-38);
+
+    // Soundbar
+    const barAlpha=compState.bar?1:0.2;
+    ctx.fillStyle=`rgba(227,27,35,${barAlpha})`;
+    ctx.fillRect(W/2-56,36,112,14);
+    ctx.fillStyle=`rgba(255,255,255,${barAlpha*0.8})`;
+    ctx.font='bold 9px Barlow,sans-serif';ctx.textAlign='center';
+    ctx.fillText('SOUNDBAR',W/2,47);
+
+    // Sound waves from soundbar
+    if(compState.bar){
+      const t2=now*2;
+      for(let ring=0;ring<4;ring++){
+        const r=(ring+t2%1)*55+20;
+        const a=Math.max(0,(1-(r/200))*0.5*(0.5+0.5*Math.sin(t2-ring)));
+        ctx.beginPath();ctx.arc(W/2,46,r,Math.PI*1.1,Math.PI*1.9);
+        ctx.strokeStyle=`rgba(227,27,35,${a})`;ctx.lineWidth=1.5;ctx.stroke();
+      }
+    }
+
+    // Subwoofer (left corner)
+    if(compState.sub){
+      const pulse=0.7+0.3*Math.abs(Math.sin(now*Math.PI*2.2));
+      ctx.fillStyle=`rgba(227,27,35,${0.08*pulse})`;
+      ctx.beginPath();ctx.roundRect?ctx.roundRect(28,H/2-26,52,52,6):ctx.rect(28,H/2-26,52,52);
+      ctx.fill();
+      ctx.strokeStyle=`rgba(227,27,35,${0.8*pulse})`;ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.arc(54,H/2,20,0,Math.PI*2);ctx.stroke();
+      ctx.beginPath();ctx.arc(54,H/2,10,0,Math.PI*2);
+      ctx.fillStyle=`rgba(227,27,35,${0.6*pulse})`;ctx.fill();
+      ctx.fillStyle='#555';ctx.font='9px Barlow';ctx.textAlign='center';
+      ctx.fillText('SUB',54,H/2+34);
+
+      // Bass waves
+      for(let b=0;b<3;b++){
+        const br=((now*1.8+b*0.7)%3)*60+15;
+        const ba=Math.max(0,(1-br/180)*0.4);
+        ctx.beginPath();ctx.arc(54,H/2,br,0,Math.PI*2);
+        ctx.strokeStyle=`rgba(227,27,35,${ba})`;ctx.lineWidth=0.8;ctx.stroke();
+      }
+    } else {
+      ctx.strokeStyle='#222';ctx.lineWidth=1;
+      ctx.beginPath();ctx.roundRect?ctx.roundRect(28,H/2-26,52,52,6):ctx.rect(28,H/2-26,52,52);
+      ctx.stroke();
+      ctx.fillStyle='#2A2A2A';ctx.font='9px Barlow';ctx.textAlign='center';
+      ctx.fillText('SUB',54,H/2+34);
+    }
+
+    // Rear satellites
+    const satSide=34;
+    if(compState.sat){
+      const pulse2=0.7+0.3*Math.abs(Math.sin(now*Math.PI*1.8+1));
+      // Left sat
+      ctx.fillStyle=`rgba(245,166,35,0.06)`;
+      ctx.fillRect(20,H-88,satSide,48);
+      ctx.strokeStyle=`rgba(245,166,35,${0.8*pulse2})`;ctx.lineWidth=1.5;
+      ctx.strokeRect(20,H-88,satSide,48);
+      ctx.fillStyle='#666';ctx.font='8px Barlow';ctx.textAlign='center';
+      ctx.fillText('REAR L',37,H-32);
+      // Right sat
+      ctx.fillStyle=`rgba(245,166,35,0.06)`;
+      ctx.fillRect(W-20-satSide,H-88,satSide,48);
+      ctx.strokeStyle=`rgba(245,166,35,${0.8*pulse2})`;
+      ctx.strokeRect(W-20-satSide,H-88,satSide,48);
+      ctx.fillText('REAR R',W-20-satSide/2,H-32);
+
+      // Satellite sound paths (dashed)
+      ctx.setLineDash([4,4]);
+      ctx.strokeStyle=`rgba(245,166,35,0.35)`;ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(37,H-64);ctx.lineTo(W/2-56,48);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(W-20-satSide/2,H-64);ctx.lineTo(W/2+56,48);ctx.stroke();
+      ctx.setLineDash([]);
+    } else {
+      ctx.strokeStyle='#1E1E1E';ctx.lineWidth=1;
+      ctx.strokeRect(20,H-88,satSide,48);
+      ctx.strokeRect(W-20-satSide,H-88,satSide,48);
+      ctx.fillStyle='#2A2A2A';ctx.font='8px Barlow';ctx.textAlign='center';
+      ctx.fillText('REAR L',37,H-32);
+      ctx.fillText('REAR R',W-20-satSide/2,H-32);
+    }
+
+    // EQ bars at bottom
+    const eqBands=32;const eqW=(W-80)/eqBands;
+    for(let i=0;i<eqBands;i++){
+      let eqH=0;
+      if(compState.bar){
+        const freq=200+i*(16000/eqBands);
+        eqH+=15+Math.abs(Math.sin(now*2+i*0.4))*18+Math.random()*5;
+      }
+      if(compState.sub && i<8){
+        eqH+=20+Math.abs(Math.sin(now*2.2))*25+Math.random()*8;
+      }
+      if(compState.sat && i>16){
+        eqH+=8+Math.abs(Math.sin(now*1.6+i*0.2))*12+Math.random()*4;
+      }
+      eqH=Math.min(eqH,50);
+      const x=40+i*eqW;
+      const alpha=i<8&&compState.sub?1:compState.bar?0.7:0.1;
+      const color=i<8?`rgba(227,27,35,${alpha})`:`rgba(227,27,35,${alpha*0.7})`;
+      ctx.fillStyle=color;
+      ctx.fillRect(x,H-18-eqH,eqW-2,eqH);
+    }
+
+    ctx.fillStyle='#333';ctx.font='8px Barlow';ctx.textAlign='center';
+    ctx.fillText('BASS',60,H-6);
+    ctx.fillText('MID',W/2,H-6);
+    ctx.fillText('HIGH',W-60,H-6);
+  }
+  draw();
+}
+</script>
+</body>
+</html>
