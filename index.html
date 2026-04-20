@@ -1,213 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find Your Zebronics Soundbar | Juke Bar Series</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zebronics Juke Bar Soundbar Finder — Find Your Match | From ₹3,199</title>
+<meta name="description" content="Find the right Juke Bar soundbar for your home. 37 models. Room size, TV size, use case filters. Dolby Atmos. Indian pricing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+/* ─── DESIGN TOKENS ───────────────────────────────────────────────── */
 :root{
-  --red:#E31B23;--red-dark:#B01219;
-  --bg:#F2F2F2;--surface:#FFFFFF;
-  --border:#E0E0E0;--text:#1A1A1A;--muted:#666;--subtle:#AAA;
-  --gold:#C97D0A;--green:#15803D;--blue:#1D4ED8;
-  --font-head:'Inter',sans-serif;
-  --font-body:'Inter',sans-serif;
+  --bg:#0F172A; --surface:#1E293B; --surface2:#334155;
+  --border:rgba(255,255,255,0.08); --border2:#475569;
+  --text:#F8FAFC; --muted:#94A3B8; --subtle:#64748B;
+  --blue:#3B82F6; --blue-dark:#1D4ED8; --blue-fill:#1E3A8A;
+  --red:#E31B23; --green:#059669; --gold:#D97706;
+  --font:'Inter',sans-serif;
 }
+/* ── LIGHT MODE ───────────────────────────────────────────────────── */
+[data-theme="light"]{
+  --bg:#F0F4F8; --surface:#FFFFFF; --surface2:#F1F5F9;
+  --border:rgba(0,0,0,0.06); --border2:#CBD5E1;
+  --text:#0F172A; --muted:#475569; --subtle:#94A3B8;
+  --blue-fill:#DBEAFE; --border:rgba(0,0,0,0.06);
+}
+[data-theme="light"] body{background:var(--bg)}
+[data-theme="light"] nav{background:rgba(240,244,248,0.95);border-bottom-color:rgba(0,0,0,0.08)}
+[data-theme="light"] .hero{background:linear-gradient(180deg,#EFF6FF 0%,#F0F4F8 100%)}
+[data-theme="light"] #heroCanvas{opacity:.15}
+[data-theme="light"] .hero h1{color:#0F172A}
+[data-theme="light"] .logo-text{color:#0F172A}
+[data-theme="light"] .nav-links a{color:#64748B}
+[data-theme="light"] .nav-links a:hover{color:#0F172A}
+[data-theme="light"] .finder-card{background:#fff;box-shadow:0 4px 24px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)}
+[data-theme="light"] .chip-room,[data-theme="light"] .chip-tv{background:#fff;border-color:#CBD5E1;color:#475569}
+[data-theme="light"] .chip{background:#F8FAFC;border-color:#CBD5E1;color:#475569}
+[data-theme="light"] .chip:hover{background:#EFF6FF;border-color:#3B82F6;color:#1D4ED8}
+[data-theme="light"] .chip.on{background:#DBEAFE;border-color:#3B82F6;color:#1D4ED8}
+[data-theme="light"] .chip-room:hover,[data-theme="light"] .chip-tv:hover{background:#EFF6FF;border-color:#3B82F6}
+[data-theme="light"] .chip-room.on,[data-theme="light"] .chip-tv.on{background:#DBEAFE;border-color:#3B82F6;color:#1D4ED8}
+[data-theme="light"] .chip-room.on .chip-room-sub,[data-theme="light"] .chip-tv.on .chip-tv-sub{color:#1D4ED8}
+[data-theme="light"] .persona-pill{background:#fff;border-color:#CBD5E1;color:#475569}
+[data-theme="light"] .persona-pill.on{background:#DBEAFE;border-color:#3B82F6;color:#1D4ED8}
+[data-theme="light"] .ac-card{background:#EFF6FF;border-color:rgba(59,130,246,.25)}
+[data-theme="light"] .ac-chip{background:#fff;border-color:#CBD5E1}
+[data-theme="light"] .ac-chip.on{background:#DBEAFE;border-color:#3B82F6;color:#1D4ED8}
+[data-theme="light"] .ac-chip.on .ac-chip-desc{color:rgba(29,78,216,.7)}
+[data-theme="light"] .card{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)}
+[data-theme="light"] .card.best{box-shadow:0 0 0 2px #3B82F6,0 4px 20px rgba(59,130,246,.15)}
+[data-theme="light"] .card-img,.card-body,[data-theme="light"] .card-body{background:#fff}
+[data-theme="light"] .card-img{background:#F8FAFC}
+[data-theme="light"] .img-ph{background:#F1F5F9}
+[data-theme="light"] .feat{background:#F1F5F9;border-color:#E2E8F0;color:#64748B}
+[data-theme="light"] .card-name{color:#0F172A}
+[data-theme="light"] .price{color:#0F172A}
+[data-theme="light"] .buy-zeb{border-color:#3B82F6;color:#1D4ED8}
+[data-theme="light"] .buy-zeb:hover{background:#3B82F6;color:#fff}
+[data-theme="light"] .acc-hdr{background:#fff;color:#0F172A}
+[data-theme="light"] .acc-hdr:hover{background:#F1F5F9}
+[data-theme="light"] .acc-body .acc-content{background:#F8FAFC;color:#475569}
+[data-theme="light"] section[style*="background:var(--surface)"]{background:#F8FAFC!important}
+[data-theme="light"] #jargon{background:#F8FAFC}
+[data-theme="light"] #compare>div>*{color:#0F172A}
+[data-theme="light"] .tbl-wrap{border-color:#E2E8F0}
+[data-theme="light"] table{background:#fff}
+[data-theme="light"] th{background:#F8FAFC;color:#64748B}
+[data-theme="light"] td{color:#475569;border-bottom-color:rgba(0,0,0,0.05)}
+[data-theme="light"] tr:nth-child(even) td{background:#F8FAFC}
+[data-theme="light"] .tn{color:#0F172A}
+[data-theme="light"] .tp{color:#0F172A}
+[data-theme="light"] .vis-wrap{background:#EFF6FF}
+[data-theme="light"] footer{background:#F0F4F8;border-top-color:rgba(0,0,0,0.08)}
+[data-theme="light"] .demo-toggle{background:#F8FAFC;border-color:#CBD5E1;color:#475569}
+[data-theme="light"] .demo-toggle:hover{border-color:#3B82F6}
+[data-theme="light"] .demo-toggle.on{background:#DBEAFE;border-color:#3B82F6;color:#1D4ED8}
+[data-theme="light"] .range-track{background:#E2E8F0}
+[data-theme="light"] .sec-h2,[data-theme="light"] .demo-h{color:#0F172A}
+[data-theme="light"] .hero-eyebrow,[data-theme="light"] .hero-sub{color:#475569}
+[data-theme="light"] .hero-stats .stat-item strong{color:#0F172A}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.5}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);cursor:pointer;border:none;background:none}
 
-/* NAV */
-nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 2rem;box-shadow:0 1px 6px rgba(0,0,0,0.07)}
-.nav-inner{max-width:1200px;margin:0 auto;height:58px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}
-.logo-text{font-family:var(--font-head);font-size:18px;font-weight:900;letter-spacing:-0.5px;color:#1A1A1A;white-space:nowrap}
-.logo-pill{background:var(--red);color:#fff !important;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:3px 9px;border-radius:2px;text-transform:uppercase;font-family:var(--font-head);white-space:nowrap;line-height:1.6}
-.nav-links{display:flex;gap:1.8rem;font-size:13px;flex-shrink:0}
-.nav-links a{color:var(--muted);text-decoration:none;transition:color .18s;white-space:nowrap}
-.nav-links a:hover{color:var(--text)}
+/* ─── SCROLL FADE-IN ──────────────────────────────────────────────── */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ─── NAV ─────────────────────────────────────────────────────────── */
+nav{background:rgba(10,10,15,0.9);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-text{font-weight:900;font-size:19px;letter-spacing:-0.5px;color:#fff}
+.logo-pill{background:var(--blue-dark);color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:3px 10px;border-radius:20px;text-transform:uppercase;white-space:nowrap}
+.nav-links{display:flex;gap:2rem;font-size:13px;font-weight:500}
+.nav-links a{color:var(--muted);transition:color .15s}.nav-links a:hover{color:#fff}
 @media(max-width:680px){.nav-links{display:none}}
 
-/* HERO */
-.hero{background:linear-gradient(170deg,#fff 0%,#fff5f5 55%,#f2f2f2 100%);padding:5rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,rgba(227,27,35,0.06),transparent 60%);pointer-events:none}
-.hero-eyebrow{display:inline-block;font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:1.2rem;padding:6px 16px;border:1px solid rgba(227,27,35,0.3);border-radius:2px}
-.hero h1{font-family:var(--font-head);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.0;letter-spacing:-2px;margin-bottom:1.1rem;text-transform:uppercase}
-.hero h1 em{color:var(--red);font-style:normal}
-.hero p{font-size:16px;color:var(--muted);max-width:480px;margin:0 auto 2.2rem;line-height:1.7}
-.eq-wrap{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:44px;margin-bottom:1.8rem}
-.eq-bar{width:4px;border-radius:2px 2px 0 0;background:var(--red);animation:eq 1.3s ease-in-out infinite}
-@keyframes eq{0%,100%{transform:scaleY(.18)}50%{transform:scaleY(1)}}
-.btn-red{display:inline-block;background:var(--red);color:#fff;font-family:var(--font-head);font-size:14px;font-weight:700;padding:13px 30px;border-radius:4px;text-decoration:none;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;transition:background .18s}
-.btn-red:hover{background:var(--red-dark)}
+/* ─── HERO ────────────────────────────────────────────────────────── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-content{position:relative;text-align:center;padding:2rem;max-width:700px}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.6rem,6vw,4.2rem);font-weight:900;line-height:1.02;letter-spacing:-2.5px;color:#fff;text-transform:uppercase;margin-bottom:1.2rem}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#60A5FA,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(15px,2vw,17px);color:var(--muted);line-height:1.7;margin-bottom:2.5rem;font-weight:400}
+.btn-primary{display:inline-block;background:linear-gradient(135deg,#60A5FA,#3B82F6);color:#fff;font-weight:700;font-size:15px;padding:14px 32px;border-radius:100px;transition:opacity .18s,transform .15s;letter-spacing:-.2px;box-shadow:0 4px 20px rgba(59,130,246,.35)}
+.btn-primary:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 6px 28px rgba(59,130,246,.5)}
+.hero-stats{display:flex;justify-content:center;gap:2.5rem;margin-top:3.5rem;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-item strong{display:block;font-size:22px;font-weight:800;color:#fff;letter-spacing:-1px}
+.stat-item span{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.hero-eq{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:40px;margin-top:3rem;opacity:.4}
+.eq-bar{width:4px;background:linear-gradient(to top,var(--blue),#60A5FA);border-radius:2px;animation:eqPulse 1s ease-in-out infinite alternate}
+@keyframes eqPulse{0%{transform:scaleY(.3)}100%{transform:scaleY(1)}}
 
-/* LAYOUT */
-.wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem}
-.sec{padding:3rem 0}
-.sec-tag{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:.5rem}
-.sec-h2{font-family:var(--font-head);font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;letter-spacing:-1px;margin-bottom:.4rem}
-.sec-sub{font-size:14px;color:var(--muted);margin-bottom:1.8rem;line-height:1.6}
+/* ─── PERSONA PILLS ───────────────────────────────────────────────── */
+.persona-wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
+.persona-label{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:1rem;text-align:center}
+.persona-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:.8rem}
+.persona-pill{background:var(--surface);border:1px solid var(--border2);color:var(--muted);font-size:13px;font-weight:600;padding:10px 20px;border-radius:100px;cursor:pointer;transition:all .18s;white-space:nowrap}
+.persona-pill:hover{border-color:var(--blue);color:var(--blue);background:rgba(59,130,246,.06)}
+.persona-pill.on{background:var(--blue-fill);border-color:var(--blue);color:#fff}
+.persona-hint{text-align:center;font-size:12px;color:var(--subtle);margin-top:.4rem}
 
-/* FILTER CARD */
-.filter-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-.filter-block{margin-bottom:2rem}
+/* ─── SECTIONS ────────────────────────────────────────────────────── */
+.sec{padding:5rem 0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin-bottom:.8rem}
+.sec-h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;letter-spacing:-1px;margin-bottom:.5rem;color:#fff}
+.sec-sub{font-size:14px;color:var(--muted);margin-bottom:2.5rem}
+.sec-divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* ─── FINDER CARD ─────────────────────────────────────────────────── */
+.finder-card{background:var(--surface);border-radius:16px;padding:2.5rem;box-shadow:0 1px 3px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04)}
+.filter-block{margin-bottom:2.2rem}
 .filter-block:last-child{margin-bottom:0}
-.filter-lbl{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:8px}
-.multi-hint{font-size:11px;font-weight:400;letter-spacing:0;color:var(--subtle);text-transform:none}
-.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
-.chip{background:#f6f6f6;border:1.5px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:14px;font-weight:500;padding:14px 18px;border-radius:6px;cursor:pointer;transition:all .15s;text-align:left;width:100%}
-.chip:hover{border-color:var(--red);background:#fff5f5}
-.chip.on{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
-.chip-sub{display:block;font-size:11px;color:var(--muted);margin-top:3px;font-weight:400}
-.chip.on .chip-sub{color:rgba(255,255,255,.75)}
+.filter-lbl{font-size:10px;font-weight:700;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.multi-hint{font-size:10px;font-weight:400;letter-spacing:0;color:var(--subtle);text-transform:none}
 
-/* BUDGET */
-.budget-row{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
-.budget-val{font-family:var(--font-head);font-size:2rem;font-weight:900;color:var(--red);min-width:110px;line-height:1}
-.slider-wrap{flex:1;min-width:200px}
-input[type=range].sl{-webkit-appearance:none;width:100%;height:3px;background:var(--border);border-radius:2px;outline:none;cursor:pointer}
-input[type=range].sl::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--red);border:3px solid #fff;box-shadow:0 0 0 1.5px var(--red);cursor:pointer}
-.ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--subtle);margin-top:5px}
-.budget-note{font-size:12px;color:var(--muted)}
+/* ─── ROOM + TV ILLUSTRATED CARDS ────────────────────────────────── */
+.chips-room,.chips-tv{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:640px){.chips-room,.chips-tv{grid-template-columns:repeat(2,1fr)}}
+.chip-room,.chip-tv{background:var(--surface2);border:1.5px solid var(--border2);border-radius:10px;padding:1.1rem .8rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .18s;min-height:130px;justify-content:center;color:var(--muted)}
+.chip-room:hover,.chip-tv:hover{border-color:var(--blue);background:rgba(59,130,246,.06)}
+.chip-room.on,.chip-tv.on{background:var(--blue-fill);border-color:var(--blue);border-width:2px;color:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.18)}
+.chip-room svg,.chip-tv svg{flex-shrink:0;color:currentColor}
+.chip-room-label,.chip-tv-label{font-size:13px;font-weight:700;text-align:center;line-height:1.2;color:inherit}
+.chip-room-sub,.chip-tv-sub{font-size:10px;color:var(--muted);text-align:center;line-height:1.3}
+.chip-room.on .chip-room-sub,.chip-tv.on .chip-tv-sub{color:rgba(255,255,255,.65)}
 
-/* DIVIDER */
-.filter-divider{border:none;border-top:1px solid #EAEAEA;margin:1.5rem 0}
+/* ─── USE CASE CHIPS ──────────────────────────────────────────────── */
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.chip{background:var(--surface2);border:1.5px solid var(--border2);color:var(--muted);font-size:13px;font-weight:600;padding:13px 16px;border-radius:8px;cursor:pointer;transition:all .18s;text-align:left;width:100%}
+.chip:hover{border-color:var(--blue);color:var(--text)}
+.chip.on{background:var(--blue-fill);border-color:var(--blue);border-width:2px;color:#fff;font-weight:700}
+.chip-sub{display:block;font-size:10px;color:var(--subtle);margin-top:2px;font-weight:400}
+.chip.on .chip-sub{color:rgba(255,255,255,.65)}
 
-/* SOURCE BAR */
-.src-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.src-lbl{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-right:4px;white-space:nowrap}
-.src-chip{background:#f6f6f6;border:1.5px solid var(--border);color:var(--muted);font-size:12px;font-weight:600;padding:6px 13px;border-radius:4px;cursor:pointer;transition:all .15s}
-.src-chip.on{border-color:var(--red);color:var(--red);background:#fff5f5;font-weight:700}
+/* ─── DUAL RANGE SLIDER ───────────────────────────────────────────── */
+.budget-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
+.budget-title{font-size:10px;font-weight:700;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase}
+.budget-display{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.budget-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--subtle);margin-bottom:.5rem}
+.range-wrap{position:relative;height:40px;display:flex;align-items:center;margin-bottom:.6rem}
+.range-track{position:absolute;height:4px;width:100%;background:var(--border2);border-radius:2px;pointer-events:none}
+.range-fill{position:absolute;height:4px;background:var(--blue);border-radius:2px;pointer-events:none}
+.range-wrap input[type=range]{position:absolute;width:100%;height:4px;-webkit-appearance:none;background:transparent;pointer-events:none;z-index:2}
+.range-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2.5px solid var(--blue);box-shadow:0 2px 8px rgba(0,0,0,.5);pointer-events:all;cursor:pointer}
+.range-wrap input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:2.5px solid var(--blue);cursor:pointer;pointer-events:all}
+.range-ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--subtle);margin-top:.3rem}
+.budget-note{font-size:12px;color:var(--muted);margin-top:.5rem}
+.filter-divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
 
-/* ACOUSTIC SECTION */
-.ac-card{background:#F0F6FF;border:1.5px solid #C8DCF0;border-radius:10px;padding:1.5rem 2rem;margin-top:1rem}
-.ac-head{display:flex;align-items:center;gap:8px;margin-bottom:1.2rem}
-.ac-icon{font-size:16px}
-.ac-title{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:2.5px;color:#2A5F9A;text-transform:uppercase}
-.ac-hint{font-size:11px;color:#7AAAD0;margin-left:auto}
-.ac-blocks{display:flex;flex-direction:column;gap:1.1rem}
-.ac-block{}
-.ac-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#4A7AB5;text-transform:uppercase;margin-bottom:6px}
-.ac-chips{display:flex;flex-wrap:wrap;gap:7px}
-.ac-chip{background:#fff;border:1.5px solid #C8DCF0;color:#4A7AB5;font-family:var(--font-body);font-size:12px;font-weight:500;padding:7px 14px;border-radius:4px;cursor:pointer;transition:all .15s;white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
-.ac-chip:hover{border-color:#2A5F9A;color:#1A3A6A;background:#E4EEFC}
-.ac-chip.on{background:#2A5F9A;border-color:#2A5F9A;color:#fff;font-weight:600}
-.ac-chip-sub{display:block;font-size:10px;color:#7AAAD0;margin-top:1px;font-weight:400;white-space:normal}
-.ac-chip.on .ac-chip-sub{color:rgba(255,255,255,.7)}
-.ac-insight{background:#DFF0FF;border-left:2px solid #2A5F9A;border-radius:0 4px 4px 0;padding:9px 13px;margin-top:.9rem;font-size:11.5px;color:#1A3A6A;line-height:1.6;display:none}
+/* ─── ACOUSTIC SECTION ────────────────────────────────────────────── */
+.ac-card{background:rgba(15,23,42,.8);border:1.5px solid rgba(59,130,246,.2);border-radius:14px;padding:2rem}
+.ac-head{display:flex;align-items:center;gap:10px;margin-bottom:1.8rem}
+.ac-title{font-size:10px;font-weight:700;letter-spacing:2.5px;color:#60A5FA;text-transform:uppercase}
+.ac-hint{font-size:11px;color:var(--subtle);margin-left:auto}
+.ac-blocks{display:flex;flex-direction:column;gap:1.6rem}
+.ac-lbl{font-size:10px;font-weight:700;letter-spacing:2px;color:#60A5FA;text-transform:uppercase;margin-bottom:.8rem}
+.ac-chips3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ac-chips2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(max-width:500px){.ac-chips3{grid-template-columns:1fr 1fr}.ac-chips2{grid-template-columns:1fr 1fr}}
+.ac-chip{background:rgba(30,41,59,.9);border:1.5px solid #1E293B;border-radius:10px;padding:1rem .8rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;transition:all .18s;min-height:80px;justify-content:center;color:var(--muted);font-family:var(--font)}
+.ac-chip:hover{border-color:var(--blue);background:rgba(29,78,216,.1)}
+.ac-chip.on{background:#1E3A8A;border-color:var(--blue);border-width:2px;color:#fff}
+.ac-chip-icon{font-size:22px}
+.ac-chip-lbl{font-size:12px;font-weight:700;text-align:center;color:inherit}
+.ac-chip-desc{font-size:10px;color:var(--subtle);text-align:center;line-height:1.3}
+.ac-chip.on .ac-chip-desc{color:rgba(255,255,255,.6)}
+.ac-insight{background:rgba(29,78,216,.08);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:1rem;font-size:12.5px;color:var(--text);line-height:1.6;display:none}
 .ac-insight.show{display:block}
-.ac-tag{display:inline-block;background:#2A5F9A;color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:2px;text-transform:uppercase;margin-right:5px;vertical-align:middle}
+.ac-tag{display:inline-block;background:var(--blue-dark);color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-right:5px;vertical-align:middle}
 
-/* RESULTS */
-.result-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:1rem;font-size:13px;color:var(--muted)}
-.result-meta strong{color:var(--text)}
-.updated{font-size:11px;color:var(--subtle)}
-
-/* PRODUCT GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:16px}
-.card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
-.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
-.card.best{border-color:var(--red);box-shadow:0 0 0 1.5px var(--red),0 8px 28px rgba(227,27,35,0.1)}
-.best-badge{background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;text-transform:uppercase}
-.card-img{width:100%;aspect-ratio:4/3;object-fit:contain;padding:.9rem;background:#fafafa}
-.img-ph{width:100%;aspect-ratio:4/3;background:#f3f3f3;display:flex;align-items:center;justify-content:center;color:#ccc}
-.card-body{padding:1.1rem;flex:1;display:flex;flex-direction:column}
-.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px}
-.tag{font-size:9px;font-weight:700;letter-spacing:1.2px;padding:2px 8px;border-radius:2px;text-transform:uppercase}
-.tag-compact{background:rgba(201,125,10,.08);border:1px solid rgba(201,125,10,.3);color:var(--gold)}
-.tag-src{background:#f0f0f0;border:1px solid #ddd;color:#888}
-.card-row1{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px}
-.card-name{font-family:var(--font-head);font-size:15px;font-weight:800;letter-spacing:-.5px;line-height:1.2}
-.watt-pill{background:rgba(227,27,35,.06);border:1px solid rgba(227,27,35,.18);color:var(--red);font-family:var(--font-head);font-size:14px;font-weight:800;padding:4px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0}
-.cert{font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:7px}
-.cert-atmos{color:var(--gold)}.cert-audio{color:var(--blue)}.cert-std{color:var(--muted)}
-.config{font-size:12px;color:var(--muted);margin-bottom:11px;line-height:1.5}
-.feats{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px}
-.feat{background:#f5f5f5;border:1px solid #e8e8e8;color:#555;font-size:10px;padding:3px 8px;border-radius:3px}
+/* ─── RESULTS ─────────────────────────────────────────────────────── */
+.result-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:1.2rem;font-size:13px;color:var(--muted)}
+.result-meta strong{color:#fff}
+.no-res{padding:3rem;text-align:center;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:var(--surface);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;box-shadow:0 1px 3px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.04)}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.07)}
+.card.best{box-shadow:0 0 0 1.5px var(--blue),0 8px 32px rgba(59,130,246,.15);border-radius:12px}
+.best-badge{background:var(--blue-dark);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:6px 16px;text-transform:uppercase}
+.card-img{width:100%;aspect-ratio:4/3;object-fit:contain;padding:1rem;background:var(--surface2)}
+.img-ph{width:100%;aspect-ratio:4/3;background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--subtle)}
+.card-body{padding:1.2rem;flex:1;display:flex;flex-direction:column}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.tag{font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:3px;text-transform:uppercase}
+.tag-compact{background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.3);color:var(--gold)}
+.tag-src{background:var(--surface2);border:1px solid var(--border2);color:var(--subtle)}
+.card-row1{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:4px}
+.card-name{font-size:15px;font-weight:800;letter-spacing:-.4px;line-height:1.2;color:#fff}
+.watt-pill{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);color:#93C5FD;font-size:13px;font-weight:700;padding:3px 9px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.cert{font-size:11px;font-weight:700;letter-spacing:.3px;margin-bottom:5px}
+.cert-atmos{color:var(--gold)}.cert-audio{color:#60A5FA}.cert-std{color:var(--muted)}
+.config{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.4}
+.feats{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.feat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:var(--muted);font-size:10px;padding:2px 7px;border-radius:3px}
 .price-row{display:flex;align-items:baseline;gap:7px;margin-bottom:3px;flex-wrap:wrap}
-.price{font-family:var(--font-head);font-size:1.55rem;font-weight:900;color:var(--text)}
+.price{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.5px}
 .mrp{font-size:12px;color:var(--subtle);text-decoration:line-through}
-.save{background:rgba(21,128,61,.09);color:var(--green);font-size:11px;font-weight:700;padding:2px 8px;border-radius:3px}
-.buys{display:flex;gap:7px;margin-top:auto;padding-top:13px}
-.buy{flex:1;padding:8px 5px;border-radius:4px;font-size:11px;font-weight:700;text-align:center;text-decoration:none;transition:all .15s;border:none;font-family:var(--font-body);cursor:pointer;letter-spacing:.4px;display:block}
-.buy-amz{background:#FF9900;color:#111}.buy-amz:hover{background:#E08800}
-.buy-fk{background:#2874F0;color:#fff}.buy-fk:hover{background:#1A5CC8}
-.buy-zeb{background:transparent;color:var(--red);border:1.5px solid var(--red)}.buy-zeb:hover{background:var(--red);color:#fff}
-.why-box{background:rgba(227,27,35,.04);border-left:2px solid var(--red);padding:9px 12px;border-radius:0 4px 4px 0;margin-top:11px;font-size:12px;color:#444;line-height:1.55;display:none}
-.best .why-box{display:block}
-.ac-note{background:#E8F3FF;border-left:2px solid #2A5F9A;padding:8px 12px;border-radius:0 4px 4px 0;margin-top:7px;font-size:11px;color:#1A3A6A;line-height:1.55;display:none}
-.best .ac-note{display:block}
-.ac-note-lbl{font-size:9px;font-weight:700;letter-spacing:1px;color:#2A5F9A;text-transform:uppercase;display:block;margin-bottom:3px}
-.no-res{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--muted)}
+.save{background:#059669;color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.5px}
+.buys{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.buy{font-size:12px;font-weight:700;padding:8px 14px;border-radius:6px;transition:opacity .15s}
+.buy:hover{opacity:.85}
+.buy-amz{background:#FF9900;color:#111}
+.buy-fk{background:#2874F0;color:#fff}
+.buy-zeb{background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff}
+.buy-zeb:hover{background:#fff;color:#111}
+.why-box{margin-top:10px;font-size:12px;color:var(--muted);font-style:italic;line-height:1.5;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:6px;border-left:2px solid var(--blue)}
+.ac-note{margin-top:8px;font-size:11.5px;color:var(--muted);padding:8px 12px;background:rgba(29,78,216,.08);border-radius:6px;line-height:1.6}
+.ac-note-lbl{display:inline-block;background:var(--blue-dark);color:#fff;font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:2px;text-transform:uppercase;margin-right:6px;vertical-align:middle}
 
-/* DEMO */
-.demo-sec{background:#EDEDED;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 0}
-.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-@media(max-width:720px){.demo-grid{grid-template-columns:1fr}}
-.demo-h{font-family:var(--font-head);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:.4rem}
-.demo-sub{font-size:14px;color:var(--muted);margin-bottom:1.8rem;line-height:1.6}
-.comp-list{display:flex;flex-direction:column;gap:11px}
-.comp{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:13px 15px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .18s;user-select:none}
-.comp:hover{border-color:rgba(227,27,35,.4)}
-.comp.on{border-color:var(--red);background:#fff8f8}
-.sw{width:42px;height:22px;background:#D4D4D4;border-radius:11px;position:relative;flex-shrink:0;transition:background .18s}
-.sw::after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:all .18s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.comp.on .sw{background:var(--red)}.comp.on .sw::after{left:22px}
-.comp-ico{font-size:18px;width:28px;text-align:center}
-.comp-name{font-weight:700;font-size:14px;margin-bottom:1px}
-.comp-desc{font-size:11px;color:var(--muted)}
-.freq{font-size:10px;font-weight:700;letter-spacing:1px;margin-left:auto;color:var(--muted)}
-.comp.on .freq{color:var(--red)}
-.vis-wrap{position:relative;background:#111;border:1px solid #2a2a2a;border-radius:10px;overflow:hidden;height:290px}
-canvas{width:100%;height:100%}
-#status{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:10px;color:#888;background:rgba(0,0,0,.7);padding:3px 12px;border-radius:20px;white-space:nowrap;letter-spacing:1px}
-.play-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(0,0,0,.68);cursor:pointer;transition:background .2s}
-.play-ov:hover{background:rgba(0,0,0,.5)}
-.play-btn{width:68px;height:68px;border-radius:50%;background:var(--red);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.play-btn svg{width:26px;height:26px;fill:#fff;margin-left:4px}
-.play-hint{font-size:12px;color:#bbb;text-align:center}
-.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:.9rem}
-.stat{background:#fff;border:1px solid var(--border);padding:9px;border-radius:6px;text-align:center}
-.stat-v{font-family:var(--font-head);font-size:17px;font-weight:800;color:var(--muted)}
-.stat-v.on{color:var(--red)}
-.stat-l{font-size:10px;color:var(--muted)}
+/* ─── JARGON ACCORDION ────────────────────────────────────────────── */
+.accordion{display:flex;flex-direction:column;gap:8px}
+.acc-item{border:1px solid var(--border2);border-radius:10px;overflow:hidden}
+.acc-hdr{width:100%;background:var(--surface);border:none;padding:1.1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;color:var(--text);cursor:pointer;font:600 14px var(--font);text-align:left;transition:background .15s}
+.acc-hdr:hover{background:var(--surface2)}
+.acc-arrow{font-size:16px;transition:transform .3s;color:var(--blue);flex-shrink:0}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc-item.open .acc-body{max-height:600px}
+.acc-item.open .acc-arrow{transform:rotate(180deg)}
+.acc-content{padding:1.2rem 1.5rem;font-size:13.5px;color:var(--muted);line-height:1.75;background:var(--surface2)}
+.acc-example{background:rgba(59,130,246,.08);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:10px;font-size:13px;color:var(--text);line-height:1.6}
 
-/* COMPARE */
-.cmp-sec{padding:3rem 0}
-.tbl-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{background:#F5F5F5;padding:9px 13px;text-align:left;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--border);white-space:nowrap}
-td{padding:11px 13px;border-bottom:1px solid #F0F0F0;vertical-align:middle}
-tr:hover td{background:#FAFAFA}
-.tn{font-family:var(--font-head);font-size:14px;font-weight:900;white-space:nowrap;color:var(--text)}
-.tsub{font-size:9px;font-weight:700;letter-spacing:1px;display:block}
-.tc{color:var(--gold)}.ts{color:#888}
-.cpill{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px}
-.cp-a{background:rgba(201,125,10,.1);color:var(--gold)}
-.cp-d{background:rgba(29,78,216,.08);color:var(--blue)}
-.cp-s{background:#F0F0F0;color:var(--muted)}
-.ok{color:var(--green);font-size:15px}.no{color:#CCC}
-.tp{font-family:var(--font-head);font-size:16px;font-weight:900}
-.bm{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;text-decoration:none;margin-right:3px}
+/* ─── AUDIO DEMO ──────────────────────────────────────────────────── */
+.demo-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+@media(max-width:768px){.demo-layout{grid-template-columns:1fr}}
+.demo-h{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;letter-spacing:-1px;color:#fff;margin-bottom:.4rem}
+.demo-sub{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
+.demo-toggles{display:flex;flex-direction:column;gap:10px;margin-bottom:1.2rem}
+.demo-toggle{background:var(--surface2);border:1.5px solid var(--border2);border-radius:10px;padding:1rem 1.2rem;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all .18s;width:100%;color:var(--muted)}
+.demo-toggle:hover{border-color:var(--blue);color:var(--text)}
+.demo-toggle.on{background:var(--blue-fill);border-color:var(--blue);border-width:2px;color:#fff}
+.demo-toggle-label{font-weight:700;font-size:14px;flex:1;text-align:left;color:inherit}
+.demo-toggle-sub{font-size:11px;color:var(--subtle);text-align:left}
+.demo-toggle.on .demo-toggle-sub{color:rgba(255,255,255,.6)}
+.stat-v{font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;background:var(--border2);color:var(--muted);white-space:nowrap;flex-shrink:0}
+.stat-v.on{background:rgba(59,130,246,.2);color:#93C5FD}
+.vis-wrap{position:relative;border-radius:12px;overflow:hidden;background:#0D111E;aspect-ratio:16/10}
+#vis{width:100%;height:100%;display:block}
+#status{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:10px;color:rgba(255,255,255,.5);white-space:nowrap;letter-spacing:.5px}
+.play-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(10,10,15,.7);cursor:pointer;transition:background .2s}
+.play-ov:hover{background:rgba(10,10,15,.5)}
+.play-btn{width:54px;height:54px;border-radius:50%;background:rgba(59,130,246,.9);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.play-ov:hover .play-btn{transform:scale(1.08)}
+.play-btn svg{width:22px;height:22px;fill:#fff;margin-left:3px}
+.play-hint{font-size:12px;color:rgba(255,255,255,.7);text-align:center}
+#trackInfo{display:none;margin-top:.8rem;padding:8px 12px;background:rgba(255,255,255,.04);border-radius:6px;font-size:11px;color:var(--muted);line-height:1.5}
+.freq-vis{margin-top:1rem}
+.freq-title{font-size:10px;font-weight:600;letter-spacing:1px;color:var(--subtle);text-transform:uppercase;margin-bottom:.5rem}
+.freq-bars{display:flex;gap:3px;height:40px;align-items:flex-end}
+.freq-bar{flex:1;border-radius:2px 2px 0 0;background:var(--blue);min-height:4px;transition:height .1s}
 
-/* FOOTER */
-footer{background:#fff;border-top:1px solid var(--border);padding:1.8rem;text-align:center;font-size:12px;color:var(--subtle)}
+/* ─── COMPARE TABLE ───────────────────────────────────────────────── */
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border2)}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#0D1117}
+th{background:var(--bg);color:var(--muted);font-weight:700;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:12px 14px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border2)}
+td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--muted)}
+tr:nth-child(even) td{background:var(--surface)}
+tr:hover td{background:rgba(59,130,246,.04)}
+.tn{color:#fff;font-weight:600;white-space:nowrap}
+.tsub{font-size:9px;font-weight:600;letter-spacing:.8px;padding:1px 6px;border-radius:2px;text-transform:uppercase;margin-left:5px;vertical-align:middle}
+.tc{background:rgba(217,119,6,.15);color:var(--gold)}
+.ts{background:var(--surface2);color:var(--subtle)}
+.tp{font-weight:700;color:#fff;white-space:nowrap}
+.ok{color:#34D399;font-weight:700}.no{color:var(--subtle)}
+.cpill{font-size:9px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:3px;text-transform:uppercase;color:#fff;white-space:nowrap}
+.cp-a{background:#92400E}.cp-d{background:#1E3A8A}.cp-s{background:#374151}
+.bm{font-size:10px;font-weight:700;padding:4px 9px;border-radius:4px;margin-right:3px;display:inline-block}
 
-/* RESPONSIVE */
-@media(max-width:580px){
-  .grid{grid-template-columns:1fr}
-  .buys{flex-direction:column}
-  .budget-row{flex-direction:column;align-items:flex-start}
-  .filter-card{padding:1.2rem}
-  .ac-card{padding:1.2rem}
-}
+/* ─── FOOTER ──────────────────────────────────────────────────────── */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;font-size:13px;color:var(--muted)}
+footer a{color:var(--blue)}.footer-inner{max-width:1200px;margin:0 auto}
 </style>
 </head>
 <body>
 
+<!-- ─── NAV ────────────────────────────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
     <a href="https://zebronics.com" class="logo" target="_blank">
@@ -216,216 +309,290 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.8rem;text-al
     </a>
     <div class="nav-links">
       <a href="#finder">Find My Bar</a>
-      <a href="#demo">Sound Demo</a>
+      <a href="#demo">Hear the Difference</a>
       <a href="#compare">Compare All</a>
       <a href="https://shop.zebronics.com/collections/soundbars" target="_blank">Shop All ↗</a>
     </div>
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle light / dark mode">☀️</button>
   </div>
 </nav>
 
+<!-- ─── HERO ─────────────────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="eq-wrap" id="heroEq"></div>
-  <div class="hero-eyebrow">Juke Bar Series · India</div>
-  <h1>Find The <em>Right</em><br>Sound For<br>Your Home</h1>
-  <p>14 soundbars. ₹6,299 to ₹44,999. Every room size, every use case. Dolby certified. Indian priced.</p>
-  <a href="#finder" class="btn-red">Find My Soundbar</a>
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Juke Bar Series · India · 37 Soundbars</div>
+    <h1>Find the <em>right</em><br>soundbar.</h1>
+    <p class="hero-sub">₹3,199 to ₹44,999. Every room size, every use case.<br>Dolby certified. Three questions. Instant match.</p>
+    <a href="#finder" class="btn-primary">Find My Soundbar ↓</a>
+    <div class="hero-stats">
+      <div class="stat-item"><strong>37</strong><span>Soundbars</span></div>
+      <div class="stat-item"><strong>₹3,199</strong><span>Starting from</span></div>
+      <div class="stat-item"><strong>Dolby Atmos</strong><span>Top tier</span></div>
+      <div class="stat-item"><strong>3 Platforms</strong><span>Amazon · Flipkart · Zebronics</span></div>
+    </div>
+    <div class="hero-eq" id="heroEq"></div>
+  </div>
 </section>
 
+<!-- ─── PERSONA PILLS ──────────────────────────────────────────────── -->
+<section class="sec" style="padding:2.5rem 0 0" id="personas">
+  <div class="persona-wrap fade-in">
+    <p class="persona-label">Start with your situation — or answer the questions yourself ↓</p>
+    <div class="persona-pills">
+      <button class="persona-pill" onclick="setPersona('movies',this)">🎬 Movie Lovers</button>
+      <button class="persona-pill" onclick="setPersona('gaming',this)">🎮 Gamers</button>
+      <button class="persona-pill" onclick="setPersona('sports',this)">🏏 Cricket &amp; IPL Fans</button>
+      <button class="persona-pill" onclick="setPersona('music',this)">🎵 Music Listeners</button>
+      <button class="persona-pill" onclick="setPersona('everyday',this)">📺 Everyday TV</button>
+      <button class="persona-pill" onclick="setPersona('cinema',this)">🏠 Full Home Cinema</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINDER ─────────────────────────────────────────────────────── -->
 <section class="sec" id="finder">
   <div class="wrap">
     <div class="sec-tag">Step by step</div>
     <div class="sec-h2">Tell Us About Your Space</div>
-    <div class="sec-sub">Answer what you know — every selection instantly refines your matches below.</div>
+    <div class="sec-sub">Answer what you know — results update instantly below.</div>
 
-    <div class="filter-card">
+    <div class="finder-card fade-in" id="filterCard">
 
-      <!-- ROOM SIZE -->
-      <div class="filter-block">
-        <div class="filter-lbl">Room Size</div>
-        <div class="chips" id="f-room">
-          <button class="chip" onclick="pick(this,'room')">Studio / Bedroom<span class="chip-sub">~100 sq ft · 1RK</span></button>
-          <button class="chip" onclick="pick(this,'room')">1BHK Hall<span class="chip-sub">~150 sq ft</span></button>
-          <button class="chip" onclick="pick(this,'room')">2BHK Hall<span class="chip-sub">200–250 sq ft</span></button>
-          <button class="chip" onclick="pick(this,'room')">3BHK / Open Hall<span class="chip-sub">300+ sq ft</span></button>
+      <!-- ROOM SIZE — dynamically populated with SVG cards -->
+      <!-- TV SIZE — dynamically populated with SVG cards -->
+      <!-- USE CASE — dynamically populated -->
+
+      <!-- BUDGET DUAL RANGE -->
+      <div class="filter-block" id="budgetBlock">
+        <div class="budget-header">
+          <div class="budget-title">Budget</div>
+          <div class="budget-display" id="budgetDisplay">₹3,199 – ₹20,000</div>
         </div>
-      </div>
-
-      <!-- TV SIZE -->
-      <div class="filter-block">
-        <div class="filter-lbl">TV Size</div>
-        <div class="chips" id="f-tv">
-          <button class="chip" onclick="pick(this,'tv')">32″ – 43″<span class="chip-sub">Bedroom / compact</span></button>
-          <button class="chip" onclick="pick(this,'tv')">43″ – 55″<span class="chip-sub">Standard living room</span></button>
-          <button class="chip" onclick="pick(this,'tv')">55″ – 65″<span class="chip-sub">Large living room</span></button>
-          <button class="chip" onclick="pick(this,'tv')">65″ and above<span class="chip-sub">Cinema-scale</span></button>
+        <div class="budget-labels">
+          <span>Minimum</span>
+          <span>Maximum</span>
         </div>
-      </div>
-
-      <!-- USE CASE -->
-      <div class="filter-block">
-        <div class="filter-lbl">Primary Use <span class="multi-hint">· Select all that apply</span></div>
-        <div class="chips" id="f-use">
-          <button class="chip" onclick="toggle(this,'use')">🎬 Movies & OTT<span class="chip-sub">Netflix, Prime, Hotstar</span></button>
-          <button class="chip" onclick="toggle(this,'use')">🎮 Gaming<span class="chip-sub">PS5, Xbox, PC</span></button>
-          <button class="chip" onclick="toggle(this,'use')">🏏 Sports<span class="chip-sub">Cricket, Football, IPL</span></button>
-          <button class="chip" onclick="toggle(this,'use')">📺 Everyday TV<span class="chip-sub">News, serials, shows</span></button>
-          <button class="chip" onclick="toggle(this,'use')">🎵 Music<span class="chip-sub">Spotify, JioSaavn</span></button>
+        <div class="range-wrap">
+          <div class="range-track"></div>
+          <div class="range-fill" id="rangeFill"></div>
+          <input type="range" id="rMin" min="3199" max="44999" step="100" value="3199" oninput="onRangeMin()">
+          <input type="range" id="rMax" min="3199" max="44999" step="100" value="20000" oninput="onRangeMax()">
         </div>
-      </div>
-
-      <!-- BUDGET -->
-      <div class="filter-block">
-        <div class="filter-lbl">Budget</div>
-        <div class="budget-row">
-          <div class="budget-val" id="bval">₹15,000</div>
-          <div class="slider-wrap">
-            <input type="range" class="sl" id="bslider" min="5000" max="50000" step="500" value="15000" oninput="setBudget(this.value)">
-            <div class="ticks"><span>₹5K</span><span>₹15K</span><span>₹25K</span><span>₹35K</span><span>₹50K</span></div>
-          </div>
-          <div class="budget-note" id="bnote"></div>
+        <div class="range-ticks">
+          <span>₹3K</span><span>₹8K</span><span>₹12K</span><span>₹17K</span><span>₹25K</span><span>₹35K</span><span>₹45K</span>
         </div>
-      </div>
-
-      <hr class="filter-divider">
-
-      <!-- SOURCE -->
-      <div class="filter-block" style="margin-bottom:0">
-        <div class="src-row">
-          <span class="src-lbl">Show from</span>
-          <button class="src-chip on" onclick="setSrc(this,'all')">All Zebronics</button>
-          <button class="src-chip" onclick="setSrc(this,'shop')">shop.zebronics.com</button>
-          <button class="src-chip" onclick="setSrc(this,'zeb')">zebronics.com</button>
-        </div>
+        <div class="budget-note" id="bnote"></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- ACOUSTIC CARD -->
-    <div class="ac-card">
+<!-- ─── ACOUSTIC ───────────────────────────────────────────────────── -->
+<section class="sec" style="padding-top:0" id="acoustic">
+  <div class="wrap">
+    <div class="ac-card fade-in">
       <div class="ac-head">
-        <span class="ac-icon">🔉</span>
+        <span style="font-size:20px">🎚️</span>
         <span class="ac-title">Acoustic Environment</span>
-        <span class="ac-hint">Optional · refines recommendations based on your room's acoustics</span>
+        <span class="ac-hint">Optional · fine-tunes results for your room physics</span>
       </div>
       <div class="ac-blocks">
-
-        <!-- FLOOR -->
-        <div class="ac-block">
+        <div>
           <div class="ac-lbl">Floor Type</div>
-          <div class="ac-chips" id="ac-floor">
-            <button class="ac-chip" onclick="setAc(this,'floor','tile')">
-              <span>🪟</span>
-              <span>Tiled<span class="ac-chip-sub">Reflective · sound bounces around</span></span>
+          <div class="ac-chips3" id="ac-floor">
+            <button class="ac-chip" data-val="tile"   onclick="setAc(this,'floor','tile')">
+              <span class="ac-chip-icon">🔲</span>
+              <span class="ac-chip-lbl">Tiled</span>
+              <span class="ac-chip-desc">Reflective · sound bounces around</span>
             </button>
-            <button class="ac-chip" onclick="setAc(this,'floor','wood')">
-              <span>🪵</span>
-              <span>Wooden<span class="ac-chip-sub">Warm resonance · balanced</span></span>
+            <button class="ac-chip" data-val="wood"   onclick="setAc(this,'floor','wood')">
+              <span class="ac-chip-icon">🪵</span>
+              <span class="ac-chip-lbl">Wooden</span>
+              <span class="ac-chip-desc">Warm resonance · balanced</span>
             </button>
-            <button class="ac-chip" onclick="setAc(this,'floor','carpet')">
-              <span>🟫</span>
-              <span>Carpet / Rug<span class="ac-chip-sub">Absorbs sound · needs more power</span></span>
+            <button class="ac-chip" data-val="carpet" onclick="setAc(this,'floor','carpet')">
+              <span class="ac-chip-icon">🏠</span>
+              <span class="ac-chip-lbl">Carpet / Rug</span>
+              <span class="ac-chip-desc">Absorbs sound · needs more power</span>
             </button>
           </div>
         </div>
-
-        <!-- FAN -->
-        <div class="ac-block">
+        <div>
           <div class="ac-lbl">Ceiling Fan</div>
-          <div class="ac-chips" id="ac-fan">
-            <button class="ac-chip" onclick="setAc(this,'fan','off')">
-              <span>🌬️</span>
-              <span>Usually off<span class="ac-chip-sub">Quiet room · no competing noise</span></span>
+          <div class="ac-chips2" id="ac-fan">
+            <button class="ac-chip" data-val="off" onclick="setAc(this,'fan','off')">
+              <span class="ac-chip-icon">🌀</span>
+              <span class="ac-chip-lbl">Usually off</span>
+              <span class="ac-chip-desc">Quiet room · no competing noise</span>
             </button>
-            <button class="ac-chip" onclick="setAc(this,'fan','on')">
-              <span>💨</span>
-              <span>Always on<span class="ac-chip-sub">Ambient hum · dialogue must cut through</span></span>
+            <button class="ac-chip" data-val="on"  onclick="setAc(this,'fan','on')">
+              <span class="ac-chip-icon">💨</span>
+              <span class="ac-chip-lbl">Always on</span>
+              <span class="ac-chip-desc">Ambient hum · dialogue must cut through</span>
             </button>
           </div>
         </div>
-
-        <!-- LAYOUT -->
-        <div class="ac-block">
+        <div>
           <div class="ac-lbl">Room Layout</div>
-          <div class="ac-chips" id="ac-layout">
-            <button class="ac-chip" onclick="setAc(this,'layout','closed')">
-              <span>🚪</span>
-              <span>Closed / Enclosed<span class="ac-chip-sub">Walls contain the sound</span></span>
+          <div class="ac-chips2" id="ac-layout">
+            <button class="ac-chip" data-val="closed" onclick="setAc(this,'layout','closed')">
+              <span class="ac-chip-icon">🚪</span>
+              <span class="ac-chip-lbl">Closed / Enclosed</span>
+              <span class="ac-chip-desc">Walls contain the sound</span>
             </button>
-            <button class="ac-chip" onclick="setAc(this,'layout','open')">
-              <span>🏠</span>
-              <span>Open plan<span class="ac-chip-sub">Dining + living merged · sound disperses</span></span>
+            <button class="ac-chip" data-val="open"   onclick="setAc(this,'layout','open')">
+              <span class="ac-chip-icon">🏡</span>
+              <span class="ac-chip-lbl">Open plan</span>
+              <span class="ac-chip-desc">Dining + living merged · sound disperses</span>
             </button>
           </div>
         </div>
-
       </div>
       <div class="ac-insight" id="acInsight"></div>
     </div>
+  </div>
+</section>
 
-    <!-- RESULTS -->
-    <div class="result-meta" id="rmeta" style="margin-top:2rem;display:none">
-      <span id="rheading"></span>
+<!-- ─── RESULTS ────────────────────────────────────────────────────── -->
+<section class="sec" style="padding-top:0" id="results">
+  <div class="wrap">
+    <div class="result-meta" id="rmeta" style="display:none">
+      <div id="rheading"></div>
     </div>
     <div class="grid" id="pgrid"></div>
   </div>
 </section>
 
-<!-- SOUND DEMO -->
-<section class="demo-sec" id="demo">
+<!-- ─── JARGON DECODER ────────────────────────────────────────────── -->
+<section class="sec" id="jargon" style="background:var(--surface);padding:4rem 0">
   <div class="wrap">
-    <div class="sec-tag">Interactive Sound Demo</div>
-    <div class="demo-grid">
-      <div>
-        <div class="demo-h">Hear The<br>Difference</div>
-        <div class="demo-sub">Toggle the soundbar, subwoofer, and rear satellites to hear how each component shapes your experience. Headphones recommended.</div>
-        <div class="comp-list">
-          <div class="comp on" id="c-bar" onclick="toggleComp('bar')">
-            <div class="sw"></div><div class="comp-ico">📻</div>
-            <div><div class="comp-name">Soundbar</div><div class="comp-desc">Mid & high · Voices, dialogue, clarity</div></div>
-            <div class="freq">200Hz–20kHz</div>
-          </div>
-          <div class="comp" id="c-sub" onclick="toggleComp('sub')">
-            <div class="sw"></div><div class="comp-ico">🔊</div>
-            <div><div class="comp-name">Subwoofer</div><div class="comp-desc">Deep bass · Explosions, kick drum, rumble</div></div>
-            <div class="freq">40–200Hz</div>
-          </div>
-          <div class="comp" id="c-sat" onclick="toggleComp('sat')">
-            <div class="sw"></div><div class="comp-ico">📡</div>
-            <div><div class="comp-name">Rear Satellites</div><div class="comp-desc">Surround · Spatial width, behind you</div></div>
-            <div class="freq">Wide Stereo</div>
-          </div>
-        </div>
-        <div style="margin-top:1.2rem;padding:12px;background:#fff;border-radius:6px;border:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.6">
-          <strong style="color:var(--text);display:block;margin-bottom:3px">How to use</strong>
-          Click the visualiser to start audio, then toggle each component on and off to hear how bass, clarity and surround each contribute.
-        </div>
+    <div class="sec-tag fade-in">Plain Language</div>
+    <div class="sec-h2 fade-in">No jargon.</div>
+    <div class="sec-sub fade-in" style="margin-bottom:2rem">Decoded for Indian buyers — no specs without context.</div>
+    <div class="accordion fade-in">
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="toggleAcc(this)">
+          <span>🔊 &nbsp;Dolby Atmos vs Dolby Audio — what's the real difference?</span>
+          <span class="acc-arrow">↓</span>
+        </button>
+        <div class="acc-body"><div class="acc-content">
+          Dolby Audio improves the stereo sound from a standard soundbar — better separation, clearer dialogue, richer bass. Dolby Atmos goes further by adding height — sounds come from above you, not just left and right. The difference is most obvious on rain scenes, helicopter shots, and stadium crowd sequences.
+          <div class="acc-example">On a 9920 with 7.1.2 Atmos — thunder in a film comes from directly overhead. On a standard Dolby Audio bar — it just sounds loud.</div>
+        </div></div>
       </div>
-      <div>
-        <div class="vis-wrap">
-          <canvas id="vis"></canvas>
-          <div id="status">CLICK TO START DEMO</div>
-          <div class="play-ov" id="playOv" onclick="startAudio()">
-            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <div class="play-hint">Click to start demo<br><span style="font-size:11px;color:#777">Browser audio engine · no files needed</span></div>
-          </div>
-        </div>
-        <div class="stat-row">
-          <div class="stat"><div class="stat-v on" id="sv-bar">ON</div><div class="stat-l">Soundbar</div></div>
-          <div class="stat"><div class="stat-v" id="sv-sub">OFF</div><div class="stat-l">Subwoofer</div></div>
-          <div class="stat"><div class="stat-v" id="sv-sat">OFF</div><div class="stat-l">Satellites</div></div>
-        </div>
-        <div id="trackInfo" style="display:none;margin-top:.8rem;padding:9px 13px;background:#fff;border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);line-height:1.6"></div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="toggleAcc(this)">
+          <span>📡 &nbsp;2.0 vs 2.1 vs 5.1 vs 7.1.2 — what the numbers actually mean</span>
+          <span class="acc-arrow">↓</span>
+        </button>
+        <div class="acc-body"><div class="acc-content">
+          The first number is the number of speaker channels. The second is subwoofers. The third is height channels. So: 2.0 = bar only. 2.1 = bar + one sub. 5.1 = bar + sub + 2 rear satellites. 7.1.2 = bar + sub + 4 rear satellites + 2 overhead/height channels.
+          <div class="acc-example">For a 2BHK, 5.1 is the sweet spot — fills the room without needing extreme power. For a 3BHK open hall, 7.1.2 or 5.2.2 is needed to fill the space properly.</div>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="toggleAcc(this)">
+          <span>🔌 &nbsp;HDMI eARC vs HDMI ARC vs Optical — which one should you use?</span>
+          <span class="acc-arrow">↓</span>
+        </button>
+        <div class="acc-body"><div class="acc-content">
+          ARC sends audio from your TV to the soundbar over the same HDMI cable — one cable for everything. eARC is ARC with higher bandwidth — required for Dolby Atmos passthrough. Optical works on almost all TVs but cannot carry Atmos, only standard Dolby Digital.
+          <div class="acc-example">If your TV has eARC and you buy a 9580C or higher — use HDMI eARC. Optical will downgrade the audio and you'll lose Atmos entirely.</div>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="toggleAcc(this)">
+          <span>📶 &nbsp;Wireless vs Wired subwoofer and satellites</span>
+          <span class="acc-arrow">↓</span>
+        </button>
+        <div class="acc-body"><div class="acc-content">
+          Wired means a cable runs from the soundbar to the sub or satellite speakers. Wireless means they're paired over a proprietary RF signal — no cable needed. Sound quality is identical between wired and wireless at this brand. Wireless just means cleaner installation.
+          <div class="acc-example">In a 2BHK where the sofa is away from the wall — wireless sub means no cable running across the floor. Worth the upgrade for a cleaner living room.</div>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="toggleAcc(this)">
+          <span>🏏 &nbsp;Why soundbars make cricket and IPL actually better</span>
+          <span class="acc-arrow">↓</span>
+        </button>
+        <div class="acc-body"><div class="acc-content">
+          Standard TV speakers compress crowd roar and commentary into the same flat signal — it all sounds like noise. A soundbar with dedicated drivers separates them. The crowd fills the room, the commentary stays clear in the centre channel. Add a sub and the physical impact of bat on ball is felt, not just heard.
+          <div class="acc-example">On a 9300C at moderate volume — crowd noise fills the room while Kohli's commentary is crystal clear. On a TV speaker at high volume — everything distorts.</div>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-hdr" onclick="toggleAcc(this)">
+          <span>⚡ &nbsp;Indian power scenario — do soundbars work on inverter / UPS?</span>
+          <span class="acc-arrow">↓</span>
+        </button>
+        <div class="acc-body"><div class="acc-content">
+          Yes. All Juke Bar soundbars run on standard 220V AC. During a power cut, they work fine on a home UPS or inverter. The subwoofer draws the most current — a 600VA inverter handles most 2.1 and 5.1 setups. For 7.1.2 flagship models (9920, 10000), a 1kVA inverter is recommended.
+          <div class="acc-example">A Juke Bar 9300C with sub draws about 150–200W at moderate volume. A typical 600VA home inverter handles this fine.</div>
+        </div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COMPARE TABLE -->
-<section class="cmp-sec" id="compare">
+<!-- ─── AUDIO DEMO ─────────────────────────────────────────────────── -->
+<section class="sec" id="demo">
   <div class="wrap">
-    <div class="sec-tag">Full Range</div>
-    <div class="sec-h2">Compare All 14 Soundbars</div>
-    <div class="sec-sub">Every Juke Bar model from both zebronics.com and shop.zebronics.com, sorted by price.</div>
-    <div class="tbl-wrap">
+    <div class="sec-tag fade-in">Hear the difference</div>
+    <div class="demo-layout fade-in">
+      <div>
+        <div class="demo-h">Toggle each component.</div>
+        <div class="demo-sub">Hear exactly what a soundbar, subwoofer, and satellites contribute to your listening experience.</div>
+        <div class="demo-toggles">
+          <button class="demo-toggle on" id="c-bar" onclick="toggleComp('bar')">
+            <div>
+              <div class="demo-toggle-label">Soundbar</div>
+              <div class="demo-toggle-sub">Mids · dialogue · presence · 200Hz–8kHz</div>
+            </div>
+            <span class="stat-v on" id="sv-bar">ON</span>
+          </button>
+          <button class="demo-toggle" id="c-sub" onclick="toggleComp('sub')">
+            <div>
+              <div class="demo-toggle-label">Subwoofer</div>
+              <div class="demo-toggle-sub">Deep bass · impact · below 150Hz</div>
+            </div>
+            <span class="stat-v" id="sv-sub">OFF</span>
+          </button>
+          <button class="demo-toggle" id="c-sat" onclick="toggleComp('sat')">
+            <div>
+              <div class="demo-toggle-label">Rear Satellites</div>
+              <div class="demo-toggle-sub">Spatial width · air · above 5kHz panned ±0.9</div>
+            </div>
+            <span class="stat-v" id="sv-sat">OFF</span>
+          </button>
+        </div>
+        <div id="trackInfo"></div>
+        <div style="margin-top:1rem;padding:12px 14px;background:rgba(255,255,255,.04);border-radius:8px;font-size:12px;color:var(--muted);line-height:1.6">
+          <strong style="color:var(--text);display:block;margin-bottom:3px">How to use</strong>
+          Click the canvas to start audio. Toggle each component to hear how bass, clarity and surround each contribute. Use headphones for full satellite effect.
+        </div>
+      </div>
+      <div>
+        <div class="vis-wrap">
+          <canvas id="vis"></canvas>
+          <div id="status" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:10px;color:rgba(255,255,255,.4);white-space:nowrap">CLICK TO START DEMO</div>
+          <div class="play-ov" id="playOv" onclick="startAudio()">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="play-hint">Click to start demo<br><span style="font-size:10px;color:rgba(255,255,255,.5)">Web Audio · Beethoven Moonlight Sonata</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMPARE TABLE ──────────────────────────────────────────────── -->
+<section class="sec" id="compare" style="background:var(--surface);padding:4rem 0">
+  <div class="wrap">
+    <div class="sec-tag fade-in">Full Range</div>
+    <div class="sec-h2 fade-in">Compare all 37 soundbars.</div>
+    <div class="sec-sub fade-in">Every Juke Bar model sorted by price.</div>
+    <div class="tbl-wrap fade-in">
       <table>
         <thead><tr>
           <th>Model</th><th>Power</th><th>Cert</th><th>Config</th><th>Sub</th><th>Sat</th><th>Atmos</th><th>Price</th><th>Buy</th>
@@ -436,803 +603,734 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.8rem;text-al
   </div>
 </section>
 
+<!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
 <footer>
-  <strong style="color:var(--muted)">Zebronics India Pvt. Ltd.</strong> · Chennai, Tamil Nadu · Prices subject to change ·
-  <a href="https://zebronics.com" style="color:var(--red);text-decoration:none" target="_blank">zebronics.com</a> ·
-  <a href="https://shop.zebronics.com" style="color:var(--red);text-decoration:none" target="_blank">shop.zebronics.com</a>
+  <div class="footer-inner">
+    <strong style="color:#fff">Zebronics India Pvt. Ltd.</strong> · Chennai, Tamil Nadu · Prices subject to change ·
+    <a href="https://zebronics.com" target="_blank">zebronics.com</a> ·
+    <a href="https://shop.zebronics.com" target="_blank">shop.zebronics.com</a>
+    <div id="lastUpdated" style="margin-top:6px;font-size:11px;color:var(--subtle)"></div>
+  </div>
 </footer>
 
 <script>
 // ═══════════════════════════════════════════════════════════════════
-// PRODUCT CATALOG
+// DATA — fetched from ./products.json + ./scores.json (GitHub Pages)
 // ═══════════════════════════════════════════════════════════════════
-const P = [
-  {
-    id:'4120', name:'Juke Bar 4120', watt:200, price:6299, mrp:16999, save:63,
-    cert:'Standard', config:'2.1', sub:'Wired', sat:false, atmos:false, compact:false, src:'shop',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg?v=1761559055&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+4120',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+4120',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-4120',
-    feats:['Dual Drivers 40W×2','13.33cm Sub','BT 5.3','TV ARC','USB'],
-    scores:{room:[5,4,2,1],tv:[5,3,1,1],use:[2,2,2,5,3]},
-    why:{movies:'Solid starter — clean audio upgrade over TV speakers for casual OTT viewing.',gaming:'Decent bedroom gaming upgrade. Far better than built-in TV audio.',sports:'Sharp dialogue and basic bass punch for cricket commentary in a compact room.',everyday:'Ideal first soundbar upgrade. Simple ARC setup, clear voices.',music:'Wide frequency range for its class. Handles most music genres cleanly.'}
-  },
-  {
-    id:'1000', name:'Juke Bar 1000', watt:200, price:7999, mrp:19999, save:60,
-    cert:'Dolby Atmos', config:'2.1', sub:'Wired', sat:false, atmos:true, compact:false, src:'shop',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Juke-bar-10000-pic-1.jpg?v=1746425832&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+1000',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+1000',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-1000',
-    feats:['Dolby Atmos','200W','13.33cm Sub','BT 5.3','HDMI eARC','Optical'],
-    scores:{room:[5,4,2,1],tv:[5,3,2,1],use:[3,3,2,4,3]},
-    why:{movies:'Dolby Atmos at entry price — height audio makes OTT content genuinely more layered.',gaming:'Clean directional audio for bedroom gaming. Atmos adds spatial depth.',sports:'Punchy and clear — dialogue and crowd handled well in small rooms.',everyday:'One-cable HDMI eARC setup. Dolby processing makes everything sound better.',music:'Solid frequency range with Atmos processing. Handles music cleanly.'}
-  },
-  {
-    id:'9010C', name:'Juke Bar 9010C', watt:140, price:6999, mrp:18999, save:63,
-    cert:'Dolby Audio', config:'2.1', sub:'Wired', sat:false, atmos:false, compact:true, src:'both',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar-9010C-pic1.jpg?v=1770372740&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9010c',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9010c',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9010c',
-    feats:['Dolby Audio','Dual Drivers','BT 5.4','TV ARC','Optical','40.6cm bar'],
-    scores:{room:[5,4,2,1],tv:[5,3,1,1],use:[3,2,2,5,3]},
-    why:{movies:'Dolby Audio delivers clear dialogue and enhanced depth. Genuine TV speaker upgrade.',gaming:'BT 5.4 low latency + Dolby Audio. Perfect for bedroom gaming rigs.',sports:'Crisp voices + solid bass punch — great for IPL commentary.',everyday:'Compact 40.6cm bar fits any shelf. Easiest Dolby upgrade possible.',music:'50Hz–20kHz range with dedicated sub makes music sound full and warm.'}
-  },
-  {
-    id:'9600', name:'Juke Bar 9600', watt:300, price:7999, mrp:22999, save:65,
-    cert:'Standard', config:'5.1', sub:'Wired', sat:true, atmos:false, compact:false, src:'zeb',
-    img:'https://zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9600',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9600',
-    zeb:'https://zebronics.com/collections/soundbars',
-    feats:['300W Total','5.1 Channel','Rear Satellites','Wired Sub','BT 5.1','HDMI ARC'],
-    scores:{room:[2,4,5,3],tv:[2,4,4,2],use:[3,4,4,3,3]},
-    why:{movies:'5.1 surround with rear satellites — proper home-theatre feel for under ₹8K.',gaming:'Directional audio from rear satellites. Hear footsteps and spatial cues.',sports:'Satellites surround you with crowd noise. Stadium feel on a budget.',everyday:'Surround makes everything more immersive — even news.',music:'300W 5.1 setup with satellites fills a hall beautifully.'}
-  },
-  {
-    id:'9300C', name:'Juke Bar 9300C', watt:380, price:9999, mrp:32999, save:70,
-    cert:'Dolby Audio', config:'5.1', sub:'Wired', sat:true, atmos:false, compact:true, src:'both',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar9300C-pic1.jpg?v=1770372615&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9300c',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9300c',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9300c',
-    feats:['380W Total','Dolby Audio','Triple Drivers','Dual Rear Satellites','BT 5.4','TV ARC'],
-    scores:{room:[3,5,4,2],tv:[3,5,3,2],use:[4,4,5,4,4]},
-    why:{movies:'Dolby Audio + real rear satellites = cinema surround at home. Best value under ₹10K.',gaming:'380W surround gives full positional audio — hear exactly where the action is.',sports:'Rear satellites wrap you in crowd sound. IPL will feel like the stadium.',everyday:'Go-to daily driver for 1–2BHK. 70% off makes this unbeatable.',music:'380W with rear satellites fills a 1BHK corner-to-corner.'}
-  },
-  {
-    id:'9451', name:'Juke Bar 9451', watt:600, price:13999, mrp:44999, save:69,
-    cert:'Dolby Audio', config:'5.1', sub:'Wired', sat:true, atmos:false, compact:false, src:'zeb',
-    img:'https://zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9451',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9451',
-    zeb:'https://zebronics.com/collections/soundbars',
-    feats:['600W Total','Dolby Audio','5.1 Surround','Wired Sub','Rear Satellites','HDMI ARC'],
-    scores:{room:[1,3,5,4],tv:[2,4,5,3],use:[4,4,4,3,4]},
-    why:{movies:'600W Dolby Audio with 5.1 surround — action films hit different at this power level.',gaming:'High output for a larger gaming room. Explosions and soundtrack come alive.',sports:'600W in a hall ensures every cheer and kick is physically felt.',everyday:'Powerful but focused — crisp dialogue even at low volumes.',music:'600W fills larger halls with clean, powerful sound.'}
-  },
-  {
-    id:'9580C', name:'Juke Bar 9580C', watt:320, price:13999, mrp:37999, save:63,
-    cert:'Dolby Atmos', config:'2.1', sub:'Wireless', sat:false, atmos:true, compact:true, src:'both',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar-9580C-pic1.jpg?v=1772286552&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9580c',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9580c',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9580c',
-    feats:['Dolby Atmos','dts:X','Wireless Sub','No cable clutter','BT 5.4','HDMI ARC'],
-    scores:{room:[3,5,4,2],tv:[3,5,4,2],use:[5,4,3,3,5]},
-    why:{movies:'Dolby Atmos is cinema-grade — height channels make rain and helicopters feel real.',gaming:'Dolby Atmos + dts:X gives the most immersive gaming audio below ₹20K.',sports:'Atmos processing spatialises crowd sound for broadcast-quality experience.',everyday:'Wireless sub means no cable across the hall — cleanest possible setup.',music:'Dolby Atmos music on Apple Music/Spotify works perfectly here.'}
-  },
-  {
-    id:'9540', name:'Juke Bar 9540', watt:810, price:17999, mrp:49999, save:64,
-    cert:'Dolby Audio', config:'5.1', sub:'Wired', sat:true, atmos:false, compact:false, src:'zeb',
-    img:'https://zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9540',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9540',
-    zeb:'https://zebronics.com/collections/soundbars',
-    feats:['810W Total','Dolby Audio','5.1 Surround','BT 5.3','LED Display','Wall Mountable'],
-    scores:{room:[1,2,4,5],tv:[1,3,5,5],use:[4,4,5,3,4]},
-    why:{movies:'810W with Dolby Audio and 5.1 surround — room-filling cinema sound for large halls.',gaming:'High headroom for FPS and racing games. Impact and ambience both delivered.',sports:'810W surround — stadium energy that fills a 3BHK effortlessly.',everyday:'Powerful — spectacular for prime-time shows and sports.',music:'810W fills an open-plan hall with music from corner to corner.'}
-  },
-  {
-    id:'9710C', name:'Juke Bar 9710C', watt:550, price:16999, mrp:44999, save:62,
-    cert:'Dolby Atmos', config:'5.1', sub:'Wireless', sat:true, atmos:true, compact:true, src:'both',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar9710C-pic1.jpg?v=1772287422&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9710c',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9710c',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9710c',
-    feats:['Dolby Atmos','dts:X','Fully Wireless 5.1','550W','Wireless Sub + Satellites','BT 5.4'],
-    scores:{room:[2,4,5,4],tv:[2,4,5,4],use:[5,5,5,3,5]},
-    why:{movies:'Flagship compact. 550W + Dolby Atmos + wireless surround = closest to cinema at home.',gaming:'Fully wireless 5.1 Atmos. No cables. 550W. Ultimate gaming audio under ₹20K.',sports:'550W fully wireless surround — you don\'t watch cricket, you\'re at the stadium.',everyday:'Overkill for casual viewing but once you hear wireless Atmos, no going back.',music:'Fully wireless Atmos placement freedom. Definitive music setup under ₹20K.'}
-  },
-  {
-    id:'9750pro', name:'Juke Bar 9750 Pro', watt:525, price:19999, mrp:54999, save:64,
-    cert:'Dolby Atmos', config:'5.1.2', sub:'Wireless', sat:true, atmos:true, compact:false, src:'zeb',
-    img:'https://zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9750+pro',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9750+pro',
-    zeb:'https://zebronics.com/collections/soundbars',
-    feats:['525W','Dolby Atmos','dts:X','5.1.2 CH','Up-firing Drivers','Wireless Sub+Sat','HDMI eARC'],
-    scores:{room:[1,3,5,5],tv:[1,3,5,5],use:[5,5,5,3,5]},
-    why:{movies:'5.1.2 with up-firing Atmos drivers — overhead effects are genuinely three-dimensional.',gaming:'Top-firing height channels give true vertical audio for explosions and flyovers.',sports:'5.1.2 surround makes live sports feel like stadium seats with vertical audio sweep.',everyday:'Up-firing height channels add dimension to ambient sounds.',music:'Dolby Atmos music with height drivers — spatial audio as the artist intended.'}
-  },
-  {
-    id:'9550', name:'Juke Bar 9550', watt:625, price:21999, mrp:59999, save:63,
-    cert:'Dolby Atmos', config:'5.1.2', sub:'Wireless', sat:true, atmos:true, compact:false, src:'shop',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg?v=1761559055&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9550',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9550',
-    zeb:'https://shop.zebronics.com/collections/soundbars',
-    feats:['625W','Dolby Atmos','dts:X','5.1.2 CH','Up-firing Drivers','Wireless Sub + Sat'],
-    scores:{room:[1,2,4,5],tv:[1,3,5,5],use:[5,5,5,3,5]},
-    why:{movies:'5.1.2 with up-firing drivers for true overhead Atmos. Highest fidelity OTT experience.',gaming:'Top-tier gaming audio with true height channels and 625W power.',sports:'True 3D sound — feel the stadium atmosphere completely.',everyday:'Significant overkill for daily viewing but sounds spectacular on everything.',music:'625W 5.1.2 Atmos music is a genuinely audiophile experience.'}
-  },
-  {
-    id:'9900', name:'Juke Bar 9900', watt:725, price:29999, mrp:79999, save:63,
-    cert:'Dolby Atmos', config:'5.2.4', sub:'Wireless', sat:true, atmos:true, compact:false, src:'both',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar4120-pic-1.jpg?v=1761559055&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9900',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9900',
-    zeb:'https://shop.zebronics.com/collections/soundbars',
-    feats:['725W','5.2.4 CH','Dolby Atmos','Dual Wireless Sub','Dual Wireless Sat','RGB LED','HDMI eARC'],
-    scores:{room:[1,2,4,5],tv:[1,2,4,5],use:[5,5,5,3,5]},
-    why:{movies:'5.2.4 with dual wireless subs — the most powerful audio foundation short of dedicated separates.',gaming:'Dual subs + 5.2.4 spatial audio = FPS gaming redefined. Feel every step and impact.',sports:'Dual subs ensure you don\'t just hear the crowd — you feel every roar.',everyday:'Wireless mic for karaoke. Dual subs make every evening an event.',music:'5.2.4 Dolby Atmos music with dual subs is genuinely hi-fi territory.'}
-  },
-  {
-    id:'9920', name:'Juke Bar 9920', watt:900, price:32999, mrp:89999, save:63,
-    cert:'Dolby Atmos', config:'7.1.2', sub:'Wireless', sat:true, atmos:true, compact:false, src:'both',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Jukebar-9920-pic-1.jpg?v=1755687573&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+9920',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+9920',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-9920',
-    feats:['900W','7.1.2 CH','Dolby Atmos','30cm Wireless Sub','AcoustiMax','9 Drivers','BT 5.3'],
-    scores:{room:[1,1,3,5],tv:[1,2,4,5],use:[5,5,5,2,5]},
-    why:{movies:'The flagship 7.1.2. AcoustiMax + 900W = world-class home theatre performance.',gaming:'900W 7.1.2 Atmos is the pinnacle of gaming audio in India at this price.',sports:'900W 7.1.2 — feel every ball, every tackle, every roar.',everyday:'Serious overkill — but once experienced, impossible to go back.',music:'900W 7.1.2 Dolby Atmos music rivals dedicated hi-fi setups costing 3× more.'}
-  },
-  {
-    id:'10000', name:'Juke Bar 10000', watt:1100, price:44999, mrp:89999, save:50,
-    cert:'Dolby Atmos', config:'7.2.4', sub:'Wireless', sat:true, atmos:true, compact:false, src:'both',
-    img:'https://shop.zebronics.com/cdn/shop/files/Zeb-Juke-bar-10000-pic-1.jpg?v=1746425832&width=600',
-    amz:'https://www.amazon.in/s?k=zebronics+juke+bar+10000',
-    fk:'https://www.flipkart.com/search?q=zebronics+juke+bar+10000',
-    zeb:'https://shop.zebronics.com/products/zeb-juke-bar-10000',
-    feats:['1100W','7.2.4 CH','Dolby Atmos','dts:X','Dual Wireless Sub','AcoustiMax','Wireless Mic'],
-    scores:{room:[1,1,3,5],tv:[1,1,3,5],use:[5,5,5,3,5]},
-    why:{movies:'1100W 7.2.4 AcoustiMax — this is not a soundbar, it is a full home cinema system.',gaming:'1100W 7.2.4 Atmos is the most immersive gaming audio available from any Indian brand.',sports:'1100W dual subs + 7.2.4 surround — you don\'t watch a match, you\'re in the stadium.',everyday:'Karaoke mic + 1100W makes every evening an event.',music:'The definitive home music experience. 1100W 7.2.4 Atmos is transformative.'}
-  }
+let CONFIG = null;
+
+const STATIC_FILTERS = [
+  {id:'room',label:'Room Size',type:'single',options:[
+    {key:'studio',label:'Studio / Bedroom',sub:'~100 sq ft · 1RK'},
+    {key:'small', label:'1BHK Hall',        sub:'~150 sq ft'},
+    {key:'medium',label:'2BHK Hall',        sub:'200–250 sq ft'},
+    {key:'large', label:'3BHK / Open Hall', sub:'300+ sq ft'},
+  ]},
+  {id:'tv',label:'TV Size',type:'single',options:[
+    {key:'tv_small', label:'32″ – 43″',      sub:'Bedroom / compact'},
+    {key:'tv_medium',label:'43″ – 55″',      sub:'Standard living room'},
+    {key:'tv_large', label:'55″ – 65″',      sub:'Large living room'},
+    {key:'tv_xlarge',label:'65″ and above',  sub:'Cinema-scale'},
+  ]},
+  {id:'use',label:'Primary Use',type:'multi',options:[
+    {key:'movies',  label:'🎬 Movies & OTT',  sub:'Netflix, Prime, Hotstar'},
+    {key:'gaming',  label:'🎮 Gaming',         sub:'PS5, Xbox, PC'},
+    {key:'sports',  label:'🏏 Sports',         sub:'Cricket, Football, IPL'},
+    {key:'everyday',label:'📺 Everyday TV',    sub:'News, serials, shows'},
+    {key:'music',   label:'🎵 Music',          sub:'Spotify, JioSaavn'},
+  ]},
 ];
 
-// ═══════════════════════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════════════════════
+// SVG line-art for room cards
+const ROOM_SVG = {
+  studio:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="15" width="70" height="42" rx="2"/>
+    <rect x="15" y="30" width="30" height="18" rx="1"/>
+    <rect x="12" y="30" width="6" height="8" rx="1" opacity=".6"/>
+    <rect x="50" y="35" width="10" height="12" rx="1" opacity=".7"/>
+    <rect x="28" y="5" width="16" height="12" rx="1"/>
+  </svg>`,
+  small:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="10" width="70" height="47" rx="2"/>
+    <rect x="10" y="32" width="38" height="18" rx="2"/>
+    <rect x="10" y="25" width="38" height="9" rx="1"/>
+    <rect x="52" y="20" width="18" height="14" rx="1" opacity=".8"/>
+    <rect x="55" y="10" width="12" height="12" rx="1" opacity=".7"/>
+  </svg>`,
+  medium:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="8" width="74" height="49" rx="2"/>
+    <rect x="8" y="30" width="44" height="20" rx="2"/>
+    <rect x="8" y="22" width="44" height="10" rx="1"/>
+    <rect x="20" y="50" width="20" height="6" rx="1" opacity=".7"/>
+    <rect x="56" y="15" width="18" height="15" rx="1" opacity=".8"/>
+    <rect x="15" y="3" width="12" height="7" rx="1" opacity=".7"/>
+    <rect x="45" y="3" width="12" height="7" rx="1" opacity=".7"/>
+  </svg>`,
+  large:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="6" width="76" height="51" rx="2"/>
+    <rect x="6" y="28" width="42" height="18" rx="2"/>
+    <rect x="6" y="20" width="42" height="10" rx="1"/>
+    <rect x="44" y="36" width="16" height="10" rx="2" opacity=".8"/>
+    <rect x="54" y="12" width="22" height="16" rx="1" opacity=".85"/>
+    <rect x="12" y="6" width="10" height="6" rx="1" opacity=".7"/>
+    <rect x="30" y="6" width="10" height="6" rx="1" opacity=".7"/>
+    <rect x="48" y="6" width="10" height="6" rx="1" opacity=".7"/>
+    <rect x="6" y="50" width="30" height="5" rx="1" opacity=".5"/>
+  </svg>`,
+};
+
+// SVG silhouettes for TV size cards — screens scale with size
+const TV_SVG = {
+  tv_small:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="10" width="40" height="28" rx="2"/>
+    <line x1="40" y1="38" x2="40" y2="50"/>
+    <line x1="28" y1="50" x2="52" y2="50"/>
+  </svg>`,
+  tv_medium:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="8" width="60" height="36" rx="2"/>
+    <line x1="40" y1="44" x2="40" y2="54"/>
+    <line x1="26" y1="54" x2="54" y2="54"/>
+  </svg>`,
+  tv_large:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="6" width="72" height="42" rx="2"/>
+    <line x1="40" y1="48" x2="40" y2="56"/>
+    <line x1="22" y1="56" x2="58" y2="56"/>
+  </svg>`,
+  tv_xlarge:`<svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="4" width="76" height="46" rx="2"/>
+    <line x1="40" y1="50" x2="40" y2="57"/>
+    <line x1="18" y1="57" x2="62" y2="57"/>
+  </svg>`,
+};
+
+// ─── STATE ─────────────────────────────────────────────────────────
 const S = {
-  room: null,   // 0–3 index
-  tv:   null,   // 0–3 index
-  use:  new Set(),  // indices 0–4
-  budget: 15000,
-  src: 'all',
+  filterValues: {},
+  minBudget: 3199,
+  maxBudget: 20000,
   floor: null, fan: null, layout: null
 };
 
-// ── CHIP MAPS ─────────────────────────────────────────────────────
-// room labels → index for scores array
-const ROOM_KEYS = ['Studio / Bedroom','1BHK Hall','2BHK Hall','3BHK / Open Hall'];
-const TV_KEYS   = ['32″ – 43″','43″ – 55″','55″ – 65″','65″ and above'];
-const USE_KEYS  = ['🎬 Movies & OTT','🎮 Gaming','🏏 Sports','📺 Everyday TV','🎵 Music'];
+// ─── BOOT ──────────────────────────────────────────────────────────
+(async function boot() {
+  buildEq();
+  initScrollFade();
+  initHeroCanvas();
+  initRangeSlider();
+  applyTheme();
 
-// ─────────────────────────────────────────────────────────────────
-function pick(btn, type) {
-  const grp = btn.closest('.chips');
-  const btns = [...grp.querySelectorAll('.chip')];
-  const idx = btns.indexOf(btn);
-  const curIdx = S[type];
-  grp.querySelectorAll('.chip').forEach(b => b.classList.remove('on'));
-  if (curIdx === idx) { S[type] = null; }
-  else { btn.classList.add('on'); S[type] = idx; }
+  // Always build filter UI — uses STATIC_FILTERS, no server needed
+  STATIC_FILTERS.forEach(f => {
+    S.filterValues[f.id] = f.type === 'multi' ? new Set() : null;
+  });
+  buildFilterUI();
+
+  try {
+    const [pRes, sRes] = await Promise.all([fetch('./products.json'), fetch('./scores.json')]);
+    if (!pRes.ok || !sRes.ok) throw new Error('fetch failed');
+    const [products, scores] = await Promise.all([pRes.json(), sRes.json()]);
+    CONFIG = {
+      products: products.map(p => ({ ...p, wattNum: parseInt(p.watt)||0, avail: p.avail||'online' })),
+      scores,
+      overrides: [],
+      filters: STATIC_FILTERS,
+    };
+    setLastUpdated(true);
+    updateBudgetNote();
+    render();
+    buildTable();
+  } catch(e) {
+    console.error('Could not load product data. Serving from local file?', e);
+    setLastUpdated(false);
+    document.getElementById('pgrid').innerHTML = '<div class="no-res" style="padding:2rem;color:var(--muted)">⚠ Product data unavailable. Open via a local server:<br><code style="font-size:12px;color:var(--blue)">python -m http.server 8080</code><br>then visit <code style="font-size:12px;color:var(--blue)">localhost:8080</code></div>';
+    document.getElementById('rmeta').style.display = 'flex';
+  }
+})();
+
+function setLastUpdated(ok) {
+  const el = document.getElementById('lastUpdated');
+  if (!el) return;
+  if (ok) { el.textContent = '✓ Live · ' + new Date().toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}); el.style.color = 'var(--green)'; }
+  else    { el.textContent = '⚠ Could not load product data'; el.style.color = '#B45309'; }
+}
+
+// ─── THEME TOGGLE ──────────────────────────────────────────────────
+function applyTheme() {
+  const saved = localStorage.getItem('zeb-theme') || 'light';
+  document.documentElement.dataset.theme = saved;
+  const btn = document.getElementById('themeBtn');
+  if (btn) btn.textContent = saved === 'light' ? '🌙' : '☀️';
+}
+function toggleTheme() {
+  const isDark = document.documentElement.dataset.theme !== 'light';
+  const next   = isDark ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('zeb-theme', next);
+  const btn = document.getElementById('themeBtn');
+  if (btn) btn.textContent = next === 'light' ? '🌙' : '☀️';
+}
+
+// ─── SCROLL FADE ANIMATIONS ────────────────────────────────────────
+function initScrollFade() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+}
+
+// ─── HERO CANVAS WAVES ─────────────────────────────────────────────
+function initHeroCanvas() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx    = canvas.getContext('2d');
+  let t = 0;
+  const waves = [
+    { freq: 0.007, amp: 35, speed: 0.25, y: .45 },
+    { freq: 0.005, amp: 22, speed: 0.18, y: .52 },
+    { freq: 0.009, amp: 18, speed: 0.32, y: .48 },
+  ];
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  resize(); window.addEventListener('resize', resize);
+  (function draw() {
+    requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    waves.forEach(w => {
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+      ctx.lineWidth = 1.5;
+      for (let x = 0; x <= canvas.width; x++) {
+        const y = canvas.height * w.y + Math.sin(x * w.freq + t * w.speed) * w.amp;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    });
+    t += 0.015;
+  })();
+}
+
+// ─── DUAL RANGE SLIDER ─────────────────────────────────────────────
+const RANGE_MIN = 3199, RANGE_MAX = 44999;
+
+function initRangeSlider() {
+  updateRangeDisplay();
+}
+
+function onRangeMin() {
+  const rMin = document.getElementById('rMin');
+  const rMax = document.getElementById('rMax');
+  if (parseInt(rMin.value) >= parseInt(rMax.value) - 500) rMin.value = parseInt(rMax.value) - 500;
+  S.minBudget = parseInt(rMin.value);
+  updateRangeDisplay();
+  if (CONFIG) { updateBudgetNote(); render(); }
+}
+
+function onRangeMax() {
+  const rMin = document.getElementById('rMin');
+  const rMax = document.getElementById('rMax');
+  if (parseInt(rMax.value) <= parseInt(rMin.value) + 500) rMax.value = parseInt(rMin.value) + 500;
+  S.maxBudget = parseInt(rMax.value);
+  updateRangeDisplay();
+  if (CONFIG) { updateBudgetNote(); render(); }
+}
+
+function updateRangeDisplay() {
+  const total = RANGE_MAX - RANGE_MIN;
+  const pMin  = (S.minBudget - RANGE_MIN) / total * 100;
+  const pMax  = (S.maxBudget - RANGE_MIN) / total * 100;
+  const fill  = document.getElementById('rangeFill');
+  if (fill) { fill.style.left = pMin + '%'; fill.style.width = (pMax - pMin) + '%'; }
+  const disp = document.getElementById('budgetDisplay');
+  if (disp) disp.textContent = '₹' + S.minBudget.toLocaleString('en-IN') + ' – ₹' + S.maxBudget.toLocaleString('en-IN');
+  const rMin = document.getElementById('rMin');
+  const rMax = document.getElementById('rMax');
+  if (rMin) rMin.value = S.minBudget;
+  if (rMax) rMax.value = S.maxBudget;
+}
+
+function updateBudgetNote() {
+  const n = CONFIG ? CONFIG.products.filter(p => p.price >= S.minBudget && p.price <= S.maxBudget && p.avail !== 'dealer').length : 0;
+  const el = document.getElementById('bnote');
+  if (el) el.textContent = n + ' soundbar' + (n !== 1 ? 's' : '') + ' in this range';
+}
+
+// ─── FILTER BUILDER ────────────────────────────────────────────────
+function buildFilterUI() {
+  const card     = document.getElementById('filterCard');
+  const budgetEl = document.getElementById('budgetBlock');
+  if (!card || !budgetEl) return;
+
+  STATIC_FILTERS.forEach(f => {
+    const block = document.createElement('div');
+    block.className  = 'filter-block';
+    block.dataset.fid = f.id;
+
+    const lbl = document.createElement('div');
+    lbl.className = 'filter-lbl';
+    lbl.innerHTML  = f.label + (f.type === 'multi' ? ' <span class="multi-hint">· Select all that apply</span>' : '');
+    block.appendChild(lbl);
+
+    const isRoom = f.id === 'room';
+    const isTV   = f.id === 'tv';
+
+    const wrap = document.createElement('div');
+    wrap.className = isRoom ? 'chips-room' : isTV ? 'chips-tv' : 'chips';
+    wrap.id = `fc-${f.id}`;
+
+    f.options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.dataset.fid   = f.id;
+      btn.dataset.val   = opt.key;
+      btn.dataset.ftype = f.type;
+
+      if (isRoom) {
+        btn.className = 'chip-room';
+        btn.innerHTML = `${ROOM_SVG[opt.key]||''}<span class="chip-room-label">${opt.label}</span><span class="chip-room-sub">${opt.sub||''}</span>`;
+      } else if (isTV) {
+        btn.className = 'chip-tv';
+        btn.innerHTML = `${TV_SVG[opt.key]||''}<span class="chip-tv-label">${opt.label}</span><span class="chip-tv-sub">${opt.sub||''}</span>`;
+      } else {
+        btn.className = 'chip';
+        btn.innerHTML = `${opt.label}${opt.sub?`<span class="chip-sub">${opt.sub}</span>`:''}`;
+      }
+
+      btn.onclick = () => handleFilterChip(btn);
+      wrap.appendChild(btn);
+    });
+
+    block.appendChild(wrap);
+    card.insertBefore(block, budgetEl);
+  });
+
+  // Insert a divider before budget
+  const div = document.createElement('hr');
+  div.className = 'filter-divider';
+  card.insertBefore(div, budgetEl);
+}
+
+function handleFilterChip(btn) {
+  const fid   = btn.dataset.fid;
+  const val   = btn.dataset.val;
+  const ftype = btn.dataset.ftype;
+  const isIll = fid === 'room' || fid === 'tv';
+  const sel   = isIll ? (fid==='room'?'.chip-room':'.chip-tv') : '.chip';
+
+  if (ftype === 'multi') {
+    const set = S.filterValues[fid];
+    if (set.has(val)) { set.delete(val); btn.classList.remove('on'); }
+    else              { set.add(val);    btn.classList.add('on');    }
+  } else {
+    document.querySelectorAll(`#fc-${fid} ${sel}`).forEach(b => b.classList.remove('on'));
+    if (S.filterValues[fid] === val) S.filterValues[fid] = null;
+    else { btn.classList.add('on'); S.filterValues[fid] = val; }
+  }
   render();
 }
 
-function toggle(btn, type) {
-  const grp = btn.closest('.chips');
-  const btns = [...grp.querySelectorAll('.chip')];
-  const idx = btns.indexOf(btn);
-  if (S.use.has(idx)) { S.use.delete(idx); btn.classList.remove('on'); }
-  else                { S.use.add(idx);    btn.classList.add('on');    }
-  render();
-}
+// ─── PERSONA PRESETS ───────────────────────────────────────────────
+const PERSONA_PRESETS = {
+  movies:   { use:['movies'],           minBudget:8000,  maxBudget:44999 },
+  gaming:   { use:['gaming'],           minBudget:10000, maxBudget:44999 },
+  sports:   { use:['sports'],           minBudget:6000,  maxBudget:44999 },
+  music:    { use:['music'],            minBudget:5000,  maxBudget:44999 },
+  everyday: { use:['everyday'],         minBudget:3199,  maxBudget:8000  },
+  cinema:   { use:['movies','gaming'],  minBudget:20000, maxBudget:44999 },
+};
 
-function setSrc(btn, src) {
-  document.querySelectorAll('.src-chip').forEach(b => b.classList.remove('on'));
+function setPersona(key, btn) {
+  const p = PERSONA_PRESETS[key];
+  if (!p) return;
+
+  // Reset all filter chips
+  document.querySelectorAll('.chip-room,.chip-tv,.chip').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.persona-pill').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
-  S.src = src;
-  render();
+
+  // Reset filter state
+  if (CONFIG) CONFIG.filters.forEach(f => {
+    S.filterValues[f.id] = f.type === 'multi' ? new Set() : null;
+  });
+
+  // Apply use presets
+  if (CONFIG) p.use.forEach(u => {
+    S.filterValues['use'].add(u);
+    const b = document.querySelector(`[data-fid="use"][data-val="${u}"]`);
+    if (b) b.classList.add('on');
+  });
+
+  S.minBudget = p.minBudget;
+  S.maxBudget = p.maxBudget;
+  updateRangeDisplay();
+
+  if (CONFIG) { updateBudgetNote(); render(); }
+  document.getElementById('finder').scrollIntoView({ behavior:'smooth' });
 }
 
-function setBudget(v) {
-  S.budget = parseInt(v);
-  document.getElementById('bval').textContent = '₹' + S.budget.toLocaleString('en-IN');
-  const n = P.filter(p => p.price <= S.budget).length;
-  document.getElementById('bnote').textContent = n + ' bar' + (n !== 1 ? 's' : '') + ' in range';
-  render();
-}
-
+// ─── ACOUSTIC ──────────────────────────────────────────────────────
 function setAc(btn, type, val) {
   document.querySelectorAll(`#ac-${type} .ac-chip`).forEach(b => b.classList.remove('on'));
-  if (S[type] === val) { S[type] = null; }
+  if (S[type] === val) S[type] = null;
   else { btn.classList.add('on'); S[type] = val; }
   updateInsight();
   render();
 }
 
-// ─────────────────────────────────────────────────────────────────
 function updateInsight() {
   const el = document.getElementById('acInsight');
   const parts = [];
-  if (S.floor === 'carpet') parts.push('<span class="ac-tag">Carpet</span> Absorbs 20–40% of sound energy — we boost wattage recommendations to compensate.');
-  if (S.floor === 'tile')   parts.push('<span class="ac-tag">Tiled</span> Reflective surfaces create flutter echo in high frequencies. Dolby DSP and a dedicated sub help manage it.');
+  if (S.floor === 'carpet') parts.push('<span class="ac-tag">Carpet</span> Absorbs 20–40% of sound — we weight toward higher wattage to compensate.');
+  if (S.floor === 'tile')   parts.push('<span class="ac-tag">Tiled</span> Reflective floors create flutter echo. Dolby DSP and a dedicated sub help manage it.');
   if (S.floor === 'wood')   parts.push('<span class="ac-tag">Wood</span> Warm natural resonance — most soundbars perform well here with no correction needed.');
-  if (S.fan   === 'on')     parts.push('<span class="ac-tag">Fan noise</span> Ceiling fans create ~45dB ambient hum. We prioritise Dolby certification and higher wattage for dialogue clarity.');
-  if (S.layout === 'open')  parts.push('<span class="ac-tag">Open plan</span> Sound disperses in all directions. Rear satellites and higher wattage are essential to fill the space.');
-  if (S.layout === 'closed') parts.push('<span class="ac-tag">Enclosed</span> Walls contain the sound — even compact bars build room-filling audio. Watch for bass buildups at high volume.');
+  if (S.fan   === 'on')     parts.push('<span class="ac-tag">Fan noise</span> ~45dB ambient hum. We weight toward Dolby certification and higher wattage for dialogue clarity.');
+  if (S.layout === 'open')  parts.push('<span class="ac-tag">Open plan</span> Sound disperses in all directions. Rear satellites and higher wattage are essential.');
+  if (S.layout === 'closed') parts.push('<span class="ac-tag">Enclosed</span> Walls contain the sound — compact bars work well in enclosed rooms.');
   if (parts.length) { el.innerHTML = parts.join(' &nbsp;·&nbsp; '); el.classList.add('show'); }
   else              { el.innerHTML = ''; el.classList.remove('show'); }
 }
 
-// ─────────────────────────────────────────────────────────────────
+// ─── SCORING ───────────────────────────────────────────────────────
 function scoreP(p) {
-  if (p.price > S.budget) return -1;
-  if (S.src === 'shop' && p.src === 'zeb')  return -1;
-  if (S.src === 'zeb'  && p.src === 'shop') return -1;
+  if (p.price < S.minBudget || p.price > S.maxBudget) return -1;
+  if (p.avail === 'dealer') return -1;
 
+  const ps   = CONFIG.scores[p.id] || {};
+  const watt = p.wattNum || parseInt(p.watt) || 0;
   let s = 0;
-  if (S.room !== null) s += p.scores.room[S.room] || 0;
-  if (S.tv   !== null) s += p.scores.tv[S.tv]     || 0;
-  if (S.use.size > 0) {
-    let sum = 0;
-    S.use.forEach(i => sum += p.scores.use[i] || 0);
-    s += Math.round(sum / S.use.size);
+
+  const room = S.filterValues['room'];
+  const tv   = S.filterValues['tv'];
+  const uses = S.filterValues['use'];
+  if (room) s += ps.room?.[room] || 0;
+  if (tv)   s += ps.tv?.[tv]     || 0;
+  if (uses && uses.size > 0) {
+    let sum = 0; uses.forEach(u => { sum += ps.use?.[u] || 0; });
+    s += Math.round(sum / uses.size);
   }
 
-  // ── ACOUSTIC MODIFIERS ──────────────────────────────────────
-  if (S.floor === 'carpet') {
-    if (p.watt >= 600) s += 3; else if (p.watt >= 350) s += 2; else if (p.watt >= 200) s += 1;
-    if (p.sub !== 'None') s += 1;
-  }
-  if (S.floor === 'tile') {
-    if (p.atmos) s += 2; else if (p.cert === 'Dolby Audio') s += 1;
-    if (p.sub !== 'None') s += 1;
-  }
-  if (S.floor === 'wood') {
-    if (p.watt >= 200 && p.watt <= 500) s += 1;
-  }
-  if (S.fan === 'on') {
-    if (p.atmos) s += 2; else if (p.cert === 'Dolby Audio') s += 1;
-    if (p.watt >= 300) s += 1;
-  }
-  if (S.layout === 'open') {
-    if (p.sat)        s += 3;
-    if (p.watt >= 500) s += 2; else if (p.watt >= 300) s += 1;
-  }
-  if (S.layout === 'closed') {
-    if (p.compact)    s += 2;
-    if (p.watt <= 400) s += 1;
-  }
+  // Acoustic modifiers
+  if (S.floor === 'carpet') { if (watt>=600) s+=3; else if (watt>=350) s+=2; else if (watt>=200) s+=1; if (p.sub!=='None') s+=1; }
+  if (S.floor === 'tile')   { if (p.atmos) s+=2; else if (p.cert==='Dolby Audio') s+=1; if (p.sub!=='None') s+=1; }
+  if (S.floor === 'wood')   { if (watt>=200&&watt<=500) s+=1; }
+  if (S.fan   === 'on')     { if (p.atmos) s+=2; else if (p.cert==='Dolby Audio') s+=1; if (watt>=300) s+=1; }
+  if (S.layout === 'open')  { if (p.sat) s+=3; if (watt>=500) s+=2; else if (watt>=300) s+=1; }
+  if (S.layout === 'closed'){ if (p.compact) s+=2; if (watt<=400) s+=1; }
 
   return s;
 }
 
-// ── ACOUSTIC NOTE on best-match card ──────────────────────────────
 function acNote(p) {
   const notes = [];
-  if (S.floor === 'carpet' && p.watt >= 350)  notes.push(`${p.watt}W handles carpet absorption — enough headroom to compensate.`);
-  if (S.floor === 'carpet' && p.watt < 200)   notes.push(`Tip: carpet absorbs bass significantly — consider the next wattage tier up if sound feels thin.`);
-  if (S.floor === 'tile'   && p.atmos)         notes.push(`Dolby Atmos DSP corrects for tiled floor reflections — no flutter echo.`);
-  if (S.floor === 'tile'   && !p.atmos)        notes.push(`Tip: upgrading to a Dolby Atmos model will improve clarity on tiled floors.`);
-  if (S.fan   === 'on'     && p.atmos)         notes.push(`Dolby Atmos dialogue enhancement cuts through ceiling fan noise.`);
-  if (S.fan   === 'on'     && p.watt >= 300 && !p.atmos) notes.push(`${p.watt}W gives enough headroom to rise above the fan's ambient hum.`);
-  if (S.layout === 'open'  && p.sat)           notes.push(`Rear satellites are essential for open-plan spaces — sound fills all directions.`);
-  if (S.layout === 'open'  && !p.sat && p.watt >= 500) notes.push(`${p.watt}W compensates for open-plan dispersion even without satellites.`);
-  if (S.layout === 'closed' && p.compact)      notes.push(`Compact form factor is ideal for an enclosed room — sound builds naturally.`);
+  if (S.floor==='carpet'&&p.watt>=350)    notes.push(`${p.watt}W handles carpet absorption — enough headroom to compensate.`);
+  if (S.floor==='tile'&&p.atmos)          notes.push(`Dolby Atmos DSP corrects for tiled floor reflections — no flutter echo.`);
+  if (S.floor==='tile'&&!p.atmos)         notes.push(`Tip: a Dolby Atmos model will improve clarity on tiled floors.`);
+  if (S.fan==='on'&&p.atmos)              notes.push(`Dolby Atmos dialogue enhancement cuts through ceiling fan noise.`);
+  if (S.fan==='on'&&p.watt>=300&&!p.atmos) notes.push(`${p.watt}W gives enough headroom to rise above the fan's ambient hum.`);
+  if (S.layout==='open'&&p.sat)           notes.push(`Rear satellites are essential for open-plan spaces.`);
+  if (S.layout==='closed'&&p.compact)     notes.push(`Compact form factor is ideal for an enclosed room.`);
   if (!notes.length) return '';
   return `<div class="ac-note"><span class="ac-note-lbl">Acoustic match</span>${notes.join(' ')}</div>`;
 }
 
-// ── PRIMARY USE for "why" text ─────────────────────────────────────
 const USE_SLUGS = ['movies','gaming','sports','everyday','music'];
 function primaryUse(best) {
-  if (!S.use.size) return null;
-  return [...S.use].sort((a,b) => (best.scores.use[b]||0)-(best.scores.use[a]||0))[0];
+  const uses = S.filterValues['use'];
+  if (!uses||!uses.size) return null;
+  const ps = CONFIG.scores[best.id] || {};
+  return [...uses].sort((a,b) => (ps.use?.[b]||0)-(ps.use?.[a]||0))[0];
 }
 
-// ─────────────────────────────────────────────────────────────────
+// ─── RENDER ────────────────────────────────────────────────────────
 function render() {
-  const grid = document.getElementById('pgrid');
-  const meta = document.getElementById('rmeta');
+  if (!CONFIG) return;
+  const grid    = document.getElementById('pgrid');
+  const meta    = document.getElementById('rmeta');
   const heading = document.getElementById('rheading');
 
-  const scored = P
+  const scored = CONFIG.products
     .map(p => ({ p, s: scoreP(p) }))
     .filter(x => x.s >= 0)
     .sort((a, b) => b.s - a.s || a.p.price - b.p.price);
 
   meta.style.display = 'flex';
-
   if (!scored.length) {
-    grid.innerHTML = '<div class="no-res">No soundbars match these filters. Try increasing your budget or changing the source filter.</div>';
+    grid.innerHTML = '<div class="no-res">No soundbars match these filters. Try widening your budget range or changing filters.</div>';
     heading.innerHTML = 'No matches found';
     return;
   }
 
-  const hasFilter = S.room !== null || S.tv !== null || S.use.size > 0 || S.floor || S.fan || S.layout;
-  heading.innerHTML = `Showing <strong>${scored.length}</strong> soundbar${scored.length !== 1 ? 's' : ''}` +
-    (hasFilter ? ' · <span style="color:var(--red)">Sorted by best match</span>' : ' · Sorted by price');
+  const uses = S.filterValues['use'];
+  const hasFilter = Object.values(S.filterValues).some(v => v !== null && !(v instanceof Set)) ||
+    (uses&&uses.size>0) || S.floor || S.fan || S.layout;
 
-  const puIdx = primaryUse(scored[0].p);
-  const puSlug = puIdx !== null ? USE_SLUGS[puIdx] : null;
+  heading.innerHTML = `Showing <strong>${scored.length}</strong> soundbar${scored.length!==1?'s':''}` +
+    (hasFilter ? ' · <span style="color:var(--blue)">Sorted by best match</span>' : ' · Sorted by price');
+
+  const puSlug = primaryUse(scored[0].p);
 
   grid.innerHTML = scored.map(({ p, s }, i) => {
-    const isBest = hasFilter && i === 0 && s > 0;
-    const certCls = p.atmos ? 'cert-atmos' : p.cert === 'Dolby Audio' ? 'cert-audio' : 'cert-std';
-    const why = puSlug && p.why[puSlug] ? p.why[puSlug] : '';
+    const isBest   = hasFilter && i === 0 && s > 0;
+    const certCls  = p.atmos ? 'cert-atmos' : p.cert === 'Dolby Audio' ? 'cert-audio' : 'cert-std';
+    const why      = puSlug && p.why?.[puSlug] ? p.why[puSlug] : '';
     const srcLabel = p.src === 'shop' ? 'shop.zeb' : p.src === 'zeb' ? 'zeb.com' : '';
-    return `
-<div class="card${isBest ? ' best' : ''}">
-  ${isBest ? '<div class="best-badge">★ Best Match For You</div>' : ''}
+    return `<div class="card${isBest?' best':''}">
+  ${isBest?'<div class="best-badge">★ Best Match For You</div>':''}
   <img class="card-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-  <div class="img-ph" style="display:none">
-    <svg width="56" height="36" viewBox="0 0 56 36"><rect x="1" y="8" width="54" height="20" rx="3" fill="none" stroke="#ddd" stroke-width="1.5"/><circle cx="28" cy="18" r="5" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
-  </div>
+  <div class="img-ph" style="display:none"><svg width="56" height="32" viewBox="0 0 56 32"><rect x="1" y="6" width="54" height="20" rx="3" fill="none" stroke="#2A2A3A" stroke-width="1.5"/><circle cx="28" cy="16" r="5" fill="none" stroke="#2A2A3A" stroke-width="1.5"/></svg></div>
   <div class="card-body">
     <div class="card-tags">
-      ${p.compact ? '<span class="tag tag-compact">Compact</span>' : ''}
-      ${srcLabel ? `<span class="tag tag-src">${srcLabel}</span>` : ''}
+      ${p.compact?'<span class="tag tag-compact">Compact</span>':''}
+      ${srcLabel?`<span class="tag tag-src">${srcLabel}</span>`:''}
     </div>
     <div class="card-row1">
       <div class="card-name">${p.name}</div>
       <div class="watt-pill">${p.watt}W</div>
     </div>
-    <div class="cert ${certCls}">${p.cert}${p.atmos ? ' + dts:X' : ''}</div>
-    <div class="config">${p.config} Ch · ${p.sub} Sub${p.sat ? ` · ${p.sub === 'Wireless' ? 'Wireless' : 'Wired'} Sat` : ''}</div>
-    <div class="feats">${p.feats.map(f => `<span class="feat">${f}</span>`).join('')}</div>
+    <div class="cert ${certCls}">${p.cert}${p.atmos?' + dts:X':''}</div>
+    <div class="config">${p.config} Ch · ${p.sub} Sub${p.sat?` · ${p.sub==='Wireless'?'Wireless':'Wired'} Sat`:''}</div>
+    <div class="feats">${(p.feats||[]).map(f=>`<span class="feat">${f}</span>`).join('')}</div>
     <div class="price-row">
       <div class="price">₹${p.price.toLocaleString('en-IN')}</div>
       <div class="mrp">₹${p.mrp.toLocaleString('en-IN')}</div>
-      <div class="save">Save ${p.save}%</div>
+      <div class="save">${p.save}% off</div>
     </div>
     <div class="buys">
-      <a class="buy buy-amz" href="${p.amz}" target="_blank">Amazon</a>
-      <a class="buy buy-fk"  href="${p.fk}"  target="_blank">Flipkart</a>
-      <a class="buy buy-zeb" href="${p.zeb}" target="_blank">Zebronics</a>
+      ${p.amz?`<a class="buy buy-amz" href="${p.amz}" target="_blank">Amazon</a>`:''}
+      ${p.fk ?`<a class="buy buy-fk"  href="${p.fk}"  target="_blank">Flipkart</a>`:''}
+      ${p.zeb?`<a class="buy buy-zeb" href="${p.zeb}" target="_blank">Zebronics</a>`:''}
     </div>
-    ${why ? `<div class="why-box">${why}</div>` : ''}
-    ${isBest ? acNote(p) : ''}
+    ${why?`<div class="why-box">${why}</div>`:''}
+    ${isBest?acNote(p):''}
   </div>
 </div>`;
   }).join('');
 }
 
-// ── COMPARE TABLE ──────────────────────────────────────────────────
-(function buildTable() {
-  const rows = [...P].sort((a, b) => a.price - b.price).map(p => {
-    const cp = p.atmos ? 'cp-a' : p.cert === 'Dolby Audio' ? 'cp-d' : 'cp-s';
-    const src = p.src === 'shop' ? 'shop' : p.src === 'zeb' ? 'zeb.com' : 'both';
+// ─── COMPARE TABLE ─────────────────────────────────────────────────
+function buildTable() {
+  if (!CONFIG) return;
+  const rows = [...CONFIG.products].sort((a,b)=>a.price-b.price).map(p => {
+    const cp  = p.atmos?'cp-a':p.cert==='Dolby Audio'?'cp-d':'cp-s';
+    const src = p.src==='shop'?'shop':p.src==='zeb'?'zeb.com':'both';
     return `<tr>
-      <td class="tn">${p.name}
-        ${p.compact ? '<span class="tsub tc">Compact</span>' : ''}
-        <span class="tsub ts">${src}</span>
-      </td>
-      <td style="font-weight:700;color:var(--red)">${p.watt}W</td>
-      <td><span class="cpill ${cp}">${p.cert}${p.atmos ? '+Atmos' : ''}</span></td>
-      <td>${p.config}</td>
-      <td>${p.sub}</td>
-      <td>${p.sat ? '<span class="ok">✓</span>' : '<span class="no">—</span>'}</td>
-      <td>${p.atmos ? '<span class="ok">✓</span>' : '<span class="no">—</span>'}</td>
+      <td class="tn">${p.name}${p.compact?'<span class="tsub tc">Compact</span>':''}<span class="tsub ts">${src}</span></td>
+      <td style="font-weight:700;color:#93C5FD">${p.watt}W</td>
+      <td><span class="cpill ${cp}">${p.cert}${p.atmos?'+Atmos':''}</span></td>
+      <td style="color:var(--muted)">${p.config}</td>
+      <td style="color:var(--muted)">${p.sub}</td>
+      <td>${p.sat?'<span class="ok">✓</span>':'<span class="no">—</span>'}</td>
+      <td>${p.atmos?'<span class="ok">✓</span>':'<span class="no">—</span>'}</td>
       <td class="tp">₹${p.price.toLocaleString('en-IN')}</td>
       <td style="white-space:nowrap">
-        <a class="bm" href="${p.amz}" target="_blank" style="background:#FF9900;color:#111">AMZ</a>
-        <a class="bm" href="${p.fk}"  target="_blank" style="background:#2874F0;color:#fff">FK</a>
-        <a class="bm" href="${p.zeb}" target="_blank" style="background:transparent;color:var(--red);border:1px solid var(--red)">ZEB</a>
+        ${p.amz?`<a class="bm" href="${p.amz}" target="_blank" style="background:#FF9900;color:#111">AMZ</a>`:''}
+        ${p.fk ?`<a class="bm" href="${p.fk}"  target="_blank" style="background:#2874F0;color:#fff">FK</a>`:''}
+        ${p.zeb?`<a class="bm" href="${p.zeb}" target="_blank" style="background:transparent;color:#93C5FD;border:1px solid #1E3A8A">ZEB</a>`:''}
       </td>
     </tr>`;
   }).join('');
   document.getElementById('ctbody').innerHTML = rows;
-})();
-
-// ── HERO EQ ────────────────────────────────────────────────────────
-(function buildEq() {
-  const w = document.getElementById('heroEq');
-  for (let i = 0; i < 20; i++) {
-    const b = document.createElement('div');
-    b.className = 'eq-bar';
-    b.style.cssText = `height:${6 + Math.random()*36}px;animation-delay:${(Math.random()*1.3).toFixed(2)}s;animation-duration:${(.7+Math.random()*.9).toFixed(2)}s`;
-    w.appendChild(b);
-  }
-})();
-
-// ── INIT ───────────────────────────────────────────────────────────
-setBudget(15000);
-render();
-
-// ═══════════════════════════════════════════════════════════════════
-// AUDIO ENGINE  —  real track + synthesis fallback
-// ═══════════════════════════════════════════════════════════════════
-let ctx = null, gBar = null, gSub = null, gSat = null, started = false;
-const CS = { bar: true, sub: false, sat: false };
-
-// Royalty-free CORS-enabled audio tracks (tried in order, first success wins)
-// All are CC0 / public domain from Wikimedia Commons or Free Music Archive
-const TRACKS = [
-  {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4e/BWV_543_fugue.ogg/BWV_543_fugue.ogg.mp3',
-    title: 'J.S. Bach — Fugue in A minor BWV 543',
-    note: 'Classical · Organ · Public Domain'
-  },
-  {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543_fugue.ogg',
-    title: 'J.S. Bach — Fugue in A minor BWV 543',
-    note: 'Classical · Organ · Public Domain'
-  }
-];
-
-let trackAudio = null;       // HTMLAudioElement
-let trackSource = null;      // MediaElementSourceNode
-let trackLoaded = false;
-
-function startAudio() {
-  if (started) return;
-  started = true;
-  document.getElementById('playOv').style.display = 'none';
-
-  ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const master = ctx.createGain(); master.gain.value = 0.5; master.connect(ctx.destination);
-
-  // Create the three routed gain nodes first
-  gBar = ctx.createGain(); gBar.gain.value = 1; gBar.connect(master);
-  gSub = ctx.createGain(); gSub.gain.value = 0.001; gSub.connect(master);
-  gSat = ctx.createGain(); gSat.gain.value = 0.001; gSat.connect(master);
-
-  tryLoadTrack(master);
-  startVis();
 }
 
-// ── Real track loader ──────────────────────────────────────────────
-function tryLoadTrack(master) {
-  let idx = 0;
-  function attempt() {
-    if (idx >= TRACKS.length) { buildSynth(master); return; }
-    const track = TRACKS[idx++];
-    const audio = new Audio();
-    audio.crossOrigin = 'anonymous';
-    audio.loop = true;
-    audio.preload = 'auto';
+// ─── HERO EQ ───────────────────────────────────────────────────────
+function buildEq() {
+  const w = document.getElementById('heroEq');
+  if (!w) return;
+  for (let i=0;i<28;i++) {
+    const b = document.createElement('div');
+    b.className = 'eq-bar';
+    b.style.cssText = `height:${6+Math.random()*32}px;animation-delay:${(Math.random()*1.4).toFixed(2)}s;animation-duration:${(.6+Math.random()*.9).toFixed(2)}s`;
+    w.appendChild(b);
+  }
+}
 
-    const timeout = setTimeout(() => { audio.src = ''; attempt(); }, 6000);
+// ─── JARGON ACCORDION ──────────────────────────────────────────────
+function toggleAcc(btn) {
+  const item   = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 
-    audio.addEventListener('canplaythrough', () => {
-      clearTimeout(timeout);
-      if (trackLoaded) return;
-      trackLoaded = true;
-      setupRealTrack(audio, master, track);
-    }, { once: true });
+// ═══════════════════════════════════════════════════════════════════
+// AUDIO ENGINE — Beethoven Moonlight Sonata + rich synth fallback
+// ═══════════════════════════════════════════════════════════════════
+let ctx=null,gBar=null,gSub=null,gSat=null,started=false;
+const CS={bar:true,sub:false,sat:false};
+const TRACKS=[
+  {url:'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bd/Beethoven_Moonlight_Sonata_Op._27_No._2_-_III._Presto_agitato.ogg/Beethoven_Moonlight_Sonata_Op._27_No._2_-_III._Presto_agitato.ogg.mp3',title:'Beethoven — Moonlight Sonata, Op.27 No.2',note:'Classical Piano · Public Domain · CC0'},
+  {url:'https://upload.wikimedia.org/wikipedia/commons/b/bd/Beethoven_Moonlight_Sonata_Op._27_No._2_-_III._Presto_agitato.ogg',title:'Beethoven — Moonlight Sonata, Op.27 No.2',note:'Classical Piano · Public Domain · CC0'},
+  {url:'https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4e/BWV_543_fugue.ogg/BWV_543_fugue.ogg.mp3',title:'J.S. Bach — Fugue in A minor BWV 543',note:'Classical Organ · Public Domain · CC0'},
+];
+let trackLoaded=false;
 
-    audio.addEventListener('error', () => { clearTimeout(timeout); attempt(); }, { once: true });
-    audio.src = track.url;
-    audio.load();
+function startAudio(){
+  if(started)return;started=true;
+  document.getElementById('playOv').style.display='none';
+  ctx=new(window.AudioContext||window.webkitAudioContext)();
+  const master=ctx.createGain();master.gain.value=0.5;master.connect(ctx.destination);
+  gBar=ctx.createGain();gBar.gain.value=1;gBar.connect(master);
+  gSub=ctx.createGain();gSub.gain.value=0.001;gSub.connect(master);
+  gSat=ctx.createGain();gSat.gain.value=0.001;gSat.connect(master);
+  tryLoadTrack(master);startVis();
+}
+
+function tryLoadTrack(master){
+  let idx=0;
+  function attempt(){
+    if(idx>=TRACKS.length){buildSynth(master);return;}
+    const track=TRACKS[idx++];
+    const audio=new Audio();audio.crossOrigin='anonymous';audio.loop=true;audio.preload='auto';
+    const timeout=setTimeout(()=>{audio.src='';attempt();},7000);
+    audio.addEventListener('canplaythrough',()=>{clearTimeout(timeout);if(trackLoaded)return;trackLoaded=true;setupRealTrack(audio,master,track);},{once:true});
+    audio.addEventListener('error',()=>{clearTimeout(timeout);attempt();},{once:true});
+    audio.src=track.url;audio.load();
   }
   attempt();
-
-  // Meanwhile, build synth so there's immediate audio while track loads
   buildSynth(master);
 }
 
-function setupRealTrack(audio, master, track) {
-  trackAudio = audio;
-  // Disconnect synth gains (they'll keep running silently)
-  // Re-route: track → splitter → low/mid/high filters → component gains
-  const src = ctx.createMediaElementSource(audio);
-
-  // Low-pass for sub channel
-  const lpf = ctx.createBiquadFilter(); lpf.type = 'lowpass'; lpf.frequency.value = 180; lpf.Q.value = 0.8;
-  // Band-pass for soundbar channel
-  const bpf = ctx.createBiquadFilter(); bpf.type = 'bandpass'; bpf.frequency.value = 1400; bpf.Q.value = 0.4;
-  // High-shelf for satellite sparkle layer
-  const hsf = ctx.createBiquadFilter(); hsf.type = 'highshelf'; hsf.frequency.value = 3000; hsf.gain.value = 8;
-  // Wide-range filter for satellite (full mix delayed + panned)
-  const satDelay1 = ctx.createDelay(0.5); satDelay1.delayTime.value = 0.06;
-  const satDelay2 = ctx.createDelay(0.5); satDelay2.delayTime.value = 0.11;
-  const satGain1 = ctx.createGain(); satGain1.gain.value = 0.7;
-  const satGain2 = ctx.createGain(); satGain2.gain.value = 0.7;
-
-  const pan1 = ctx.createStereoPanner?.() || null;
-  const pan2 = ctx.createStereoPanner?.() || null;
-  if (pan1) { pan1.pan.value = -0.92; pan2.pan.value = 0.92; }
-
-  // Route sub
-  src.connect(lpf); lpf.connect(gSub);
-  // Route bar — full signal, no filtering (real dialogue/music needs full range)
+function setupRealTrack(audio,master,track){
+  const src=ctx.createMediaElementSource(audio);
+  const lpf=ctx.createBiquadFilter();lpf.type='lowpass';lpf.frequency.value=150;lpf.Q.value=0.9;
+  const hpf=ctx.createBiquadFilter();hpf.type='highpass';hpf.frequency.value=5000;
+  const d1=ctx.createDelay(.5);d1.delayTime.value=.07;
+  const d2=ctx.createDelay(.5);d2.delayTime.value=.12;
+  const sg1=ctx.createGain();sg1.gain.value=.7;
+  const sg2=ctx.createGain();sg2.gain.value=.7;
+  const p1=ctx.createStereoPanner?.()??null;
+  const p2=ctx.createStereoPanner?.()??null;
+  if(p1){p1.pan.value=-.9;p2.pan.value=.9;}
+  src.connect(lpf);lpf.connect(gSub);
   src.connect(gBar);
-  // Route satellites — two delayed+panned copies for envelopment
-  src.connect(satDelay1); src.connect(satDelay2);
-  satDelay1.connect(satGain1); satGain1.connect(pan1 || gSat);
-  satDelay2.connect(satGain2); satGain2.connect(pan2 || gSat);
-  if (pan1) { pan1.connect(gSat); pan2.connect(gSat); }
-
-  // Fade out synth master over 2s now that real track is ready
-  master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
-  master.gain.linearRampToValueAtTime(0, ctx.currentTime + 2);
-  setTimeout(() => {
-    const realMaster = ctx.createGain(); realMaster.gain.value = 0;
-    realMaster.connect(ctx.destination);
-    gSub.disconnect(); gSub.connect(realMaster);
-    gBar.disconnect(); gBar.connect(realMaster);
-    gSat.disconnect(); gSat.connect(realMaster);
-    realMaster.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 1);
-    updateG();
-  }, 2100);
-
-  audio.play().catch(() => {});
-
-  // Update track info UI
-  const si = document.getElementById('status');
-  if (si) si.textContent = `▶ ${track.title} · Toggle components above`;
-
-  const ti = document.getElementById('trackInfo');
-  if (ti) { ti.innerHTML = `<strong>${track.title}</strong> &nbsp;·&nbsp; ${track.note} &nbsp;·&nbsp; <span style="color:#888">Adjust volume on your device</span>`; ti.style.display = 'block'; }
+  src.connect(hpf);hpf.connect(d1);hpf.connect(d2);
+  d1.connect(sg1);sg1.connect(p1??gSat);
+  d2.connect(sg2);sg2.connect(p2??gSat);
+  if(p1){p1.connect(gSat);p2.connect(gSat);}
+  master.gain.setValueAtTime(master.gain.value,ctx.currentTime);
+  master.gain.linearRampToValueAtTime(0,ctx.currentTime+2);
+  setTimeout(()=>{
+    const rm=ctx.createGain();rm.gain.value=0;rm.connect(ctx.destination);
+    gSub.disconnect();gSub.connect(rm);gBar.disconnect();gBar.connect(rm);gSat.disconnect();gSat.connect(rm);
+    rm.gain.linearRampToValueAtTime(0.5,ctx.currentTime+1);updateG();
+  },2100);
+  audio.play().catch(()=>{});
+  const si=document.getElementById('status');if(si)si.textContent=`▶ ${track.title}`;
+  const ti=document.getElementById('trackInfo');
+  if(ti){ti.innerHTML=`▶ <strong>${track.title}</strong> &nbsp;·&nbsp; ${track.note}`;ti.style.display='block';}
 }
 
-// ── Synthesised fallback track ─────────────────────────────────────
-// Cinematic action trailer feel — 88bpm, Cm progression
-// Clearly distinct layers so toggling is obvious
-function buildSynth(master) {
-  const BPM = 88, BEAT = 60 / BPM;
-
-  // ── SOUNDBAR LAYER: melody + chords + hi-hats ──────────────────
-  const barBus = ctx.createGain(); barBus.gain.value = 1; barBus.connect(gBar);
-
-  // Chords: Cm – Ab – Eb – Bb (cinematic minor)
-  const chordFreqs = [
-    [130.81, 155.56, 196.00],  // Cm
-    [103.83, 130.81, 155.56],  // Ab
-    [155.56, 196.00, 233.08],  // Eb
-    [116.54, 146.83, 174.61],  // Bb
-  ];
-  let chordIdx = 0;
-  const chordOscs = chordFreqs[0].map((f, i) => {
-    const o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.value = f;
-    const g = ctx.createGain(); g.gain.value = 0.06;
-    // Vibrato
-    const lfo = ctx.createOscillator(); const lfog = ctx.createGain();
-    lfo.frequency.value = 5.5; lfog.gain.value = 1.5; lfo.connect(lfog); lfog.connect(o.frequency); lfo.start();
-    o.connect(g); g.connect(barBus); o.start(); return { o, g };
+function buildSynth(master){
+  const BPM=88,BEAT=60/BPM;
+  const barBus=ctx.createGain();barBus.gain.value=1;barBus.connect(gBar);
+  const chordFreqs=[[130.81,155.56,196],[103.83,130.81,155.56],[155.56,196,233.08],[116.54,146.83,174.61]];
+  let chordIdx=0;
+  const chordOscs=chordFreqs[0].map((f,i)=>{
+    const o=ctx.createOscillator();o.type='triangle';o.frequency.value=f;
+    const g=ctx.createGain();g.gain.value=0.06;
+    const lfo=ctx.createOscillator();const lg=ctx.createGain();lfo.frequency.value=5.5;lg.gain.value=1.5;lfo.connect(lg);lg.connect(o.frequency);lfo.start();
+    o.connect(g);g.connect(barBus);o.start();return{o,g};
   });
-
-  // Melody: pentatonic C minor runs
-  const melNotes = [261.63, 311.13, 349.23, 392.00, 466.16, 392.00, 349.23, 311.13];
-  let melIdx = 0;
-  function playMelNote(t) {
-    const o = ctx.createOscillator(), g = ctx.createGain();
-    o.type = 'sawtooth'; o.frequency.value = melNotes[melIdx++ % melNotes.length];
-    g.gain.setValueAtTime(0.08, t); g.gain.exponentialRampToValueAtTime(0.001, t + BEAT * 0.9);
-    // Envelope filter
-    const f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.setValueAtTime(3000, t); f.frequency.exponentialRampToValueAtTime(800, t + BEAT * 0.8);
-    o.connect(f); f.connect(g); g.connect(barBus); o.start(t); o.stop(t + BEAT);
-  }
-
-  // Snare on beats 2 and 4
-  function snare(t) {
-    const buf = ctx.createBuffer(1, ctx.sampleRate * 0.12, ctx.sampleRate);
-    const d = buf.getChannelData(0);
-    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.04));
-    const n = ctx.createBufferSource(); n.buffer = buf;
-    const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 220; f.Q.value = 0.8;
-    const g = ctx.createGain(); g.gain.setValueAtTime(0.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
-    n.connect(f); f.connect(g); g.connect(barBus); n.start(t); n.stop(t + 0.13);
-  }
-
-  // Hi-hats on 8ths
-  function hihat(t, open = false) {
-    const buf = ctx.createBuffer(1, ctx.sampleRate * (open ? 0.2 : 0.05), ctx.sampleRate);
-    const d = buf.getChannelData(0);
-    const decay = open ? 0.15 : 0.04;
-    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * decay));
-    const n = ctx.createBufferSource(); n.buffer = buf;
-    const f = ctx.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 8000;
-    const g = ctx.createGain(); g.gain.value = open ? 0.18 : 0.1;
-    n.connect(f); f.connect(g); g.connect(barBus); n.start(t); n.stop(t + (open ? 0.21 : 0.06));
-  }
-
-  // ── SUB LAYER: kick + deep bass ────────────────────────────────
-  const subBus = ctx.createGain(); subBus.gain.value = 1;
-  const subLPF = ctx.createBiquadFilter(); subLPF.type = 'lowpass'; subLPF.frequency.value = 160; subLPF.Q.value = 1.2;
-  subBus.connect(subLPF); subLPF.connect(gSub);
-
-  function kick(t) {
-    const o = ctx.createOscillator(), g = ctx.createGain();
-    o.frequency.setValueAtTime(180, t); o.frequency.exponentialRampToValueAtTime(40, t + 0.07);
-    g.gain.setValueAtTime(1.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
-    // Thump layer
-    const o2 = ctx.createOscillator(), g2 = ctx.createGain();
-    o2.type = 'sine'; o2.frequency.value = 60;
-    g2.gain.setValueAtTime(0.8, t); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
-    o.connect(g); g.connect(subBus); o2.connect(g2); g2.connect(subBus);
-    o.start(t); o.stop(t + 0.3); o2.start(t); o2.stop(t + 0.2);
-  }
-
-  // Bass line following chord changes
-  const bassLine = [65.41, 51.91, 77.78, 58.27]; // Cm, Ab, Eb, Bb roots
-  let bassIdx = 0;
-  function playBassNote(t, dur) {
-    const o = ctx.createOscillator(), g = ctx.createGain();
-    o.type = 'sine'; o.frequency.value = bassLine[bassIdx % bassLine.length];
-    g.gain.setValueAtTime(0.6, t); g.gain.setValueAtTime(0.6, t + dur - 0.05); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
-    o.connect(g); g.connect(subBus); o.start(t); o.stop(t + dur + 0.05);
-  }
-
-  // ── SATELLITE LAYER: delayed stereo width ─────────────────────
-  const satBus = ctx.createGain(); satBus.gain.value = 1;
-  const pan1 = ctx.createStereoPanner?.() || null, pan2 = ctx.createStereoPanner?.() || null;
-  if (pan1) { pan1.pan.value = -0.9; pan2.pan.value = 0.9; }
-  const dL = ctx.createDelay(0.5); dL.delayTime.value = 0.075;
-  const dR = ctx.createDelay(0.5); dR.delayTime.value = 0.13;
-  const revGain = ctx.createGain(); revGain.gain.value = 0.55;
-  // Route: barBus → satBus → delays → pans → gSat
-  barBus.connect(satBus);
-  satBus.connect(revGain);
-  revGain.connect(dL); revGain.connect(dR);
-  dL.connect(pan1 || gSat); dR.connect(pan2 || gSat);
-  if (pan1) { pan1.connect(gSat); pan2.connect(gSat); }
-
-  // ── SCHEDULER ─────────────────────────────────────────────────
-  let nextBeat = ctx.currentTime + 0.1;
-  let beatNum = 0;
-  const BARS = 8; // chord changes every 2 bars (8 beats)
-
-  function schedule() {
-    while (nextBeat < ctx.currentTime + 0.4) {
-      const t = nextBeat;
-      const beatInBar = beatNum % 4;
-      const beatInProg = beatNum % (BARS);
-
-      // Chord change every 2 bars
-      if (beatNum % 8 === 0) {
-        chordIdx = (beatNum / 8 | 0) % 4;
-        chordOscs.forEach(({ o, g }, i) => {
-          o.frequency.setTargetAtTime(chordFreqs[chordIdx][i], t, 0.05);
-        });
-        bassIdx = chordIdx;
-        playBassNote(t, BEAT * 8);
-      }
-
-      // Kick: beats 1 and 3 (0-indexed: 0 and 2)
-      if (beatInBar === 0 || beatInBar === 2) kick(t);
-
-      // Snare: beats 2 and 4 (1-indexed: 1 and 3 in 0-indexed)
-      if (beatInBar === 1 || beatInBar === 3) snare(t);
-
-      // Hi-hats: every half beat
-      hihat(t, beatInBar === 3 && beatNum % 2 === 0); // occasional open hat
-      hihat(t + BEAT * 0.5);
-
-      // Melody: every beat on even bars
-      if ((beatNum / 4 | 0) % 2 === 0) playMelNote(t);
-
-      nextBeat += BEAT;
-      beatNum++;
+  const melNotes=[261.63,311.13,349.23,392,466.16,392,349.23,311.13];let melIdx=0;
+  function playMel(t){const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.value=melNotes[melIdx++%melNotes.length];g.gain.setValueAtTime(.08,t);g.gain.exponentialRampToValueAtTime(.001,t+BEAT*.9);const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.setValueAtTime(3000,t);f.frequency.exponentialRampToValueAtTime(800,t+BEAT*.8);o.connect(f);f.connect(g);g.connect(barBus);o.start(t);o.stop(t+BEAT);}
+  function snare(t){const buf=ctx.createBuffer(1,ctx.sampleRate*.12,ctx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*.04));const n=ctx.createBufferSource();n.buffer=buf;const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=220;f.Q.value=0.8;const g=ctx.createGain();g.gain.setValueAtTime(.5,t);g.gain.exponentialRampToValueAtTime(.001,t+.12);n.connect(f);f.connect(g);g.connect(barBus);n.start(t);n.stop(t+.13);}
+  function hihat(t,open=false){const buf=ctx.createBuffer(1,ctx.sampleRate*(open?.2:.05),ctx.sampleRate);const d=buf.getChannelData(0);const dec=open?.15:.04;for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*dec));const n=ctx.createBufferSource();n.buffer=buf;const f=ctx.createBiquadFilter();f.type='highpass';f.frequency.value=8000;const g=ctx.createGain();g.gain.value=open?.18:.1;n.connect(f);f.connect(g);g.connect(barBus);n.start(t);n.stop(t+(open?.21:.06));}
+  const subBus=ctx.createGain();subBus.gain.value=1;const subLPF=ctx.createBiquadFilter();subLPF.type='lowpass';subLPF.frequency.value=160;subLPF.Q.value=1.2;subBus.connect(subLPF);subLPF.connect(gSub);
+  function kick(t){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(180,t);o.frequency.exponentialRampToValueAtTime(40,t+.07);g.gain.setValueAtTime(1.5,t);g.gain.exponentialRampToValueAtTime(.001,t+.28);const o2=ctx.createOscillator(),g2=ctx.createGain();o2.type='sine';o2.frequency.value=60;g2.gain.setValueAtTime(.8,t);g2.gain.exponentialRampToValueAtTime(.001,t+.15);o.connect(g);g.connect(subBus);o2.connect(g2);g2.connect(subBus);o.start(t);o.stop(t+.3);o2.start(t);o2.stop(t+.2);}
+  const bassLine=[65.41,51.91,77.78,58.27];let bassIdx=0;
+  function playBass(t,dur){const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=bassLine[bassIdx%bassLine.length];g.gain.setValueAtTime(.6,t);g.gain.setValueAtTime(.6,t+dur-.05);g.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(g);g.connect(subBus);o.start(t);o.stop(t+dur+.05);}
+  const satBus=ctx.createGain();satBus.gain.value=1;const sp1=ctx.createStereoPanner?.()??null,sp2=ctx.createStereoPanner?.()??null;if(sp1){sp1.pan.value=-.9;sp2.pan.value=.9;}const dL=ctx.createDelay(.5);dL.delayTime.value=.075;const dR=ctx.createDelay(.5);dR.delayTime.value=.13;const rg=ctx.createGain();rg.gain.value=.55;barBus.connect(satBus);satBus.connect(rg);rg.connect(dL);rg.connect(dR);dL.connect(sp1??gSat);dR.connect(sp2??gSat);if(sp1){sp1.connect(gSat);sp2.connect(gSat);}
+  let nextBeat=ctx.currentTime+.1,beatNum=0;
+  function schedule(){
+    while(nextBeat<ctx.currentTime+.4){
+      const t=nextBeat,bib=beatNum%4;
+      if(beatNum%8===0){chordIdx=(beatNum/8|0)%4;chordOscs.forEach(({o},i)=>o.frequency.setTargetAtTime(chordFreqs[chordIdx][i],t,.05));bassIdx=chordIdx;playBass(t,BEAT*8);}
+      if(bib===0||bib===2)kick(t);
+      if(bib===1||bib===3)snare(t);
+      hihat(t,bib===3&&beatNum%2===0);hihat(t+BEAT*.5);
+      if((beatNum/4|0)%2===0)playMel(t);
+      nextBeat+=BEAT;beatNum++;
     }
-    setTimeout(schedule, 100);
+    setTimeout(schedule,100);
   }
   schedule();
-
-  document.getElementById('status').textContent = 'PLAYING (DEMO) · Toggle components above';
+  document.getElementById('status').textContent='PLAYING (DEMO SYNTH) · Toggle components above';
 }
 
-function updateG() {
-  if (!ctx) return;
-  const t = ctx.currentTime;
-  gBar?.gain.linearRampToValueAtTime(CS.bar ? 1 : 0.001, t + 0.12);
-  gSub?.gain.linearRampToValueAtTime(CS.sub ? 1 : 0.001, t + 0.12);
-  gSat?.gain.linearRampToValueAtTime(CS.sat ? 1 : 0.001, t + 0.12);
-}
+function updateG(){if(!ctx)return;const t=ctx.currentTime;gBar?.gain.linearRampToValueAtTime(CS.bar?1:.001,t+.12);gSub?.gain.linearRampToValueAtTime(CS.sub?1:.001,t+.12);gSat?.gain.linearRampToValueAtTime(CS.sat?1:.001,t+.12);}
+function toggleComp(id){CS[id]=!CS[id];document.getElementById('c-'+id).classList.toggle('on',CS[id]);const sv=document.getElementById('sv-'+id);sv.textContent=CS[id]?'ON':'OFF';sv.className='stat-v'+(CS[id]?' on':'');updateG();}
 
-function toggleComp(id) {
-  CS[id] = !CS[id];
-  document.getElementById('c-' + id).classList.toggle('on', CS[id]);
-  const sv = document.getElementById('sv-' + id);
-  sv.textContent = CS[id] ? 'ON' : 'OFF';
-  sv.className = 'stat-v' + (CS[id] ? ' on' : '');
-  updateG();
-}
-
+// ─── CANVAS VISUALISER ─────────────────────────────────────────────
 function startVis(){
   const canvas=document.getElementById('vis');
   const c=canvas.getContext('2d');
   const t0=Date.now();
   function rsz(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
-  rsz(); window.addEventListener('resize',rsz);
+  rsz();window.addEventListener('resize',rsz);
+  // Wave emitter state for sound waves
+  const waves=[];let waveTimer=0;
   (function draw(){
     requestAnimationFrame(draw);
     const W=canvas.width,H=canvas.height,now=(Date.now()-t0)/1000;
-    c.fillStyle='#1C1C2E'; c.fillRect(0,0,W,H);
-    // Room walls
-    c.strokeStyle='#3A4060'; c.lineWidth=1.5; c.strokeRect(14,14,W-28,H-28);
-    // Floor line
-    c.strokeStyle='#2E3050'; c.lineWidth=1; c.beginPath(); c.moveTo(14,H-65); c.lineTo(W-14,H-65); c.stroke();
-
+    c.fillStyle='#0D111E';c.fillRect(0,0,W,H);
+    c.strokeStyle='rgba(255,255,255,.04)';c.lineWidth=1;c.strokeRect(14,14,W-28,H-28);
+    c.strokeStyle='rgba(255,255,255,.03)';c.lineWidth=1;c.beginPath();c.moveTo(14,H-65);c.lineTo(W-14,H-65);c.stroke();
     // TV
-    c.fillStyle='#2A2A3E'; c.fillRect(W/2-72,20,144,12);
-    c.fillStyle='#E31B23'; c.fillRect(W/2-72,20,144,4);
-    c.fillStyle='#888'; c.font='bold 9px Barlow,sans-serif'; c.textAlign='center';
-    c.fillText('TV',W/2,16);
-
+    c.fillStyle='#1A1F35';c.fillRect(W/2-72,20,144,12);
+    c.fillStyle='#3B82F6';c.fillRect(W/2-72,20,144,4);
+    c.fillStyle='rgba(255,255,255,.4)';c.font='bold 9px Inter,sans-serif';c.textAlign='center';c.fillText('TV',W/2,16);
     // Sofa
-    c.fillStyle='#2A2D45'; c.fillRect(W/2-85,H-58,170,32);
-    c.fillStyle='#353860'; c.fillRect(W/2-98,H-64,16,40);
-    c.fillStyle='#353860'; c.fillRect(W/2+82,H-64,16,40);
-    c.fillStyle='#6870A8'; c.font='bold 9px Barlow,sans-serif'; c.textAlign='center';
-    c.fillText('YOU',W/2,H-38);
-
+    c.fillStyle='#1A1D2E';c.fillRect(W/2-85,H-58,170,32);c.fillStyle='#1E2338';c.fillRect(W/2-98,H-64,16,40);c.fillStyle='#1E2338';c.fillRect(W/2+82,H-64,16,40);
+    c.fillStyle='rgba(99,130,246,.7)';c.font='bold 9px Inter,sans-serif';c.textAlign='center';c.fillText('YOU',W/2,H-38);
     // Soundbar
-    const ba=CS.bar?1:.35;
-    c.fillStyle=`rgba(227,27,35,${ba})`; c.fillRect(W/2-60,36,120,16);
-    c.fillStyle=`rgba(255,255,255,${ba})`; c.font='bold 9px Barlow,sans-serif';
-    c.fillText('SOUNDBAR',W/2,48);
-
-    if(CS.bar){const t2=now*2;for(let r=0;r<4;r++){const ri=(r+t2%1)*52+18,a=Math.max(0,(1-ri/190)*.6*(.5+.5*Math.sin(t2-r)));c.beginPath();c.arc(W/2,44,ri,Math.PI*1.08,Math.PI*1.92);c.strokeStyle=`rgba(227,27,35,${a})`;c.lineWidth=1.5;c.stroke();}}
-
-    // Sub
-    if(CS.sub){
-      const pu=.65+.35*Math.abs(Math.sin(now*Math.PI*2.1));
-      c.fillStyle=`rgba(227,27,35,${.15*pu})`; c.fillRect(26,H/2-28,52,56);
-      c.strokeStyle=`rgba(227,27,35,${pu})`; c.lineWidth=2;
-      c.beginPath();c.arc(52,H/2,20,0,Math.PI*2);c.stroke();
-      c.beginPath();c.arc(52,H/2,10,0,Math.PI*2);
-      c.fillStyle=`rgba(227,27,35,${.8*pu})`;c.fill();
-      for(let b=0;b<3;b++){const br=((now*1.8+b*.7)%3)*58+14;c.beginPath();c.arc(52,H/2,br,0,Math.PI*2);c.strokeStyle=`rgba(227,27,35,${Math.max(0,(1-br/175)*.5)})`;c.lineWidth=1;c.stroke();}
-    } else {
-      c.strokeStyle='#3A3A5A'; c.lineWidth=1.5; c.strokeRect(26,H/2-28,52,56);
-      c.strokeStyle='#4A4A6A'; c.beginPath();c.arc(52,H/2,18,0,Math.PI*2);c.stroke();
+    const ba=CS.bar?1:.25;
+    c.fillStyle=`rgba(59,130,246,${ba*.7})`;c.fillRect(W/2-60,36,120,14);
+    c.fillStyle=`rgba(255,255,255,${ba})`;c.font='bold 8px Inter,sans-serif';c.fillText('SOUNDBAR',W/2,47);
+    // Soundbar sound arcs (blue)
+    if(CS.bar){
+      for(let r=0;r<4;r++){
+        const ri=(r+(now*2.2)%1)*55+16;
+        const a=Math.max(0,(1-ri/200)*.55*(.5+.5*Math.sin(now*2.5-r)));
+        c.beginPath();c.arc(W/2,43,ri,Math.PI*1.1,Math.PI*1.9);
+        c.strokeStyle=`rgba(59,130,246,${a})`;c.lineWidth=1.5;c.stroke();
+      }
     }
-    c.fillStyle='#7070A0'; c.font='bold 9px Barlow,sans-serif'; c.fillText('SUB',52,H/2+36);
-
-    // Satellites
+    // Subwoofer (indigo)
+    if(CS.sub){
+      const pu=.6+.4*Math.abs(Math.sin(now*Math.PI*2.1));
+      c.fillStyle=`rgba(79,70,229,${.12*pu})`;c.fillRect(26,H/2-28,52,56);
+      c.strokeStyle=`rgba(99,102,241,${pu})`;c.lineWidth=2;c.beginPath();c.arc(52,H/2,20,0,Math.PI*2);c.stroke();
+      c.beginPath();c.arc(52,H/2,10,0,Math.PI*2);c.fillStyle=`rgba(99,102,241,${.8*pu})`;c.fill();
+      for(let b=0;b<3;b++){const br=((now*1.8+b*.7)%3)*58+14;c.beginPath();c.arc(52,H/2,br,0,Math.PI*2);c.strokeStyle=`rgba(99,102,241,${Math.max(0,(1-br/175)*.45)})`;c.lineWidth=1;c.stroke();}
+    } else {
+      c.strokeStyle='#1E2338';c.lineWidth=1.5;c.strokeRect(26,H/2-28,52,56);
+      c.strokeStyle='#2A3050';c.beginPath();c.arc(52,H/2,18,0,Math.PI*2);c.stroke();
+    }
+    c.fillStyle='rgba(99,102,241,.5)';c.font='bold 8px Inter,sans-serif';c.textAlign='center';c.fillText('SUB',52,H/2+36);
+    // Satellites (amber)
     const sw=32;
     if(CS.sat){
-      const pu2=.65+.35*Math.abs(Math.sin(now*Math.PI*1.8+1));
-      c.strokeStyle=`rgba(245,166,35,${pu2})`; c.lineWidth=2;
-      c.strokeRect(18,H-90,sw,50); c.strokeRect(W-18-sw,H-90,sw,50);
-      c.fillStyle=`rgba(245,166,35,.12)`;
-      c.fillRect(18,H-90,sw,50); c.fillRect(W-18-sw,H-90,sw,50);
-      c.setLineDash([4,4]); c.strokeStyle=`rgba(245,166,35,.55)`; c.lineWidth=1.5;
+      const pu2=.6+.4*Math.abs(Math.sin(now*Math.PI*1.8+1));
+      c.strokeStyle=`rgba(245,158,11,${pu2})`;c.lineWidth=2;c.strokeRect(18,H-90,sw,50);c.strokeRect(W-18-sw,H-90,sw,50);
+      c.fillStyle=`rgba(245,158,11,.1)`;c.fillRect(18,H-90,sw,50);c.fillRect(W-18-sw,H-90,sw,50);
+      c.setLineDash([5,4]);c.strokeStyle=`rgba(245,158,11,.5)`;c.lineWidth=1.5;
       c.beginPath();c.moveTo(34,H-65);c.lineTo(W/2-60,50);c.stroke();
       c.beginPath();c.moveTo(W-18-sw/2,H-65);c.lineTo(W/2+60,50);c.stroke();
       c.setLineDash([]);
     } else {
-      c.strokeStyle='#3A3A5A'; c.lineWidth=1.5;
-      c.strokeRect(18,H-90,sw,50); c.strokeRect(W-18-sw,H-90,sw,50);
-      // Speaker cone hint
-      c.strokeStyle='#4A4A6A';
-      c.beginPath();c.arc(34,H-65,10,0,Math.PI*2);c.stroke();
-      c.beginPath();c.arc(W-18-sw/2,H-65,10,0,Math.PI*2);c.stroke();
+      c.strokeStyle='#1E2338';c.lineWidth=1.5;c.strokeRect(18,H-90,sw,50);c.strokeRect(W-18-sw,H-90,sw,50);
+      c.strokeStyle='#2A3050';c.beginPath();c.arc(34,H-65,10,0,Math.PI*2);c.stroke();c.beginPath();c.arc(W-18-sw/2,H-65,10,0,Math.PI*2);c.stroke();
     }
-    c.fillStyle='#7070A0'; c.font='bold 8px Barlow,sans-serif';
-    c.fillText('REAR L',34,H-28); c.fillText('REAR R',W-18-sw/2,H-28);
-
-    // EQ bars
+    c.fillStyle='rgba(245,158,11,.5)';c.font='bold 7px Inter,sans-serif';c.textAlign='center';c.fillText('REAR L',34,H-28);c.fillText('REAR R',W-18-sw/2,H-28);
+    // EQ bars (blue/indigo/amber)
     const bands=32,eqW=(W-76)/bands;
     for(let i=0;i<bands;i++){
       let h=0;
-      if(CS.bar)h+=14+Math.abs(Math.sin(now*2+i*.4))*17+Math.random()*5;
-      if(CS.sub&&i<8)h+=18+Math.abs(Math.sin(now*2.2))*24+Math.random()*7;
-      if(CS.sat&&i>16)h+=7+Math.abs(Math.sin(now*1.6+i*.2))*11+Math.random()*4;
-      h=Math.min(h,48);
-      const baseAlpha = CS.bar||CS.sub||CS.sat ? 1 : 0.2;
-      const col = i<8&&CS.sub ? `rgba(227,27,35,${baseAlpha})` : i>16&&CS.sat ? `rgba(245,166,35,${baseAlpha*.8})` : `rgba(227,27,35,${baseAlpha*.7})`;
-      c.fillStyle=col;
-      c.fillRect(38+i*eqW,H-17-h,eqW-2,h);
+      if(CS.bar)h+=12+Math.abs(Math.sin(now*2+i*.4))*16+Math.random()*4;
+      if(CS.sub&&i<8)h+=16+Math.abs(Math.sin(now*2.2))*22+Math.random()*6;
+      if(CS.sat&&i>20)h+=6+Math.abs(Math.sin(now*1.6+i*.2))*10+Math.random()*3;
+      h=Math.min(h,46);
+      const col=i<8&&CS.sub?`rgba(99,102,241,${h>0?1:.2})`:i>20&&CS.sat?`rgba(245,158,11,${h>0?.85:.15})`:`rgba(59,130,246,${h>0?.75:.15})`;
+      c.fillStyle=col;c.fillRect(38+i*eqW,H-17-h,eqW-2,h);
     }
-    c.fillStyle='#8888AA'; c.font='bold 8px Barlow,sans-serif'; c.textAlign='center';
-    c.fillText('BASS',58,H-5); c.fillText('MID',W/2,H-5); c.fillText('HIGH',W-58,H-5);
+    c.fillStyle='rgba(255,255,255,.25)';c.font='bold 7px Inter,sans-serif';c.textAlign='center';
+    c.fillText('BASS',58,H-5);c.fillText('MID',W/2,H-5);c.fillText('HIGH',W-58,H-5);
   })();
 }
 </script>

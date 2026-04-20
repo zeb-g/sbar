@@ -1,0 +1,779 @@
+{
+  "jukebar_2500": {
+    "room": {
+      "studio": 5,
+      "small": 3,
+      "medium": 1,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 2,
+      "gaming": 1,
+      "sports": 2,
+      "everyday": 4,
+      "music": 2
+    }
+  },
+  "jukebar_200a": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 2,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 4,
+      "music": 3
+    }
+  },
+  "jukebar_3820a": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 2,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 4,
+      "music": 2
+    }
+  },
+  "jukebar_3903": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 2,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 4,
+      "music": 3
+    }
+  },
+  "jukebar_3902": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 2,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 4,
+      "music": 3
+    }
+  },
+  "jukebar_3910": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 2,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 4,
+      "music": 3
+    }
+  },
+  "jukebar_4100": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 4,
+      "tv_large": 2,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 2,
+      "sports": 3,
+      "everyday": 4,
+      "music": 3
+    }
+  },
+  "jukebar_4120": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 2,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 5,
+      "music": 3
+    }
+  },
+  "jukebar_5500": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 2,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 5,
+      "music": 3
+    }
+  },
+  "jukebar_6500": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 4,
+      "tv_large": 2,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 5,
+      "music": 4
+    }
+  },
+  "jukebar_9102": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 4,
+      "tv_large": 2,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 5,
+      "music": 4
+    }
+  },
+  "jukebar_7451": {
+    "room": {
+      "studio": 3,
+      "small": 5,
+      "medium": 3,
+      "large": 2
+    },
+    "tv": {
+      "tv_small": 3,
+      "tv_medium": 5,
+      "tv_large": 3,
+      "tv_xlarge": 2
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 3
+    }
+  },
+  "jukebar_800": {
+    "room": {
+      "studio": 2,
+      "small": 5,
+      "medium": 4,
+      "large": 2
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 5,
+      "tv_large": 4,
+      "tv_xlarge": 2
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 3
+    }
+  },
+  "jukebar_6100": {
+    "room": {
+      "studio": 2,
+      "small": 5,
+      "medium": 4,
+      "large": 2
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 5,
+      "tv_large": 4,
+      "tv_xlarge": 2
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 3
+    }
+  },
+  "jukebar_7600": {
+    "room": {
+      "studio": 2,
+      "small": 5,
+      "medium": 4,
+      "large": 2
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 5,
+      "tv_large": 4,
+      "tv_xlarge": 2
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 3
+    }
+  },
+  "jukebar_8700": {
+    "room": {
+      "studio": 2,
+      "small": 5,
+      "medium": 4,
+      "large": 2
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 5,
+      "tv_large": 4,
+      "tv_xlarge": 2
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 3
+    }
+  },
+  "jukebar_9010c": {
+    "room": {
+      "studio": 5,
+      "small": 4,
+      "medium": 2,
+      "large": 1
+    },
+    "tv": {
+      "tv_small": 5,
+      "tv_medium": 3,
+      "tv_large": 1,
+      "tv_xlarge": 1
+    },
+    "use": {
+      "movies": 3,
+      "gaming": 2,
+      "sports": 2,
+      "everyday": 5,
+      "music": 3
+    }
+  },
+  "jukebar_801": {
+    "room": {
+      "studio": 2,
+      "small": 4,
+      "medium": 5,
+      "large": 3
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 4,
+      "tv_large": 5,
+      "tv_xlarge": 3
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_7400": {
+    "room": {
+      "studio": 2,
+      "small": 4,
+      "medium": 5,
+      "large": 3
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 4,
+      "tv_large": 5,
+      "tv_xlarge": 3
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9300c": {
+    "room": {
+      "studio": 3,
+      "small": 5,
+      "medium": 4,
+      "large": 2
+    },
+    "tv": {
+      "tv_small": 3,
+      "tv_medium": 5,
+      "tv_large": 3,
+      "tv_xlarge": 2
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 5,
+      "everyday": 4,
+      "music": 4
+    }
+  },
+  "jukebar_9400": {
+    "room": {
+      "studio": 2,
+      "small": 4,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 4,
+      "tv_large": 5,
+      "tv_xlarge": 3
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9451": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 4,
+      "tv_large": 5,
+      "tv_xlarge": 3
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9451w": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 4,
+      "tv_large": 5,
+      "tv_xlarge": 3
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9500": {
+    "room": {
+      "studio": 2,
+      "small": 4,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 4,
+      "tv_large": 5,
+      "tv_xlarge": 3
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9510": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 3,
+      "tv_large": 5,
+      "tv_xlarge": 4
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9530ws": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 3,
+      "tv_large": 5,
+      "tv_xlarge": 4
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9530w": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 3,
+      "tv_large": 5,
+      "tv_xlarge": 4
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 4,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9550": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 3,
+      "tv_large": 5,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 5,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9551": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 3,
+      "tv_large": 5,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 4,
+      "gaming": 4,
+      "sports": 5,
+      "everyday": 3,
+      "music": 4
+    }
+  },
+  "jukebar_9580c": {
+    "room": {
+      "studio": 3,
+      "small": 5,
+      "medium": 4,
+      "large": 2
+    },
+    "tv": {
+      "tv_small": 3,
+      "tv_medium": 5,
+      "tv_large": 4,
+      "tv_xlarge": 2
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 4,
+      "sports": 3,
+      "everyday": 3,
+      "music": 5
+    }
+  },
+  "jukebar_9750": {
+    "room": {
+      "studio": 1,
+      "small": 3,
+      "medium": 5,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 3,
+      "tv_large": 5,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 5,
+      "sports": 5,
+      "everyday": 3,
+      "music": 5
+    }
+  },
+  "jukebar_9710c": {
+    "room": {
+      "studio": 2,
+      "small": 4,
+      "medium": 5,
+      "large": 4
+    },
+    "tv": {
+      "tv_small": 2,
+      "tv_medium": 4,
+      "tv_large": 5,
+      "tv_xlarge": 4
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 5,
+      "sports": 5,
+      "everyday": 3,
+      "music": 5
+    }
+  },
+  "jukebar_9775": {
+    "room": {
+      "studio": 1,
+      "small": 2,
+      "medium": 4,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 2,
+      "tv_large": 4,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 5,
+      "sports": 5,
+      "everyday": 3,
+      "music": 5
+    }
+  },
+  "jukebar_9850": {
+    "room": {
+      "studio": 1,
+      "small": 1,
+      "medium": 3,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 1,
+      "tv_large": 4,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 5,
+      "sports": 5,
+      "everyday": 3,
+      "music": 5
+    }
+  },
+  "jukebar_9900": {
+    "room": {
+      "studio": 1,
+      "small": 1,
+      "medium": 4,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 1,
+      "tv_large": 4,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 5,
+      "sports": 5,
+      "everyday": 3,
+      "music": 5
+    }
+  },
+  "jukebar_9920": {
+    "room": {
+      "studio": 1,
+      "small": 1,
+      "medium": 3,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 1,
+      "tv_large": 4,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 5,
+      "sports": 5,
+      "everyday": 2,
+      "music": 5
+    }
+  },
+  "jukebar_10000": {
+    "room": {
+      "studio": 1,
+      "small": 1,
+      "medium": 3,
+      "large": 5
+    },
+    "tv": {
+      "tv_small": 1,
+      "tv_medium": 1,
+      "tv_large": 3,
+      "tv_xlarge": 5
+    },
+    "use": {
+      "movies": 5,
+      "gaming": 5,
+      "sports": 5,
+      "everyday": 3,
+      "music": 5
+    }
+  }
+}
