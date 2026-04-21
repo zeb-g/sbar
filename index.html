@@ -827,54 +827,64 @@ const S = {
 };
 
 // ─── BOOT ──────────────────────────────────────────────────────────
+function dbg(msg) {
+  console.log('[ZEB]', msg);
+  const el = document.getElementById('dbgPanel');
+  if (el) el.innerHTML += '<div>' + msg + '</div>';
+}
+
 (async function boot() {
+  dbg('boot started');
   buildEq();
   initScrollFade();
   initHeroCanvas();
   initRangeSlider();
   applyTheme();
-
-  // Filters are static HTML — just init state here
   S.filterValues = { room: null, tv: null, use: new Set() };
+  dbg('init done, starting fetch...');
+
+  // Show debug panel
+  const meta = document.getElementById('rmeta');
+  const pgrid = document.getElementById('pgrid');
+  const heading = document.getElementById('rheading');
+  if (meta) meta.style.display = 'flex';
+  if (heading) heading.innerHTML = 'Loading soundbars...';
+  if (pgrid) pgrid.innerHTML = '<div id="dbgPanel" style="grid-column:1/-1;padding:1rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;font-size:12px;font-family:monospace;color:#1E3A8A;line-height:1.8">Starting...</div>';
 
   try {
-    const [pRes, sRes] = await Promise.all([fetch('./products.json'), fetch('./scores.json')]);
-    if (!pRes.ok || !sRes.ok) throw new Error('fetch failed');
-    const [products, scores] = await Promise.all([pRes.json(), sRes.json()]);
+    dbg('fetching products.json...');
+    const pRes = await fetch('./products.json');
+    dbg('products.json status: ' + pRes.status + ' ' + pRes.statusText);
+    if (!pRes.ok) throw new Error('products.json returned ' + pRes.status);
+
+    dbg('fetching scores.json...');
+    const sRes = await fetch('./scores.json');
+    dbg('scores.json status: ' + sRes.status + ' ' + sRes.statusText);
+    if (!sRes.ok) throw new Error('scores.json returned ' + sRes.status);
+
+    dbg('parsing JSON...');
+    const products = await pRes.json();
+    const scores = await sRes.json();
+    dbg('loaded ' + products.length + ' products, ' + Object.keys(scores).length + ' score entries');
+
     CONFIG = {
       products: products.map(p => ({ ...p, wattNum: parseInt(p.watt)||0, avail: p.avail||'online' })),
       scores,
       overrides: [],
       filters: STATIC_FILTERS,
     };
+    dbg('CONFIG set. Calling render()...');
+    if (pgrid) pgrid.innerHTML = '';  // clear debug panel
     setLastUpdated(true);
     updateBudgetNote();
     render();
     buildTable();
+    dbg('render() and buildTable() done');
   } catch(e) {
-    console.error('[Soundbar Finder] Fetch failed:', e.message);
+    dbg('ERROR: ' + e.message);
+    console.error('[ZEB] Boot error:', e);
     setLastUpdated(false);
-    // Try to diagnose which file is missing
-    let missing = 'products.json and scores.json';
-    try {
-      const t = await fetch('./products.json');
-      if (!t.ok) missing = 'products.json (not found in repo)';
-      else missing = 'scores.json (not found in repo)';
-    } catch(_) {}
-    document.getElementById('rmeta').style.display = 'flex';
-    document.getElementById('rheading').innerHTML = '⚠ Could not load soundbar data';
-    document.getElementById('pgrid').innerHTML = `
-      <div style="grid-column:1/-1;background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:2rem;color:#92400E;font-family:var(--font)">
-        <div style="font-size:16px;font-weight:700;margin-bottom:8px">Missing file: ${missing}</div>
-        <div style="font-size:14px;line-height:1.7;margin-bottom:16px">
-          Upload <strong>products.json</strong> and <strong>scores.json</strong> to your GitHub repo at<br>
-          <code style="background:rgba(0,0,0,0.08);padding:2px 8px;border-radius:4px">github.com/zeb-g/sbar</code>
-          — they must be in the root folder alongside index.html.
-        </div>
-        <div style="font-size:13px;color:#B45309">
-          Go to github.com/zeb-g/sbar → Add file → Upload files → drag products.json and scores.json → Commit
-        </div>
-      </div>`;
+    if (heading) heading.innerHTML = '⚠ ' + e.message;
   }
 })();
 
