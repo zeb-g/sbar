@@ -1,0 +1,7 @@
+# Excel scorecard — edit locally, run convert_scores.py, commit the JSON output
+*.xlsx
+*.xls
+
+# OS files
+.DS_Store
+Thumbs.db
