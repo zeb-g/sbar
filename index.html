@@ -852,10 +852,29 @@ const S = {
     render();
     buildTable();
   } catch(e) {
-    console.error('Could not load product data. Serving from local file?', e);
+    console.error('[Soundbar Finder] Fetch failed:', e.message);
     setLastUpdated(false);
-    document.getElementById('pgrid').innerHTML = '<div class="no-res" style="padding:2rem;color:var(--muted)">⚠ Product data unavailable. Open via a local server:<br><code style="font-size:12px;color:var(--blue)">python -m http.server 8080</code><br>then visit <code style="font-size:12px;color:var(--blue)">localhost:8080</code></div>';
+    // Try to diagnose which file is missing
+    let missing = 'products.json and scores.json';
+    try {
+      const t = await fetch('./products.json');
+      if (!t.ok) missing = 'products.json (not found in repo)';
+      else missing = 'scores.json (not found in repo)';
+    } catch(_) {}
     document.getElementById('rmeta').style.display = 'flex';
+    document.getElementById('rheading').innerHTML = '⚠ Could not load soundbar data';
+    document.getElementById('pgrid').innerHTML = `
+      <div style="grid-column:1/-1;background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:2rem;color:#92400E;font-family:var(--font)">
+        <div style="font-size:16px;font-weight:700;margin-bottom:8px">Missing file: ${missing}</div>
+        <div style="font-size:14px;line-height:1.7;margin-bottom:16px">
+          Upload <strong>products.json</strong> and <strong>scores.json</strong> to your GitHub repo at<br>
+          <code style="background:rgba(0,0,0,0.08);padding:2px 8px;border-radius:4px">github.com/zeb-g/sbar</code>
+          — they must be in the root folder alongside index.html.
+        </div>
+        <div style="font-size:13px;color:#B45309">
+          Go to github.com/zeb-g/sbar → Add file → Upload files → drag products.json and scores.json → Commit
+        </div>
+      </div>`;
   }
 })();
 
@@ -1005,12 +1024,13 @@ function setPersona(key, btn) {
   btn.classList.add('on');
 
   // Reset filter state
-  if (CONFIG) CONFIG.filters.forEach(f => {
+  STATIC_FILTERS.forEach(f => {
     S.filterValues[f.id] = f.type === 'multi' ? new Set() : null;
   });
 
   // Apply use presets
-  if (CONFIG) p.use.forEach(u => {
+  p.use.forEach(u => {
+    if (!S.filterValues['use']) S.filterValues['use'] = new Set();
     S.filterValues['use'].add(u);
     const b = document.querySelector(`[data-fid="use"][data-val="${u}"]`);
     if (b) b.classList.add('on');
