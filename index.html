@@ -27,9 +27,11 @@
 }
 [data-theme="light"] body{background:var(--bg)}
 [data-theme="light"] nav{background:rgba(240,244,248,0.95);border-bottom-color:rgba(0,0,0,0.08)}
-[data-theme="light"] .hero{background:linear-gradient(180deg,#EFF6FF 0%,#F0F4F8 100%)}
-[data-theme="light"] #heroCanvas{opacity:.15}
+[data-theme="light"] .hero{background:linear-gradient(160deg,#EFF6FF 0%,#DBEAFE 40%,#F0F4F8 100%)}
+[data-theme="light"] #heroCanvas{opacity:.08}
+[data-theme="light"] .hero-eq{opacity:.5}
 [data-theme="light"] .hero h1{color:#0F172A}
+[data-theme="light"] .hero-content{color:#0F172A}
 [data-theme="light"] .logo-text{color:#0F172A}
 [data-theme="light"] .nav-links a{color:#64748B}
 [data-theme="light"] .nav-links a:hover{color:#0F172A}
@@ -78,6 +80,55 @@
 [data-theme="light"] .range-track{background:#E2E8F0}
 [data-theme="light"] .sec-h2,[data-theme="light"] .demo-h{color:#0F172A}
 [data-theme="light"] .hero-eyebrow,[data-theme="light"] .hero-sub{color:#475569}
+[data-theme="light"] .hero-stats .stat-item span{color:#475569}
+[data-theme="light"] .result-meta{color:#475569}
+[data-theme="light"] .result-meta strong{color:#0F172A}
+[data-theme="light"] .sec-tag{color:var(--blue-dark)}
+[data-theme="light"] .sec-sub{color:#475569}
+[data-theme="light"] .filter-lbl{color:#64748B}
+[data-theme="light"] .multi-hint{color:#94A3B8}
+[data-theme="light"] .budget-title{color:#64748B}
+[data-theme="light"] .budget-display{color:#0F172A!important;background:none!important}
+[data-theme="light"] .budget-labels{color:#94A3B8}
+[data-theme="light"] .budget-note{color:#64748B}
+[data-theme="light"] .range-ticks{color:#94A3B8}
+[data-theme="light"] .stat-v{background:#E2E8F0;color:#475569}
+[data-theme="light"] .stat-v.on{background:#DBEAFE;color:#1D4ED8!important}
+[data-theme="light"] .demo-toggle-label{color:#475569}
+[data-theme="light"] .demo-toggle.on .demo-toggle-label{color:#1D4ED8}
+[data-theme="light"] .demo-toggle-sub{color:#94A3B8}
+[data-theme="light"] .demo-toggle.on .demo-toggle-sub{color:rgba(29,78,216,.65)}
+[data-theme="light"] #status{color:rgba(0,0,0,.4)}
+[data-theme="light"] .play-hint{color:rgba(0,0,0,.6)}
+[data-theme="light"] .play-btn{background:rgba(59,130,246,.85)}
+[data-theme="light"] .freq-title{color:#64748B}
+[data-theme="light"] .ac-title{color:#1D4ED8}
+[data-theme="light"] .ac-hint{color:#94A3B8}
+[data-theme="light"] .ac-lbl{color:#1D4ED8}
+[data-theme="light"] .ac-chip-lbl{color:#475569}
+[data-theme="light"] .ac-chip.on .ac-chip-lbl{color:#1D4ED8}
+[data-theme="light"] .ac-insight{color:#0F172A}
+[data-theme="light"] .ac-tag{background:var(--blue-dark)}
+[data-theme="light"] .ac-note{color:#0F172A;background:rgba(59,130,246,.08)}
+[data-theme="light"] .ac-note-lbl{background:var(--blue-dark)}
+[data-theme="light"] .why-box{color:#475569;border-left-color:var(--blue)}
+[data-theme="light"] .cert-atmos{color:#92400E}
+[data-theme="light"] .cert-audio{color:#1D4ED8}
+[data-theme="light"] .cert-std{color:#475569}
+[data-theme="light"] .config{color:#64748B}
+[data-theme="light"] .watt-pill{background:#DBEAFE;border-color:#93C5FD;color:#1D4ED8}
+[data-theme="light"] .mrp{color:#94A3B8}
+[data-theme="light"] .no-res{color:#64748B}
+[data-theme="light"] #trackInfo{background:rgba(0,0,0,.04);color:#64748B}
+[data-theme="light"] .persona-label{color:#64748B}
+[data-theme="light"] .persona-hint{color:#94A3B8}
+[data-theme="light"] .acc-arrow{color:var(--blue-dark)}
+[data-theme="light"] .tn{color:#0F172A}
+[data-theme="light"] .ok{color:#059669}
+[data-theme="light"] .no{color:#94A3B8}
+[data-theme="light"] footer{color:#64748B}
+[data-theme="light"] footer strong{color:#0F172A}
+[data-theme="light"] .tag-src{background:#F1F5F9;border-color:#E2E8F0;color:#64748B}
 [data-theme="light"] .hero-stats .stat-item strong{color:#0F172A}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -100,7 +151,7 @@ nav{background:rgba(10,10,15,0.9);border-bottom:1px solid var(--border);position
 @media(max-width:680px){.nav-links{display:none}}
 
 /* ─── HERO ────────────────────────────────────────────────────────── */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-content{position:relative;text-align:center;padding:2rem;max-width:700px}
 .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:1.5rem}
@@ -114,7 +165,7 @@ nav{background:rgba(10,10,15,0.9);border-bottom:1px solid var(--border);position
 .stat-item strong{display:block;font-size:22px;font-weight:800;color:#fff;letter-spacing:-1px}
 .stat-item span{font-size:11px;color:var(--muted);letter-spacing:.5px}
 .hero-eq{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:40px;margin-top:3rem;opacity:.4}
-.eq-bar{width:4px;background:linear-gradient(to top,var(--blue),#60A5FA);border-radius:2px;animation:eqPulse 1s ease-in-out infinite alternate}
+.eq-bar{width:4px;background:linear-gradient(to top,#2563EB,#60A5FA);border-radius:2px;animation:eqPulse 1s ease-in-out infinite alternate;opacity:.6}
 @keyframes eqPulse{0%{transform:scaleY(.3)}100%{transform:scaleY(1)}}
 
 /* ─── PERSONA PILLS ───────────────────────────────────────────────── */
@@ -147,10 +198,10 @@ nav{background:rgba(10,10,15,0.9);border-bottom:1px solid var(--border);position
 .chip-room,.chip-tv{background:var(--surface2);border:1.5px solid var(--border2);border-radius:10px;padding:1.1rem .8rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .18s;min-height:130px;justify-content:center;color:var(--muted)}
 .chip-room:hover,.chip-tv:hover{border-color:var(--blue);background:rgba(59,130,246,.06)}
 .chip-room.on,.chip-tv.on{background:var(--blue-fill);border-color:var(--blue);border-width:2px;color:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.18)}
-.chip-room svg,.chip-tv svg{flex-shrink:0;color:currentColor}
-.chip-room-label,.chip-tv-label{font-size:13px;font-weight:700;text-align:center;line-height:1.2;color:inherit}
-.chip-room-sub,.chip-tv-sub{font-size:10px;color:var(--muted);text-align:center;line-height:1.3}
-.chip-room.on .chip-room-sub,.chip-tv.on .chip-tv-sub{color:rgba(255,255,255,.65)}
+.chip-room svg,.chip-tv svg{flex-shrink:0;color:currentColor;opacity:.85}
+.chip-room-label,.chip-tv-label{font-size:13px;font-weight:700;text-align:center;line-height:1.2;color:var(--text)}
+.chip-room-sub,.chip-tv-sub{font-size:10px;color:var(--muted);text-align:center;line-height:1.3;margin-top:1px}
+.chip-room.on .chip-room-sub,.chip-tv.on .chip-tv-sub,.chip-room.on .chip-room-label,.chip-tv.on .chip-tv-label{color:#fff}
 
 /* ─── USE CASE CHIPS ──────────────────────────────────────────────── */
 .chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
@@ -163,7 +214,7 @@ nav{background:rgba(10,10,15,0.9);border-bottom:1px solid var(--border);position
 /* ─── DUAL RANGE SLIDER ───────────────────────────────────────────── */
 .budget-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
 .budget-title{font-size:10px;font-weight:700;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase}
-.budget-display{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.budget-display{font-size:15px;font-weight:800;color:var(--text);letter-spacing:-.5px}
 .budget-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--subtle);margin-bottom:.5rem}
 .range-wrap{position:relative;height:40px;display:flex;align-items:center;margin-bottom:.6rem}
 .range-track{position:absolute;height:4px;width:100%;background:var(--border2);border-radius:2px;pointer-events:none}
@@ -260,7 +311,7 @@ nav{background:rgba(10,10,15,0.9);border-bottom:1px solid var(--border);position
 .demo-toggle-sub{font-size:11px;color:var(--subtle);text-align:left}
 .demo-toggle.on .demo-toggle-sub{color:rgba(255,255,255,.6)}
 .stat-v{font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;background:var(--border2);color:var(--muted);white-space:nowrap;flex-shrink:0}
-.stat-v.on{background:rgba(59,130,246,.2);color:#93C5FD}
+.stat-v.on{background:rgba(59,130,246,.15);color:var(--blue)}
 .vis-wrap{position:relative;border-radius:12px;overflow:hidden;background:#0D111E;aspect-ratio:16/10}
 #vis{width:100%;height:100%;display:block}
 #status{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:10px;color:rgba(255,255,255,.5);white-space:nowrap;letter-spacing:.5px}
@@ -336,7 +387,7 @@ footer a{color:var(--blue)}.footer-inner{max-width:1200px;margin:0 auto}
 </section>
 
 <!-- ─── PERSONA PILLS ──────────────────────────────────────────────── -->
-<section class="sec" style="padding:2.5rem 0 0" id="personas">
+<section class="sec" style="padding:1rem 0 0" id="personas">
   <div class="persona-wrap fade-in">
     <p class="persona-label">Start with your situation — or answer the questions yourself ↓</p>
     <div class="persona-pills">
@@ -357,11 +408,75 @@ footer a{color:var(--blue)}.footer-inner{max-width:1200px;margin:0 auto}
     <div class="sec-h2">Tell Us About Your Space</div>
     <div class="sec-sub">Answer what you know — results update instantly below.</div>
 
-    <div class="finder-card fade-in" id="filterCard">
+    <div class="finder-card" id="filterCard">
 
-      <!-- ROOM SIZE — dynamically populated with SVG cards -->
-      <!-- TV SIZE — dynamically populated with SVG cards -->
-      <!-- USE CASE — dynamically populated -->
+      <!-- ROOM SIZE -->
+      <div class="filter-block">
+        <div class="filter-lbl">Room Size</div>
+        <div class="chips-room" id="fc-room">
+          <button class="chip-room" data-fid="room" data-val="studio" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="15" width="70" height="42" rx="2"/><rect x="15" y="30" width="30" height="18" rx="1"/><rect x="12" y="30" width="6" height="8" rx="1" opacity=".6"/><rect x="50" y="35" width="10" height="12" rx="1" opacity=".7"/><rect x="28" y="5" width="16" height="12" rx="1"/></svg>
+            <span class="chip-room-label">Studio / Bedroom</span>
+            <span class="chip-room-sub">~100 sq ft · 1RK</span>
+          </button>
+          <button class="chip-room" data-fid="room" data-val="small" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="10" width="70" height="47" rx="2"/><rect x="10" y="32" width="38" height="18" rx="2"/><rect x="10" y="25" width="38" height="9" rx="1"/><rect x="52" y="20" width="18" height="14" rx="1" opacity=".8"/><rect x="55" y="10" width="12" height="12" rx="1" opacity=".7"/></svg>
+            <span class="chip-room-label">1BHK Hall</span>
+            <span class="chip-room-sub">~150 sq ft</span>
+          </button>
+          <button class="chip-room" data-fid="room" data-val="medium" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="74" height="49" rx="2"/><rect x="8" y="30" width="44" height="20" rx="2"/><rect x="8" y="22" width="44" height="10" rx="1"/><rect x="20" y="50" width="20" height="6" rx="1" opacity=".7"/><rect x="56" y="15" width="18" height="15" rx="1" opacity=".8"/><rect x="15" y="3" width="12" height="7" rx="1" opacity=".7"/><rect x="45" y="3" width="12" height="7" rx="1" opacity=".7"/></svg>
+            <span class="chip-room-label">2BHK Hall</span>
+            <span class="chip-room-sub">200–250 sq ft</span>
+          </button>
+          <button class="chip-room" data-fid="room" data-val="large" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="76" height="51" rx="2"/><rect x="6" y="28" width="42" height="18" rx="2"/><rect x="6" y="20" width="42" height="10" rx="1"/><rect x="44" y="36" width="16" height="10" rx="2" opacity=".8"/><rect x="54" y="12" width="22" height="16" rx="1" opacity=".85"/><rect x="12" y="6" width="10" height="6" rx="1" opacity=".7"/><rect x="30" y="6" width="10" height="6" rx="1" opacity=".7"/><rect x="48" y="6" width="10" height="6" rx="1" opacity=".7"/></svg>
+            <span class="chip-room-label">3BHK / Open Hall</span>
+            <span class="chip-room-sub">300+ sq ft</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TV SIZE -->
+      <div class="filter-block">
+        <div class="filter-lbl">TV Size</div>
+        <div class="chips-tv" id="fc-tv">
+          <button class="chip-tv" data-fid="tv" data-val="tv_small" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="10" width="40" height="28" rx="2"/><line x1="40" y1="38" x2="40" y2="50"/><line x1="28" y1="50" x2="52" y2="50"/></svg>
+            <span class="chip-tv-label">32″ – 43″</span>
+            <span class="chip-tv-sub">Bedroom / compact</span>
+          </button>
+          <button class="chip-tv" data-fid="tv" data-val="tv_medium" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="8" width="60" height="36" rx="2"/><line x1="40" y1="44" x2="40" y2="54"/><line x1="26" y1="54" x2="54" y2="54"/></svg>
+            <span class="chip-tv-label">43″ – 55″</span>
+            <span class="chip-tv-sub">Standard living room</span>
+          </button>
+          <button class="chip-tv" data-fid="tv" data-val="tv_large" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="72" height="42" rx="2"/><line x1="40" y1="48" x2="40" y2="56"/><line x1="22" y1="56" x2="58" y2="56"/></svg>
+            <span class="chip-tv-label">55″ – 65″</span>
+            <span class="chip-tv-sub">Large living room</span>
+          </button>
+          <button class="chip-tv" data-fid="tv" data-val="tv_xlarge" data-ftype="single" onclick="handleFilterChip(this)">
+            <svg width="52" height="40" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="76" height="46" rx="2"/><line x1="40" y1="50" x2="40" y2="57"/><line x1="18" y1="57" x2="62" y2="57"/></svg>
+            <span class="chip-tv-label">65″ and above</span>
+            <span class="chip-tv-sub">Cinema-scale</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- USE CASE -->
+      <div class="filter-block">
+        <div class="filter-lbl">Primary Use <span class="multi-hint">· Select all that apply</span></div>
+        <div class="chips" id="fc-use">
+          <button class="chip" data-fid="use" data-val="movies"   data-ftype="multi" onclick="handleFilterChip(this)">🎬 Movies &amp; OTT<span class="chip-sub">Netflix, Prime, Hotstar</span></button>
+          <button class="chip" data-fid="use" data-val="gaming"   data-ftype="multi" onclick="handleFilterChip(this)">🎮 Gaming<span class="chip-sub">PS5, Xbox, PC</span></button>
+          <button class="chip" data-fid="use" data-val="sports"   data-ftype="multi" onclick="handleFilterChip(this)">🏏 Sports<span class="chip-sub">Cricket, Football, IPL</span></button>
+          <button class="chip" data-fid="use" data-val="everyday" data-ftype="multi" onclick="handleFilterChip(this)">📺 Everyday TV<span class="chip-sub">News, serials, shows</span></button>
+          <button class="chip" data-fid="use" data-val="music"    data-ftype="multi" onclick="handleFilterChip(this)">🎵 Music<span class="chip-sub">Spotify, JioSaavn</span></button>
+        </div>
+      </div>
+
+      <hr class="filter-divider">
 
       <!-- BUDGET DUAL RANGE -->
       <div class="filter-block" id="budgetBlock">
@@ -719,11 +834,8 @@ const S = {
   initRangeSlider();
   applyTheme();
 
-  // Always build filter UI — uses STATIC_FILTERS, no server needed
-  STATIC_FILTERS.forEach(f => {
-    S.filterValues[f.id] = f.type === 'multi' ? new Set() : null;
-  });
-  buildFilterUI();
+  // Filters are static HTML — just init state here
+  S.filterValues = { room: null, tv: null, use: new Set() };
 
   try {
     const [pRes, sRes] = await Promise.all([fetch('./products.json'), fetch('./scores.json')]);
@@ -853,58 +965,6 @@ function updateBudgetNote() {
 }
 
 // ─── FILTER BUILDER ────────────────────────────────────────────────
-function buildFilterUI() {
-  const card     = document.getElementById('filterCard');
-  const budgetEl = document.getElementById('budgetBlock');
-  if (!card || !budgetEl) return;
-
-  STATIC_FILTERS.forEach(f => {
-    const block = document.createElement('div');
-    block.className  = 'filter-block';
-    block.dataset.fid = f.id;
-
-    const lbl = document.createElement('div');
-    lbl.className = 'filter-lbl';
-    lbl.innerHTML  = f.label + (f.type === 'multi' ? ' <span class="multi-hint">· Select all that apply</span>' : '');
-    block.appendChild(lbl);
-
-    const isRoom = f.id === 'room';
-    const isTV   = f.id === 'tv';
-
-    const wrap = document.createElement('div');
-    wrap.className = isRoom ? 'chips-room' : isTV ? 'chips-tv' : 'chips';
-    wrap.id = `fc-${f.id}`;
-
-    f.options.forEach(opt => {
-      const btn = document.createElement('button');
-      btn.dataset.fid   = f.id;
-      btn.dataset.val   = opt.key;
-      btn.dataset.ftype = f.type;
-
-      if (isRoom) {
-        btn.className = 'chip-room';
-        btn.innerHTML = `${ROOM_SVG[opt.key]||''}<span class="chip-room-label">${opt.label}</span><span class="chip-room-sub">${opt.sub||''}</span>`;
-      } else if (isTV) {
-        btn.className = 'chip-tv';
-        btn.innerHTML = `${TV_SVG[opt.key]||''}<span class="chip-tv-label">${opt.label}</span><span class="chip-tv-sub">${opt.sub||''}</span>`;
-      } else {
-        btn.className = 'chip';
-        btn.innerHTML = `${opt.label}${opt.sub?`<span class="chip-sub">${opt.sub}</span>`:''}`;
-      }
-
-      btn.onclick = () => handleFilterChip(btn);
-      wrap.appendChild(btn);
-    });
-
-    block.appendChild(wrap);
-    card.insertBefore(block, budgetEl);
-  });
-
-  // Insert a divider before budget
-  const div = document.createElement('hr');
-  div.className = 'filter-divider';
-  card.insertBefore(div, budgetEl);
-}
 
 function handleFilterChip(btn) {
   const fid   = btn.dataset.fid;
