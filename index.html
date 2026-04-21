@@ -144,6 +144,8 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none}
 nav{background:rgba(10,10,15,0.9);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-img{height:32px;width:auto;object-fit:contain;display:block}
+[data-theme="light"] .logo-img{filter:none}
 .logo-text{font-weight:900;font-size:19px;letter-spacing:-0.5px;color:#fff}
 .logo-pill{background:var(--blue-dark);color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:3px 10px;border-radius:20px;text-transform:uppercase;white-space:nowrap}
 .nav-links{display:flex;gap:2rem;font-size:13px;font-weight:500}
@@ -357,7 +359,11 @@ footer a{color:var(--blue)}.footer-inner{max-width:1200px;margin:0 auto}
 <nav>
   <div class="nav-inner">
     <a href="https://zebronics.com" class="logo" target="_blank">
-      <span class="logo-text">ZEBRONICS</span>
+      <img src="https://headphones.zebronics.com/img/zeb-logo.jpg"
+           alt="Zebronics"
+           class="logo-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="logo-text" style="display:none">ZEBRONICS</span>
       <span class="logo-pill">Sound Finder</span>
     </a>
     <div class="nav-links">
