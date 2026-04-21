@@ -820,52 +820,31 @@ const TV_SVG = {
 
 // ─── STATE ─────────────────────────────────────────────────────────
 const S = {
-  filterValues: {},
+  filterValues: { room: null, tv: null, use: new Set() },
   minBudget: 3199,
   maxBudget: 20000,
   floor: null, fan: null, layout: null
 };
 
 // ─── BOOT ──────────────────────────────────────────────────────────
-function dbg(msg) {
-  console.log('[ZEB]', msg);
-  const el = document.getElementById('dbgPanel');
-  if (el) el.innerHTML += '<div>' + msg + '</div>';
-}
-
 (async function boot() {
-  dbg('boot started');
-  buildEq();
-  initScrollFade();
-  initHeroCanvas();
-  initRangeSlider();
-  applyTheme();
-  S.filterValues = { room: null, tv: null, use: new Set() };
-  dbg('init done, starting fetch...');
+  // Each init wrapped so one failure doesn't block the rest
+  try { buildEq(); } catch(e) { console.warn('buildEq failed', e); }
+  try { initScrollFade(); } catch(e) { console.warn('initScrollFade failed', e); }
+  try { initHeroCanvas(); } catch(e) { console.warn('initHeroCanvas failed', e); }
+  try { initRangeSlider(); } catch(e) { console.warn('initRangeSlider failed', e); }
+  try { applyTheme(); } catch(e) { console.warn('applyTheme failed', e); }
 
-  // Show debug panel
-  const meta = document.getElementById('rmeta');
-  const pgrid = document.getElementById('pgrid');
-  const heading = document.getElementById('rheading');
-  if (meta) meta.style.display = 'flex';
-  if (heading) heading.innerHTML = 'Loading soundbars...';
-  if (pgrid) pgrid.innerHTML = '<div id="dbgPanel" style="grid-column:1/-1;padding:1rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;font-size:12px;font-family:monospace;color:#1E3A8A;line-height:1.8">Starting...</div>';
-
+  // Fetch product data
   try {
-    dbg('fetching products.json...');
-    const pRes = await fetch('./products.json');
-    dbg('products.json status: ' + pRes.status + ' ' + pRes.statusText);
-    if (!pRes.ok) throw new Error('products.json returned ' + pRes.status);
+    const [pRes, sRes] = await Promise.all([
+      fetch('./products.json'),
+      fetch('./scores.json')
+    ]);
+    if (!pRes.ok) throw new Error('products.json not found (HTTP ' + pRes.status + ')');
+    if (!sRes.ok) throw new Error('scores.json not found (HTTP ' + sRes.status + ')');
 
-    dbg('fetching scores.json...');
-    const sRes = await fetch('./scores.json');
-    dbg('scores.json status: ' + sRes.status + ' ' + sRes.statusText);
-    if (!sRes.ok) throw new Error('scores.json returned ' + sRes.status);
-
-    dbg('parsing JSON...');
-    const products = await pRes.json();
-    const scores = await sRes.json();
-    dbg('loaded ' + products.length + ' products, ' + Object.keys(scores).length + ' score entries');
+    const [products, scores] = await Promise.all([pRes.json(), sRes.json()]);
 
     CONFIG = {
       products: products.map(p => ({ ...p, wattNum: parseInt(p.watt)||0, avail: p.avail||'online' })),
@@ -873,18 +852,21 @@ function dbg(msg) {
       overrides: [],
       filters: STATIC_FILTERS,
     };
-    dbg('CONFIG set. Calling render()...');
-    if (pgrid) pgrid.innerHTML = '';  // clear debug panel
+
     setLastUpdated(true);
     updateBudgetNote();
     render();
     buildTable();
-    dbg('render() and buildTable() done');
+
   } catch(e) {
-    dbg('ERROR: ' + e.message);
-    console.error('[ZEB] Boot error:', e);
+    console.error('[ZEB] Failed to load data:', e.message);
     setLastUpdated(false);
-    if (heading) heading.innerHTML = '⚠ ' + e.message;
+    const pgrid = document.getElementById('pgrid');
+    const rmeta = document.getElementById('rmeta');
+    const rheading = document.getElementById('rheading');
+    if (rmeta) rmeta.style.display = 'flex';
+    if (rheading) rheading.textContent = 'Could not load product data';
+    if (pgrid) pgrid.innerHTML = '<div style="grid-column:1/-1;padding:2rem;background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;color:#92400E;font-size:14px;line-height:1.8"><strong>Error:</strong> ' + e.message + '<br><br>Make sure <code>products.json</code> and <code>scores.json</code> are uploaded to github.com/zeb-g/sbar</div>';
   }
 })();
 
@@ -922,6 +904,7 @@ function initScrollFade() {
 // ─── HERO CANVAS WAVES ─────────────────────────────────────────────
 function initHeroCanvas() {
   const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
   const ctx    = canvas.getContext('2d');
   let t = 0;
   const waves = [
